@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #05070d;
+  --surface: #0a0f1c;
+  --elevated: #101827;
+  --border: rgba(148, 163, 184, 0.12);
+  --border-strong: rgba(148, 163, 184, 0.24);
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #5b6779;
+
+  --el-nino: #f87171;
+  --el-nino-strong: #ef4444;
+  --el-nino-deep: #b91c1c;
+  --la-nina: #38bdf8;
+  --la-nina-strong: #0ea5e9;
+  --neutral: #64748b;
+  --amber: #f59e0b;
+  --green: #34d399;
+  --green-strong: #059669;
+  --violet: #a78bfa;
+  --la-nina-deep: #0369a1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-elevated: var(--elevated);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+
+  --color-el-nino: var(--el-nino);
+  --color-el-nino-strong: var(--el-nino-strong);
+  --color-el-nino-deep: var(--el-nino-deep);
+  --color-la-nina: var(--la-nina);
+  --color-la-nina-strong: var(--la-nina-strong);
+  --color-neutral: var(--neutral);
+  --color-amber: var(--amber);
+  --color-green: var(--green);
+  --color-green-strong: var(--green-strong);
+  --color-violet: var(--violet);
+  --color-la-nina-deep: var(--la-nina-deep);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.25);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.75);
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-up {
+  animation: fade-up 0.5s ease both;
+}
+
+/* Scoped light-card theme for the map dashboard: the page/canvas backdrop
+   stays dark, but every text-bearing box within this subtree (tooltip,
+   legend, HUD readout, the state detail panel) switches to a light card
+   with a light grey outline. Scoping via CSS-variable override keeps the
+   other pages (markets, commodities, etc.) on the original dark theme. */
+.light-cards {
+  --surface: #ffffff;
+  --elevated: #f8fafc;
+  --border: rgba(15, 23, 42, 0.12);
+  --border-strong: rgba(15, 23, 42, 0.2);
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+}
+
+/* Escape hatch for text that sits directly on the dark panel/canvas backdrop
+   within a .light-cards subtree (e.g. a slide-over panel's header, above its
+   white content cards) — restores the original light-on-dark text so it
+   doesn't inherit the light-card dark text color and disappear. */
+.dark-on-bg {
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #5b6779;
+}
+
+/* Technical HUD card chrome: a thin cyan top accent rule plus a faint
+   scanline texture, used on the map's floating console panels. */
+.hud-card {
+  overflow: hidden;
+}
+.hud-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--la-nina), transparent);
+  opacity: 0.7;
+}
+.hud-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(148, 163, 184, 0.05),
+    rgba(148, 163, 184, 0.05) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
 }

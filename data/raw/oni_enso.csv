@@ -1,0 +1,918 @@
+season,year,ONI,phase
+DJF,1950,-1.53,La Nina
+JFM,1950,-1.34,La Nina
+FMA,1950,-1.16,La Nina
+MAM,1950,-1.18,La Nina
+AMJ,1950,-1.07,La Nina
+MJJ,1950,-0.85,La Nina
+JJA,1950,-0.54,La Nina
+JAS,1950,-0.42,Neutral
+ASO,1950,-0.39,Neutral
+SON,1950,-0.44,Neutral
+OND,1950,-0.6,La Nina
+NDJ,1950,-0.8,La Nina
+DJF,1951,-0.82,La Nina
+JFM,1951,-0.54,La Nina
+FMA,1951,-0.17,Neutral
+MAM,1951,0.18,Neutral
+AMJ,1951,0.36,Neutral
+MJJ,1951,0.58,Weak El Nino
+JJA,1951,0.7,Weak El Nino
+JAS,1951,0.89,Weak El Nino
+ASO,1951,0.99,Weak El Nino
+SON,1951,1.15,Moderate El Nino
+OND,1951,1.04,Moderate El Nino
+NDJ,1951,0.81,Weak El Nino
+DJF,1952,0.53,Weak El Nino
+JFM,1952,0.37,Neutral
+FMA,1952,0.34,Neutral
+MAM,1952,0.29,Neutral
+AMJ,1952,0.2,Neutral
+MJJ,1952,0.0,Neutral
+JJA,1952,-0.08,Neutral
+JAS,1952,0.0,Neutral
+ASO,1952,0.15,Neutral
+SON,1952,0.1,Neutral
+OND,1952,0.04,Neutral
+NDJ,1952,0.15,Neutral
+DJF,1953,0.4,Neutral
+JFM,1953,0.6,Weak El Nino
+FMA,1953,0.63,Weak El Nino
+MAM,1953,0.66,Weak El Nino
+AMJ,1953,0.75,Weak El Nino
+MJJ,1953,0.77,Weak El Nino
+JJA,1953,0.75,Weak El Nino
+JAS,1953,0.73,Weak El Nino
+ASO,1953,0.78,Weak El Nino
+SON,1953,0.84,Weak El Nino
+OND,1953,0.84,Weak El Nino
+NDJ,1953,0.81,Weak El Nino
+DJF,1954,0.76,Weak El Nino
+JFM,1954,0.47,Neutral
+FMA,1954,-0.05,Neutral
+MAM,1954,-0.41,Neutral
+AMJ,1954,-0.54,La Nina
+MJJ,1954,-0.5,La Nina
+JJA,1954,-0.64,La Nina
+JAS,1954,-0.84,La Nina
+ASO,1954,-0.9,La Nina
+SON,1954,-0.77,La Nina
+OND,1954,-0.73,La Nina
+NDJ,1954,-0.66,La Nina
+DJF,1955,-0.68,La Nina
+JFM,1955,-0.62,La Nina
+FMA,1955,-0.69,La Nina
+MAM,1955,-0.8,La Nina
+AMJ,1955,-0.79,La Nina
+MJJ,1955,-0.72,La Nina
+JJA,1955,-0.68,La Nina
+JAS,1955,-0.75,La Nina
+ASO,1955,-1.09,La Nina
+SON,1955,-1.42,La Nina
+OND,1955,-1.67,La Nina
+NDJ,1955,-1.47,La Nina
+DJF,1956,-1.11,La Nina
+JFM,1956,-0.76,La Nina
+FMA,1956,-0.63,La Nina
+MAM,1956,-0.54,La Nina
+AMJ,1956,-0.52,La Nina
+MJJ,1956,-0.51,La Nina
+JJA,1956,-0.57,La Nina
+JAS,1956,-0.55,La Nina
+ASO,1956,-0.46,Neutral
+SON,1956,-0.42,Neutral
+OND,1956,-0.43,Neutral
+NDJ,1956,-0.43,Neutral
+DJF,1957,-0.25,Neutral
+JFM,1957,0.06,Neutral
+FMA,1957,0.41,Neutral
+MAM,1957,0.72,Weak El Nino
+AMJ,1957,0.92,Weak El Nino
+MJJ,1957,1.11,Moderate El Nino
+JJA,1957,1.25,Moderate El Nino
+JAS,1957,1.32,Moderate El Nino
+ASO,1957,1.33,Moderate El Nino
+SON,1957,1.39,Moderate El Nino
+OND,1957,1.53,Strong El Nino
+NDJ,1957,1.74,Strong El Nino
+DJF,1958,1.81,Strong El Nino
+JFM,1958,1.66,Strong El Nino
+FMA,1958,1.27,Moderate El Nino
+MAM,1958,0.93,Weak El Nino
+AMJ,1958,0.74,Weak El Nino
+MJJ,1958,0.64,Weak El Nino
+JJA,1958,0.57,Weak El Nino
+JAS,1958,0.43,Neutral
+ASO,1958,0.39,Neutral
+SON,1958,0.44,Neutral
+OND,1958,0.5,Weak El Nino
+NDJ,1958,0.61,Weak El Nino
+DJF,1959,0.61,Weak El Nino
+JFM,1959,0.62,Weak El Nino
+FMA,1959,0.52,Weak El Nino
+MAM,1959,0.33,Neutral
+AMJ,1959,0.2,Neutral
+MJJ,1959,-0.07,Neutral
+JJA,1959,-0.18,Neutral
+JAS,1959,-0.28,Neutral
+ASO,1959,-0.09,Neutral
+SON,1959,-0.03,Neutral
+OND,1959,0.05,Neutral
+NDJ,1959,-0.04,Neutral
+DJF,1960,-0.1,Neutral
+JFM,1960,-0.1,Neutral
+FMA,1960,-0.07,Neutral
+MAM,1960,0.03,Neutral
+AMJ,1960,0.02,Neutral
+MJJ,1960,0.03,Neutral
+JJA,1960,0.13,Neutral
+JAS,1960,0.24,Neutral
+ASO,1960,0.27,Neutral
+SON,1960,0.2,Neutral
+OND,1960,0.12,Neutral
+NDJ,1960,0.05,Neutral
+DJF,1961,0.04,Neutral
+JFM,1961,0.03,Neutral
+FMA,1961,0.04,Neutral
+MAM,1961,0.09,Neutral
+AMJ,1961,0.23,Neutral
+MJJ,1961,0.27,Neutral
+JJA,1961,0.14,Neutral
+JAS,1961,-0.13,Neutral
+ASO,1961,-0.3,Neutral
+SON,1961,-0.26,Neutral
+OND,1961,-0.19,Neutral
+NDJ,1961,-0.16,Neutral
+DJF,1962,-0.24,Neutral
+JFM,1962,-0.22,Neutral
+FMA,1962,-0.2,Neutral
+MAM,1962,-0.26,Neutral
+AMJ,1962,-0.28,Neutral
+MJJ,1962,-0.2,Neutral
+JJA,1962,-0.04,Neutral
+JAS,1962,-0.07,Neutral
+ASO,1962,-0.11,Neutral
+SON,1962,-0.22,Neutral
+OND,1962,-0.31,Neutral
+NDJ,1962,-0.43,Neutral
+DJF,1963,-0.4,Neutral
+JFM,1963,-0.15,Neutral
+FMA,1963,0.15,Neutral
+MAM,1963,0.27,Neutral
+AMJ,1963,0.31,Neutral
+MJJ,1963,0.52,Weak El Nino
+JJA,1963,0.86,Weak El Nino
+JAS,1963,1.14,Moderate El Nino
+ASO,1963,1.22,Moderate El Nino
+SON,1963,1.29,Moderate El Nino
+OND,1963,1.37,Moderate El Nino
+NDJ,1963,1.31,Moderate El Nino
+DJF,1964,1.07,Moderate El Nino
+JFM,1964,0.62,Weak El Nino
+FMA,1964,0.12,Neutral
+MAM,1964,-0.33,Neutral
+AMJ,1964,-0.58,La Nina
+MJJ,1964,-0.58,La Nina
+JJA,1964,-0.6,La Nina
+JAS,1964,-0.66,La Nina
+ASO,1964,-0.76,La Nina
+SON,1964,-0.8,La Nina
+OND,1964,-0.82,La Nina
+NDJ,1964,-0.78,La Nina
+DJF,1965,-0.59,La Nina
+JFM,1965,-0.28,Neutral
+FMA,1965,-0.07,Neutral
+MAM,1965,0.18,Neutral
+AMJ,1965,0.46,Neutral
+MJJ,1965,0.83,Weak El Nino
+JJA,1965,1.22,Moderate El Nino
+JAS,1965,1.54,Strong El Nino
+ASO,1965,1.85,Strong El Nino
+SON,1965,1.98,Strong El Nino
+OND,1965,1.97,Strong El Nino
+NDJ,1965,1.72,Strong El Nino
+DJF,1966,1.37,Moderate El Nino
+JFM,1966,1.17,Moderate El Nino
+FMA,1966,0.98,Weak El Nino
+MAM,1966,0.66,Weak El Nino
+AMJ,1966,0.35,Neutral
+MJJ,1966,0.24,Neutral
+JJA,1966,0.24,Neutral
+JAS,1966,0.12,Neutral
+ASO,1966,-0.05,Neutral
+SON,1966,-0.1,Neutral
+OND,1966,-0.18,Neutral
+NDJ,1966,-0.3,Neutral
+DJF,1967,-0.41,Neutral
+JFM,1967,-0.48,Neutral
+FMA,1967,-0.53,La Nina
+MAM,1967,-0.45,Neutral
+AMJ,1967,-0.24,Neutral
+MJJ,1967,-0.0,Neutral
+JJA,1967,0.05,Neutral
+JAS,1967,-0.16,Neutral
+ASO,1967,-0.3,Neutral
+SON,1967,-0.38,Neutral
+OND,1967,-0.34,Neutral
+NDJ,1967,-0.44,Neutral
+DJF,1968,-0.64,La Nina
+JFM,1968,-0.74,La Nina
+FMA,1968,-0.62,La Nina
+MAM,1968,-0.44,Neutral
+AMJ,1968,-0.04,Neutral
+MJJ,1968,0.28,Neutral
+JJA,1968,0.58,Weak El Nino
+JAS,1968,0.53,Weak El Nino
+ASO,1968,0.45,Neutral
+SON,1968,0.55,Weak El Nino
+OND,1968,0.73,Weak El Nino
+NDJ,1968,0.98,Weak El Nino
+DJF,1969,1.13,Moderate El Nino
+JFM,1969,1.09,Moderate El Nino
+FMA,1969,0.95,Weak El Nino
+MAM,1969,0.77,Weak El Nino
+AMJ,1969,0.61,Weak El Nino
+MJJ,1969,0.43,Neutral
+JJA,1969,0.36,Neutral
+JAS,1969,0.51,Weak El Nino
+ASO,1969,0.79,Weak El Nino
+SON,1969,0.86,Weak El Nino
+OND,1969,0.81,Weak El Nino
+NDJ,1969,0.63,Weak El Nino
+DJF,1970,0.51,Weak El Nino
+JFM,1970,0.34,Neutral
+FMA,1970,0.29,Neutral
+MAM,1970,0.19,Neutral
+AMJ,1970,0.04,Neutral
+MJJ,1970,-0.3,Neutral
+JJA,1970,-0.63,La Nina
+JAS,1970,-0.76,La Nina
+ASO,1970,-0.77,La Nina
+SON,1970,-0.74,La Nina
+OND,1970,-0.86,La Nina
+NDJ,1970,-1.15,La Nina
+DJF,1971,-1.36,La Nina
+JFM,1971,-1.38,La Nina
+FMA,1971,-1.12,La Nina
+MAM,1971,-0.85,La Nina
+AMJ,1971,-0.73,La Nina
+MJJ,1971,-0.74,La Nina
+JJA,1971,-0.8,La Nina
+JAS,1971,-0.77,La Nina
+ASO,1971,-0.82,La Nina
+SON,1971,-0.85,La Nina
+OND,1971,-0.96,La Nina
+NDJ,1971,-0.9,La Nina
+DJF,1972,-0.71,La Nina
+JFM,1972,-0.35,Neutral
+FMA,1972,0.06,Neutral
+MAM,1972,0.41,Neutral
+AMJ,1972,0.67,Weak El Nino
+MJJ,1972,0.92,Weak El Nino
+JJA,1972,1.13,Moderate El Nino
+JAS,1972,1.37,Moderate El Nino
+ASO,1972,1.58,Strong El Nino
+SON,1972,1.84,Strong El Nino
+OND,1972,2.09,Super El Nino
+NDJ,1972,2.12,Super El Nino
+DJF,1973,1.84,Strong El Nino
+JFM,1973,1.25,Moderate El Nino
+FMA,1973,0.54,Weak El Nino
+MAM,1973,-0.1,Neutral
+AMJ,1973,-0.54,La Nina
+MJJ,1973,-0.87,La Nina
+JJA,1973,-1.11,La Nina
+JAS,1973,-1.28,La Nina
+ASO,1973,-1.45,La Nina
+SON,1973,-1.71,La Nina
+OND,1973,-1.95,La Nina
+NDJ,1973,-2.03,La Nina
+DJF,1974,-1.84,La Nina
+JFM,1974,-1.55,La Nina
+FMA,1974,-1.23,La Nina
+MAM,1974,-1.03,La Nina
+AMJ,1974,-0.91,La Nina
+MJJ,1974,-0.77,La Nina
+JJA,1974,-0.53,La Nina
+JAS,1974,-0.37,Neutral
+ASO,1974,-0.41,Neutral
+SON,1974,-0.61,La Nina
+OND,1974,-0.75,La Nina
+NDJ,1974,-0.64,La Nina
+DJF,1975,-0.54,La Nina
+JFM,1975,-0.57,La Nina
+FMA,1975,-0.65,La Nina
+MAM,1975,-0.73,La Nina
+AMJ,1975,-0.83,La Nina
+MJJ,1975,-0.98,La Nina
+JJA,1975,-1.13,La Nina
+JAS,1975,-1.2,La Nina
+ASO,1975,-1.37,La Nina
+SON,1975,-1.43,La Nina
+OND,1975,-1.55,La Nina
+NDJ,1975,-1.65,La Nina
+DJF,1976,-1.56,La Nina
+JFM,1976,-1.17,La Nina
+FMA,1976,-0.73,La Nina
+MAM,1976,-0.47,Neutral
+AMJ,1976,-0.28,Neutral
+MJJ,1976,-0.05,Neutral
+JJA,1976,0.18,Neutral
+JAS,1976,0.35,Neutral
+ASO,1976,0.62,Weak El Nino
+SON,1976,0.81,Weak El Nino
+OND,1976,0.86,Weak El Nino
+NDJ,1976,0.85,Weak El Nino
+DJF,1977,0.71,Weak El Nino
+JFM,1977,0.64,Weak El Nino
+FMA,1977,0.34,Neutral
+MAM,1977,0.23,Neutral
+AMJ,1977,0.21,Neutral
+MJJ,1977,0.34,Neutral
+JJA,1977,0.35,Neutral
+JAS,1977,0.42,Neutral
+ASO,1977,0.57,Weak El Nino
+SON,1977,0.73,Weak El Nino
+OND,1977,0.81,Weak El Nino
+NDJ,1977,0.79,Weak El Nino
+DJF,1978,0.69,Weak El Nino
+JFM,1978,0.42,Neutral
+FMA,1978,0.06,Neutral
+MAM,1978,-0.18,Neutral
+AMJ,1978,-0.31,Neutral
+MJJ,1978,-0.29,Neutral
+JJA,1978,-0.36,Neutral
+JAS,1978,-0.42,Neutral
+ASO,1978,-0.42,Neutral
+SON,1978,-0.29,Neutral
+OND,1978,-0.08,Neutral
+NDJ,1978,0.0,Neutral
+DJF,1979,0.03,Neutral
+JFM,1979,0.07,Neutral
+FMA,1979,0.2,Neutral
+MAM,1979,0.28,Neutral
+AMJ,1979,0.23,Neutral
+MJJ,1979,0.05,Neutral
+JJA,1979,0.04,Neutral
+JAS,1979,0.17,Neutral
+ASO,1979,0.33,Neutral
+SON,1979,0.45,Neutral
+OND,1979,0.52,Weak El Nino
+NDJ,1979,0.64,Weak El Nino
+DJF,1980,0.59,Weak El Nino
+JFM,1980,0.46,Neutral
+FMA,1980,0.34,Neutral
+MAM,1980,0.38,Neutral
+AMJ,1980,0.48,Neutral
+MJJ,1980,0.46,Neutral
+JJA,1980,0.25,Neutral
+JAS,1980,0.03,Neutral
+ASO,1980,-0.07,Neutral
+SON,1980,0.02,Neutral
+OND,1980,0.11,Neutral
+NDJ,1980,-0.01,Neutral
+DJF,1981,-0.26,Neutral
+JFM,1981,-0.5,La Nina
+FMA,1981,-0.47,Neutral
+MAM,1981,-0.37,Neutral
+AMJ,1981,-0.26,Neutral
+MJJ,1981,-0.29,Neutral
+JJA,1981,-0.3,Neutral
+JAS,1981,-0.25,Neutral
+ASO,1981,-0.16,Neutral
+SON,1981,-0.13,Neutral
+OND,1981,-0.15,Neutral
+NDJ,1981,-0.08,Neutral
+DJF,1982,-0.05,Neutral
+JFM,1982,0.07,Neutral
+FMA,1982,0.19,Neutral
+MAM,1982,0.47,Neutral
+AMJ,1982,0.66,Weak El Nino
+MJJ,1982,0.72,Weak El Nino
+JJA,1982,0.79,Weak El Nino
+JAS,1982,1.07,Moderate El Nino
+ASO,1982,1.58,Strong El Nino
+SON,1982,1.97,Strong El Nino
+OND,1982,2.18,Super El Nino
+NDJ,1982,2.23,Super El Nino
+DJF,1983,2.18,Super El Nino
+JFM,1983,1.92,Strong El Nino
+FMA,1983,1.54,Strong El Nino
+MAM,1983,1.29,Moderate El Nino
+AMJ,1983,1.06,Moderate El Nino
+MJJ,1983,0.72,Weak El Nino
+JJA,1983,0.31,Neutral
+JAS,1983,-0.08,Neutral
+ASO,1983,-0.46,Neutral
+SON,1983,-0.81,La Nina
+OND,1983,-1.0,La Nina
+NDJ,1983,-0.91,La Nina
+DJF,1984,-0.6,La Nina
+JFM,1984,-0.42,Neutral
+FMA,1984,-0.34,Neutral
+MAM,1984,-0.43,Neutral
+AMJ,1984,-0.51,La Nina
+MJJ,1984,-0.45,Neutral
+JJA,1984,-0.3,Neutral
+JAS,1984,-0.16,Neutral
+ASO,1984,-0.24,Neutral
+SON,1984,-0.56,La Nina
+OND,1984,-0.92,La Nina
+NDJ,1984,-1.14,La Nina
+DJF,1985,-1.04,La Nina
+JFM,1985,-0.85,La Nina
+FMA,1985,-0.77,La Nina
+MAM,1985,-0.78,La Nina
+AMJ,1985,-0.78,La Nina
+MJJ,1985,-0.63,La Nina
+JJA,1985,-0.49,Neutral
+JAS,1985,-0.46,Neutral
+ASO,1985,-0.4,Neutral
+SON,1985,-0.35,Neutral
+OND,1985,-0.27,Neutral
+NDJ,1985,-0.36,Neutral
+DJF,1986,-0.49,Neutral
+JFM,1986,-0.47,Neutral
+FMA,1986,-0.31,Neutral
+MAM,1986,-0.2,Neutral
+AMJ,1986,-0.12,Neutral
+MJJ,1986,-0.04,Neutral
+JJA,1986,0.22,Neutral
+JAS,1986,0.44,Neutral
+ASO,1986,0.71,Weak El Nino
+SON,1986,0.94,Weak El Nino
+OND,1986,1.14,Moderate El Nino
+NDJ,1986,1.22,Moderate El Nino
+DJF,1987,1.23,Moderate El Nino
+JFM,1987,1.19,Moderate El Nino
+FMA,1987,1.06,Moderate El Nino
+MAM,1987,0.95,Weak El Nino
+AMJ,1987,0.97,Weak El Nino
+MJJ,1987,1.22,Moderate El Nino
+JJA,1987,1.51,Strong El Nino
+JAS,1987,1.7,Strong El Nino
+ASO,1987,1.65,Strong El Nino
+SON,1987,1.48,Moderate El Nino
+OND,1987,1.25,Moderate El Nino
+NDJ,1987,1.11,Moderate El Nino
+DJF,1988,0.81,Weak El Nino
+JFM,1988,0.54,Weak El Nino
+FMA,1988,0.14,Neutral
+MAM,1988,-0.31,Neutral
+AMJ,1988,-0.88,La Nina
+MJJ,1988,-1.3,La Nina
+JJA,1988,-1.3,La Nina
+JAS,1988,-1.11,La Nina
+ASO,1988,-1.19,La Nina
+SON,1988,-1.48,La Nina
+OND,1988,-1.8,La Nina
+NDJ,1988,-1.85,La Nina
+DJF,1989,-1.69,La Nina
+JFM,1989,-1.43,La Nina
+FMA,1989,-1.08,La Nina
+MAM,1989,-0.83,La Nina
+AMJ,1989,-0.58,La Nina
+MJJ,1989,-0.4,Neutral
+JJA,1989,-0.31,Neutral
+JAS,1989,-0.27,Neutral
+ASO,1989,-0.24,Neutral
+SON,1989,-0.22,Neutral
+OND,1989,-0.16,Neutral
+NDJ,1989,-0.05,Neutral
+DJF,1990,0.14,Neutral
+JFM,1990,0.21,Neutral
+FMA,1990,0.28,Neutral
+MAM,1990,0.29,Neutral
+AMJ,1990,0.29,Neutral
+MJJ,1990,0.31,Neutral
+JJA,1990,0.33,Neutral
+JAS,1990,0.38,Neutral
+ASO,1990,0.39,Neutral
+SON,1990,0.35,Neutral
+OND,1990,0.4,Neutral
+NDJ,1990,0.41,Neutral
+DJF,1991,0.41,Neutral
+JFM,1991,0.26,Neutral
+FMA,1991,0.22,Neutral
+MAM,1991,0.26,Neutral
+AMJ,1991,0.45,Neutral
+MJJ,1991,0.64,Weak El Nino
+JJA,1991,0.73,Weak El Nino
+JAS,1991,0.64,Weak El Nino
+ASO,1991,0.62,Weak El Nino
+SON,1991,0.79,Weak El Nino
+OND,1991,1.21,Moderate El Nino
+NDJ,1991,1.53,Strong El Nino
+DJF,1992,1.71,Strong El Nino
+JFM,1992,1.63,Strong El Nino
+FMA,1992,1.48,Moderate El Nino
+MAM,1992,1.29,Moderate El Nino
+AMJ,1992,1.06,Moderate El Nino
+MJJ,1992,0.73,Weak El Nino
+JJA,1992,0.37,Neutral
+JAS,1992,0.09,Neutral
+ASO,1992,-0.13,Neutral
+SON,1992,-0.25,Neutral
+OND,1992,-0.28,Neutral
+NDJ,1992,-0.13,Neutral
+DJF,1993,0.09,Neutral
+JFM,1993,0.3,Neutral
+FMA,1993,0.5,Weak El Nino
+MAM,1993,0.67,Weak El Nino
+AMJ,1993,0.7,Weak El Nino
+MJJ,1993,0.57,Weak El Nino
+JJA,1993,0.32,Neutral
+JAS,1993,0.25,Neutral
+ASO,1993,0.15,Neutral
+SON,1993,0.1,Neutral
+OND,1993,0.04,Neutral
+NDJ,1993,0.06,Neutral
+DJF,1994,0.06,Neutral
+JFM,1994,0.07,Neutral
+FMA,1994,0.17,Neutral
+MAM,1994,0.31,Neutral
+AMJ,1994,0.42,Neutral
+MJJ,1994,0.41,Neutral
+JJA,1994,0.44,Neutral
+JAS,1994,0.43,Neutral
+ASO,1994,0.55,Weak El Nino
+SON,1994,0.74,Weak El Nino
+OND,1994,1.01,Moderate El Nino
+NDJ,1994,1.09,Moderate El Nino
+DJF,1995,0.96,Weak El Nino
+JFM,1995,0.72,Weak El Nino
+FMA,1995,0.53,Weak El Nino
+MAM,1995,0.3,Neutral
+AMJ,1995,0.14,Neutral
+MJJ,1995,-0.03,Neutral
+JJA,1995,-0.24,Neutral
+JAS,1995,-0.54,La Nina
+ASO,1995,-0.81,La Nina
+SON,1995,-0.97,La Nina
+OND,1995,-1.0,La Nina
+NDJ,1995,-0.98,La Nina
+DJF,1996,-0.9,La Nina
+JFM,1996,-0.75,La Nina
+FMA,1996,-0.59,La Nina
+MAM,1996,-0.39,Neutral
+AMJ,1996,-0.31,Neutral
+MJJ,1996,-0.3,Neutral
+JJA,1996,-0.27,Neutral
+JAS,1996,-0.32,Neutral
+ASO,1996,-0.35,Neutral
+SON,1996,-0.4,Neutral
+OND,1996,-0.45,Neutral
+NDJ,1996,-0.49,Neutral
+DJF,1997,-0.5,La Nina
+JFM,1997,-0.36,Neutral
+FMA,1997,-0.1,Neutral
+MAM,1997,0.28,Neutral
+AMJ,1997,0.75,Weak El Nino
+MJJ,1997,1.22,Moderate El Nino
+JJA,1997,1.6,Strong El Nino
+JAS,1997,1.9,Strong El Nino
+ASO,1997,2.14,Super El Nino
+SON,1997,2.33,Super El Nino
+OND,1997,2.4,Super El Nino
+NDJ,1997,2.39,Super El Nino
+DJF,1998,2.24,Super El Nino
+JFM,1998,1.93,Strong El Nino
+FMA,1998,1.44,Moderate El Nino
+MAM,1998,0.99,Weak El Nino
+AMJ,1998,0.45,Neutral
+MJJ,1998,-0.13,Neutral
+JJA,1998,-0.78,La Nina
+JAS,1998,-1.12,La Nina
+ASO,1998,-1.31,La Nina
+SON,1998,-1.35,La Nina
+OND,1998,-1.48,La Nina
+NDJ,1998,-1.57,La Nina
+DJF,1999,-1.55,La Nina
+JFM,1999,-1.3,La Nina
+FMA,1999,-1.07,La Nina
+MAM,1999,-0.98,La Nina
+AMJ,1999,-1.02,La Nina
+MJJ,1999,-1.04,La Nina
+JJA,1999,-1.1,La Nina
+JAS,1999,-1.11,La Nina
+ASO,1999,-1.16,La Nina
+SON,1999,-1.26,La Nina
+OND,1999,-1.46,La Nina
+NDJ,1999,-1.65,La Nina
+DJF,2000,-1.66,La Nina
+JFM,2000,-1.41,La Nina
+FMA,2000,-1.07,La Nina
+MAM,2000,-0.81,La Nina
+AMJ,2000,-0.71,La Nina
+MJJ,2000,-0.64,La Nina
+JJA,2000,-0.55,La Nina
+JAS,2000,-0.51,La Nina
+ASO,2000,-0.55,La Nina
+SON,2000,-0.63,La Nina
+OND,2000,-0.75,La Nina
+NDJ,2000,-0.74,La Nina
+DJF,2001,-0.68,La Nina
+JFM,2001,-0.52,La Nina
+FMA,2001,-0.44,Neutral
+MAM,2001,-0.34,Neutral
+AMJ,2001,-0.25,Neutral
+MJJ,2001,-0.12,Neutral
+JJA,2001,-0.08,Neutral
+JAS,2001,-0.13,Neutral
+ASO,2001,-0.19,Neutral
+SON,2001,-0.29,Neutral
+OND,2001,-0.35,Neutral
+NDJ,2001,-0.31,Neutral
+DJF,2002,-0.15,Neutral
+JFM,2002,0.03,Neutral
+FMA,2002,0.09,Neutral
+MAM,2002,0.2,Neutral
+AMJ,2002,0.43,Neutral
+MJJ,2002,0.65,Weak El Nino
+JJA,2002,0.79,Weak El Nino
+JAS,2002,0.86,Weak El Nino
+ASO,2002,1.01,Moderate El Nino
+SON,2002,1.21,Moderate El Nino
+OND,2002,1.31,Moderate El Nino
+NDJ,2002,1.14,Moderate El Nino
+DJF,2003,0.92,Weak El Nino
+JFM,2003,0.63,Weak El Nino
+FMA,2003,0.38,Neutral
+MAM,2003,-0.04,Neutral
+AMJ,2003,-0.26,Neutral
+MJJ,2003,-0.16,Neutral
+JJA,2003,0.08,Neutral
+JAS,2003,0.21,Neutral
+ASO,2003,0.26,Neutral
+SON,2003,0.29,Neutral
+OND,2003,0.35,Neutral
+NDJ,2003,0.35,Neutral
+DJF,2004,0.37,Neutral
+JFM,2004,0.31,Neutral
+FMA,2004,0.23,Neutral
+MAM,2004,0.17,Neutral
+AMJ,2004,0.17,Neutral
+MJJ,2004,0.28,Neutral
+JJA,2004,0.47,Neutral
+JAS,2004,0.64,Weak El Nino
+ASO,2004,0.7,Weak El Nino
+SON,2004,0.67,Weak El Nino
+OND,2004,0.66,Weak El Nino
+NDJ,2004,0.69,Weak El Nino
+DJF,2005,0.64,Weak El Nino
+JFM,2005,0.58,Weak El Nino
+FMA,2005,0.45,Neutral
+MAM,2005,0.43,Neutral
+AMJ,2005,0.29,Neutral
+MJJ,2005,0.11,Neutral
+JJA,2005,-0.06,Neutral
+JAS,2005,-0.14,Neutral
+ASO,2005,-0.11,Neutral
+SON,2005,-0.29,Neutral
+OND,2005,-0.57,La Nina
+NDJ,2005,-0.84,La Nina
+DJF,2006,-0.85,La Nina
+JFM,2006,-0.77,La Nina
+FMA,2006,-0.57,La Nina
+MAM,2006,-0.37,Neutral
+AMJ,2006,-0.14,Neutral
+MJJ,2006,-0.03,Neutral
+JJA,2006,0.1,Neutral
+JAS,2006,0.3,Neutral
+ASO,2006,0.54,Weak El Nino
+SON,2006,0.77,Weak El Nino
+OND,2006,0.94,Weak El Nino
+NDJ,2006,0.94,Weak El Nino
+DJF,2007,0.66,Weak El Nino
+JFM,2007,0.22,Neutral
+FMA,2007,-0.12,Neutral
+MAM,2007,-0.32,Neutral
+AMJ,2007,-0.38,Neutral
+MJJ,2007,-0.47,Neutral
+JJA,2007,-0.56,La Nina
+JAS,2007,-0.81,La Nina
+ASO,2007,-1.07,La Nina
+SON,2007,-1.34,La Nina
+OND,2007,-1.5,La Nina
+NDJ,2007,-1.6,La Nina
+DJF,2008,-1.64,La Nina
+JFM,2008,-1.52,La Nina
+FMA,2008,-1.29,La Nina
+MAM,2008,-1.01,La Nina
+AMJ,2008,-0.84,La Nina
+MJJ,2008,-0.61,La Nina
+JJA,2008,-0.37,Neutral
+JAS,2008,-0.23,Neutral
+ASO,2008,-0.24,Neutral
+SON,2008,-0.35,Neutral
+OND,2008,-0.55,La Nina
+NDJ,2008,-0.73,La Nina
+DJF,2009,-0.85,La Nina
+JFM,2009,-0.79,La Nina
+FMA,2009,-0.61,La Nina
+MAM,2009,-0.33,Neutral
+AMJ,2009,0.01,Neutral
+MJJ,2009,0.28,Neutral
+JJA,2009,0.45,Neutral
+JAS,2009,0.58,Weak El Nino
+ASO,2009,0.71,Weak El Nino
+SON,2009,1.01,Moderate El Nino
+OND,2009,1.36,Moderate El Nino
+NDJ,2009,1.56,Strong El Nino
+DJF,2010,1.5,Strong El Nino
+JFM,2010,1.22,Moderate El Nino
+FMA,2010,0.84,Weak El Nino
+MAM,2010,0.35,Neutral
+AMJ,2010,-0.17,Neutral
+MJJ,2010,-0.66,La Nina
+JJA,2010,-1.05,La Nina
+JAS,2010,-1.35,La Nina
+ASO,2010,-1.56,La Nina
+SON,2010,-1.64,La Nina
+OND,2010,-1.64,La Nina
+NDJ,2010,-1.54,La Nina
+DJF,2011,-1.31,La Nina
+JFM,2011,-1.04,La Nina
+FMA,2011,-0.8,La Nina
+MAM,2011,-0.62,La Nina
+AMJ,2011,-0.46,Neutral
+MJJ,2011,-0.37,Neutral
+JJA,2011,-0.43,Neutral
+JAS,2011,-0.58,La Nina
+ASO,2011,-0.79,La Nina
+SON,2011,-0.96,La Nina
+OND,2011,-1.02,La Nina
+NDJ,2011,-0.92,La Nina
+DJF,2012,-0.72,La Nina
+JFM,2012,-0.57,La Nina
+FMA,2012,-0.46,Neutral
+MAM,2012,-0.36,Neutral
+AMJ,2012,-0.17,Neutral
+MJJ,2012,0.06,Neutral
+JJA,2012,0.3,Neutral
+JAS,2012,0.41,Neutral
+ASO,2012,0.41,Neutral
+SON,2012,0.31,Neutral
+OND,2012,0.13,Neutral
+NDJ,2012,-0.1,Neutral
+DJF,2013,-0.29,Neutral
+JFM,2013,-0.29,Neutral
+FMA,2013,-0.21,Neutral
+MAM,2013,-0.19,Neutral
+AMJ,2013,-0.27,Neutral
+MJJ,2013,-0.34,Neutral
+JJA,2013,-0.35,Neutral
+JAS,2013,-0.28,Neutral
+ASO,2013,-0.21,Neutral
+SON,2013,-0.13,Neutral
+OND,2013,-0.1,Neutral
+NDJ,2013,-0.15,Neutral
+DJF,2014,-0.28,Neutral
+JFM,2014,-0.32,Neutral
+FMA,2014,-0.14,Neutral
+MAM,2014,0.15,Neutral
+AMJ,2014,0.31,Neutral
+MJJ,2014,0.23,Neutral
+JJA,2014,0.1,Neutral
+JAS,2014,0.11,Neutral
+ASO,2014,0.28,Neutral
+SON,2014,0.54,Weak El Nino
+OND,2014,0.71,Weak El Nino
+NDJ,2014,0.77,Weak El Nino
+DJF,2015,0.69,Weak El Nino
+JFM,2015,0.61,Weak El Nino
+FMA,2015,0.65,Weak El Nino
+MAM,2015,0.81,Weak El Nino
+AMJ,2015,1.02,Moderate El Nino
+MJJ,2015,1.25,Moderate El Nino
+JJA,2015,1.57,Strong El Nino
+JAS,2015,1.91,Strong El Nino
+ASO,2015,2.21,Super El Nino
+SON,2015,2.47,Super El Nino
+OND,2015,2.64,Super El Nino
+NDJ,2015,2.75,Super El Nino
+DJF,2016,2.63,Super El Nino
+JFM,2016,2.28,Super El Nino
+FMA,2016,1.71,Strong El Nino
+MAM,2016,1.05,Moderate El Nino
+AMJ,2016,0.49,Neutral
+MJJ,2016,0.0,Neutral
+JJA,2016,-0.31,Neutral
+JAS,2016,-0.5,La Nina
+ASO,2016,-0.58,La Nina
+SON,2016,-0.64,La Nina
+OND,2016,-0.6,La Nina
+NDJ,2016,-0.45,Neutral
+DJF,2017,-0.19,Neutral
+JFM,2017,-0.02,Neutral
+FMA,2017,0.18,Neutral
+MAM,2017,0.31,Neutral
+AMJ,2017,0.4,Neutral
+MJJ,2017,0.39,Neutral
+JJA,2017,0.19,Neutral
+JAS,2017,-0.07,Neutral
+ASO,2017,-0.34,Neutral
+SON,2017,-0.6,La Nina
+OND,2017,-0.77,La Nina
+NDJ,2017,-0.86,La Nina
+DJF,2018,-0.77,La Nina
+JFM,2018,-0.71,La Nina
+FMA,2018,-0.57,La Nina
+MAM,2018,-0.39,Neutral
+AMJ,2018,-0.13,Neutral
+MJJ,2018,0.06,Neutral
+JJA,2018,0.14,Neutral
+JAS,2018,0.27,Neutral
+ASO,2018,0.53,Weak El Nino
+SON,2018,0.81,Weak El Nino
+OND,2018,0.97,Weak El Nino
+NDJ,2018,0.92,Weak El Nino
+DJF,2019,0.89,Weak El Nino
+JFM,2019,0.86,Weak El Nino
+FMA,2019,0.84,Weak El Nino
+MAM,2019,0.77,Weak El Nino
+AMJ,2019,0.64,Weak El Nino
+MJJ,2019,0.52,Weak El Nino
+JJA,2019,0.33,Neutral
+JAS,2019,0.19,Neutral
+ASO,2019,0.23,Neutral
+SON,2019,0.39,Neutral
+OND,2019,0.58,Weak El Nino
+NDJ,2019,0.66,Weak El Nino
+DJF,2020,0.64,Weak El Nino
+JFM,2020,0.63,Weak El Nino
+FMA,2020,0.53,Weak El Nino
+MAM,2020,0.3,Neutral
+AMJ,2020,0.01,Neutral
+MJJ,2020,-0.23,Neutral
+JJA,2020,-0.36,Neutral
+JAS,2020,-0.53,La Nina
+ASO,2020,-0.85,La Nina
+SON,2020,-1.12,La Nina
+OND,2020,-1.2,La Nina
+NDJ,2020,-1.08,La Nina
+DJF,2021,-0.91,La Nina
+JFM,2021,-0.79,La Nina
+FMA,2021,-0.71,La Nina
+MAM,2021,-0.55,La Nina
+AMJ,2021,-0.39,Neutral
+MJJ,2021,-0.3,Neutral
+JJA,2021,-0.35,Neutral
+JAS,2021,-0.45,Neutral
+ASO,2021,-0.63,La Nina
+SON,2021,-0.76,La Nina
+OND,2021,-0.91,La Nina
+NDJ,2021,-0.87,La Nina
+DJF,2022,-0.82,La Nina
+JFM,2022,-0.79,La Nina
+FMA,2022,-0.86,La Nina
+MAM,2022,-0.95,La Nina
+AMJ,2022,-0.9,La Nina
+MJJ,2022,-0.78,La Nina
+JJA,2022,-0.76,La Nina
+JAS,2022,-0.87,La Nina
+ASO,2022,-0.97,La Nina
+SON,2022,-0.94,La Nina
+OND,2022,-0.85,La Nina
+NDJ,2022,-0.71,La Nina
+DJF,2023,-0.54,La Nina
+JFM,2023,-0.29,Neutral
+FMA,2023,-0.02,Neutral
+MAM,2023,0.27,Neutral
+AMJ,2023,0.57,Weak El Nino
+MJJ,2023,0.84,Weak El Nino
+JJA,2023,1.12,Moderate El Nino
+JAS,2023,1.37,Moderate El Nino
+ASO,2023,1.6,Strong El Nino
+SON,2023,1.83,Strong El Nino
+OND,2023,1.99,Strong El Nino
+NDJ,2023,2.06,Super El Nino
+DJF,2024,1.92,Strong El Nino
+JFM,2024,1.62,Strong El Nino
+FMA,2024,1.26,Moderate El Nino
+MAM,2024,0.82,Weak El Nino
+AMJ,2024,0.49,Neutral
+MJJ,2024,0.22,Neutral
+JJA,2024,0.08,Neutral
+JAS,2024,-0.07,Neutral
+ASO,2024,-0.17,Neutral
+SON,2024,-0.21,Neutral
+OND,2024,-0.3,Neutral
+NDJ,2024,-0.42,Neutral
+DJF,2025,-0.45,Neutral
+JFM,2025,-0.24,Neutral
+FMA,2025,-0.06,Neutral
+MAM,2025,0.02,Neutral
+AMJ,2025,-0.02,Neutral
+MJJ,2025,-0.04,Neutral
+JJA,2025,-0.14,Neutral
+JAS,2025,-0.28,Neutral
+ASO,2025,-0.4,Neutral
+SON,2025,-0.51,La Nina
+OND,2025,-0.55,La Nina
+NDJ,2025,-0.54,La Nina
+DJF,2026,-0.37,Neutral
+JFM,2026,-0.14,Neutral
+FMA,2026,0.13,Neutral
+MAM,2026,0.51,Weak El Nino
+AMJ,2026,0.98,Weak El Nino

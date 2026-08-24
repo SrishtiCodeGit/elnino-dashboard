@@ -1,0 +1,1048 @@
+[
+  {
+    "state": "Alabama",
+    "abbr": "AL",
+    "region": "Southeast",
+    "ensoTempAnomaly": "below_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "El Nino winters typically bring cooler and wetter than average conditions to the Gulf Coast/Southeast, raising flood and crop-disease risk.",
+    "keyCommodities": [
+      "Cotton",
+      "Soybeans",
+      "Poultry",
+      "Cattle"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "low",
+    "agGdpShare": null,
+    "financialRiskScore": 57,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "USDA NASS Cotton Ginnings/Cattle Inventory reports 2024; USDA ERS cash receipts"
+    ]
+  },
+  {
+    "state": "Alaska",
+    "abbr": "AK",
+    "region": "Alaska",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "mixed",
+    "climateNote": "Southern and coastal Alaska tend to run milder than average in El Nino winters, with a less consistent precipitation signal statewide.",
+    "keyCommodities": [
+      "Crude Oil",
+      "Seafood"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "high",
+    "agGdpShare": null,
+    "financialRiskScore": 51,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)"
+    ]
+  },
+  {
+    "state": "Arizona",
+    "abbr": "AZ",
+    "region": "Southwest",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "The Southwest is one of the more reliable El Nino signals: winters tend wetter than average, with temperature closer to normal.",
+    "keyCommodities": [
+      "Cotton",
+      "Cattle"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 36,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Arkansas",
+    "abbr": "AR",
+    "region": "Southeast/Delta",
+    "ensoTempAnomaly": "below_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Classic Gulf-adjacent El Nino pattern of cooler, wetter winters raises flood risk for Delta row-crop and rice acreage.",
+    "keyCommodities": [
+      "Rice",
+      "Soybeans",
+      "Cotton",
+      "Poultry"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "medium",
+    "agGdpShare": null,
+    "financialRiskScore": 76,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "USDA NASS Crop Production reports 2024; soystats.com U.S. Yield & Production tables"
+    ]
+  },
+  {
+    "state": "California",
+    "abbr": "CA",
+    "region": "West Coast",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "El Nino is associated with above-normal, sometimes well-above-normal precipitation on the West Coast, alternating drought relief with flood/mudslide risk.",
+    "keyCommodities": [
+      "Almonds",
+      "Wine Grapes",
+      "Dairy",
+      "Cattle"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "medium",
+    "agGdpShare": null,
+    "financialRiskScore": 69,
+    "sources": [
+      "NOAA Climate.gov, 'El Nino and U.S. winter weather' (climate.gov/news-features/featured-images/el-nino-and-us-winter-weather)",
+      "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)"
+    ]
+  },
+  {
+    "state": "Colorado",
+    "abbr": "CO",
+    "region": "Southwest/Rockies transition",
+    "ensoTempAnomaly": "mixed",
+    "ensoPrecipAnomaly": "mixed",
+    "climateNote": "Colorado sits on the boundary between the wetter Southwest and drier northern Rockies signal, so El Nino winter impact is mixed and less predictable.",
+    "keyCommodities": [
+      "Wheat",
+      "Cattle",
+      "Corn"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "medium",
+    "agGdpShare": null,
+    "financialRiskScore": 52,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)"
+    ]
+  },
+  {
+    "state": "Connecticut",
+    "abbr": "CT",
+    "region": "Northeast",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "The Northeast lies outside the core El Nino signal zone, so winter temperature and precipitation are typically close to normal.",
+    "keyCommodities": [
+      "Dairy",
+      "Nursery crops"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 18,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Delaware",
+    "abbr": "DE",
+    "region": "Mid-Atlantic",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "The Mid-Atlantic is a transition zone with a comparatively weak and inconsistent El Nino winter signal.",
+    "keyCommodities": [
+      "Poultry",
+      "Soybeans"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 32,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Florida",
+    "abbr": "FL",
+    "region": "Southeast",
+    "ensoTempAnomaly": "below_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Florida shows one of the clearest El Nino signals: cooler, wetter winters that raise citrus disease pressure and catastrophe-insurance claims risk.",
+    "keyCommodities": [
+      "Citrus",
+      "Sugarcane",
+      "Cattle"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 64,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "USDA NASS Cotton Ginnings/Cattle Inventory reports 2024; USDA ERS cash receipts"
+    ]
+  },
+  {
+    "state": "Georgia",
+    "abbr": "GA",
+    "region": "Southeast",
+    "ensoTempAnomaly": "below_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Cooler, wetter-than-average El Nino winters are a reliable Southeast pattern, elevating disease and harvest-delay risk for cotton and peanuts.",
+    "keyCommodities": [
+      "Cotton",
+      "Peanuts",
+      "Poultry"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 64,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "USDA NASS Cotton Ginnings/Cattle Inventory reports 2024; USDA ERS cash receipts"
+    ]
+  },
+  {
+    "state": "Hawaii",
+    "abbr": "HI",
+    "region": "Pacific/Hawaii",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "El Nino has been directly linked to below-normal wet-season rainfall and drought in Hawaii, historically damaging Kona coffee yields.",
+    "keyCommodities": [
+      "Coffee"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 60,
+    "sources": [
+      "Hawaii Dept. of Agriculture / Big Island Now & Hawaii Tribune-Herald reporting on El Nino drought impact on Kona coffee"
+    ]
+  },
+  {
+    "state": "Idaho",
+    "abbr": "ID",
+    "region": "Pacific Northwest",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "Idaho falls in the classic Pacific Northwest El Nino pattern of milder, drier winters, raising drought risk for wheat and irrigated potatoes.",
+    "keyCommodities": [
+      "Wheat",
+      "Potatoes",
+      "Cattle"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "none",
+    "agGdpShare": 4.28,
+    "financialRiskScore": 70,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Illinois",
+    "abbr": "IL",
+    "region": "Midwest/Ohio Valley",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "The Corn Belt sees a comparatively weak El Nino signal, leaning slightly milder and drier than average.",
+    "keyCommodities": [
+      "Corn",
+      "Soybeans"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "low",
+    "agGdpShare": null,
+    "financialRiskScore": 53,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "USDA NASS Crop Production reports 2024; soystats.com U.S. Yield & Production tables"
+    ]
+  },
+  {
+    "state": "Indiana",
+    "abbr": "IN",
+    "region": "Midwest/Ohio Valley",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "Indiana lies in the Ohio Valley transition zone where the El Nino winter signal is weak and inconsistent.",
+    "keyCommodities": [
+      "Corn",
+      "Soybeans"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "low",
+    "agGdpShare": null,
+    "financialRiskScore": 53,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "USDA NASS Crop Production reports 2024; soystats.com U.S. Yield & Production tables"
+    ]
+  },
+  {
+    "state": "Iowa",
+    "abbr": "IA",
+    "region": "Midwest Corn Belt",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "Upper Midwest El Nino winters tend milder and drier than average, a pattern with meaningful implications for corn/soybean soil moisture heading into spring planting.",
+    "keyCommodities": [
+      "Corn",
+      "Soybeans"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "none",
+    "agGdpShare": 4.3,
+    "financialRiskScore": 64,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Kansas",
+    "abbr": "KS",
+    "region": "Southern Plains/transition",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "mixed",
+    "climateNote": "Kansas straddles the boundary between the wetter southern tier and the drier northern Plains, giving it a mixed, less certain El Nino winter signal.",
+    "keyCommodities": [
+      "Wheat",
+      "Cattle",
+      "Corn"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "medium",
+    "agGdpShare": 2.55,
+    "financialRiskScore": 68,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "USDA NASS, 2024 Small Grains Summary / state ag statistics bulletins",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Kentucky",
+    "abbr": "KY",
+    "region": "Ohio Valley/Upland South",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Southern Ohio Valley states like Kentucky lean toward the wetter side of the El Nino signal, though it is weaker than the Deep South.",
+    "keyCommodities": [
+      "Soybeans",
+      "Corn",
+      "Cattle",
+      "Tobacco"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "low",
+    "agGdpShare": 1.06,
+    "financialRiskScore": 41,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Louisiana",
+    "abbr": "LA",
+    "region": "Gulf Coast",
+    "ensoTempAnomaly": "below_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Louisiana sits at the heart of the classic wet, cool El Nino Gulf Coast signal, raising flood risk for rice/sugarcane and disrupting offshore energy operations.",
+    "keyCommodities": [
+      "Rice",
+      "Sugarcane",
+      "Soybeans",
+      "Cotton"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "high",
+    "agGdpShare": null,
+    "financialRiskScore": 84,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)"
+    ]
+  },
+  {
+    "state": "Maine",
+    "abbr": "ME",
+    "region": "Northeast",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "Northern New England is outside the core El Nino signal zone; winter conditions are typically close to normal.",
+    "keyCommodities": [
+      "Potatoes",
+      "Dairy",
+      "Blueberries"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 18,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Maryland",
+    "abbr": "MD",
+    "region": "Mid-Atlantic",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "The Mid-Atlantic transition zone shows a weak, inconsistent El Nino winter signal.",
+    "keyCommodities": [
+      "Poultry",
+      "Soybeans",
+      "Corn"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 32,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Massachusetts",
+    "abbr": "MA",
+    "region": "Northeast",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "New England lies outside the primary El Nino signal zone, with winter anomalies typically small.",
+    "keyCommodities": [
+      "Cranberries",
+      "Dairy"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 18,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Michigan",
+    "abbr": "MI",
+    "region": "Great Lakes/Midwest",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "Great Lakes states typically see a milder, slightly drier than average El Nino winter with less lake-effect snow, but the signal is weaker than the Plains.",
+    "keyCommodities": [
+      "Corn",
+      "Soybeans",
+      "Dairy",
+      "Cherries"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "low",
+    "agGdpShare": null,
+    "financialRiskScore": 39,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Minnesota",
+    "abbr": "MN",
+    "region": "Upper Midwest",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "Minnesota shows the characteristic upper-Midwest El Nino pattern of a milder, drier winter.",
+    "keyCommodities": [
+      "Corn",
+      "Soybeans",
+      "Wheat"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "none",
+    "agGdpShare": 1.27,
+    "financialRiskScore": 56,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Mississippi",
+    "abbr": "MS",
+    "region": "Southeast/Delta",
+    "ensoTempAnomaly": "below_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Mississippi falls squarely in the Deep South's cooler, wetter El Nino pattern, raising flood and disease risk for cotton and soybeans.",
+    "keyCommodities": [
+      "Cotton",
+      "Soybeans",
+      "Poultry",
+      "Catfish"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "medium",
+    "agGdpShare": 1.27,
+    "financialRiskScore": 77,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Missouri",
+    "abbr": "MO",
+    "region": "Midwest/South transition",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Missouri spans the transition between the Corn Belt's weak signal and the wetter southern pattern, with southern Missouri leaning wetter.",
+    "keyCommodities": [
+      "Soybeans",
+      "Corn",
+      "Cattle",
+      "Cotton"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 52,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Montana",
+    "abbr": "MT",
+    "region": "Northern Rockies",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "Montana follows the Northern Rockies El Nino pattern of a milder, drier winter, elevating drought risk to wheat and rangeland.",
+    "keyCommodities": [
+      "Wheat",
+      "Cattle"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "medium",
+    "agGdpShare": 3.23,
+    "financialRiskScore": 76,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Nebraska",
+    "abbr": "NE",
+    "region": "Plains/Corn Belt",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "Nebraska sees the milder, drier upper-Plains El Nino signal, a factor in soil moisture for corn and rangeland going into spring.",
+    "keyCommodities": [
+      "Corn",
+      "Cattle",
+      "Soybeans"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "low",
+    "agGdpShare": 4.62,
+    "financialRiskScore": 69,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Nevada",
+    "abbr": "NV",
+    "region": "Southwest/Great Basin",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "mixed",
+    "climateNote": "Southern Nevada leans toward the wetter Southwest signal while northern Nevada is more mixed, giving the state an inconsistent overall pattern.",
+    "keyCommodities": [
+      "Cattle",
+      "Hay"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "low",
+    "agGdpShare": null,
+    "financialRiskScore": 34,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "New Hampshire",
+    "abbr": "NH",
+    "region": "Northeast",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "New England lies outside the core El Nino signal zone, with typically near-normal winter conditions.",
+    "keyCommodities": [
+      "Dairy",
+      "Apples"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 18,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "New Jersey",
+    "abbr": "NJ",
+    "region": "Mid-Atlantic",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "The Mid-Atlantic transition zone has a weak, inconsistent El Nino winter signal.",
+    "keyCommodities": [
+      "Horticulture",
+      "Soybeans"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 22,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "New Mexico",
+    "abbr": "NM",
+    "region": "Southwest",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "New Mexico is part of the classic wetter Southwest El Nino signal, and is also the nation's #2 crude oil and a top natural gas producing state (Permian/San Juan basins).",
+    "keyCommodities": [
+      "Cattle",
+      "Hay",
+      "Pecans"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "high",
+    "agGdpShare": 1.28,
+    "financialRiskScore": 67,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)",
+      "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "New York",
+    "abbr": "NY",
+    "region": "Northeast",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "New York lies outside the primary El Nino signal zone, with winter anomalies typically modest.",
+    "keyCommodities": [
+      "Dairy",
+      "Apples"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 18,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "North Carolina",
+    "abbr": "NC",
+    "region": "Southeast",
+    "ensoTempAnomaly": "below_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "North Carolina shares the Southeast's cooler, wetter El Nino winter pattern, a flood risk factor for soybean and hog/poultry operations.",
+    "keyCommodities": [
+      "Soybeans",
+      "Cotton",
+      "Poultry",
+      "Hogs"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 64,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "North Dakota",
+    "abbr": "ND",
+    "region": "Northern Plains",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "North Dakota sees the Northern Plains' milder, drier El Nino winter pattern, a drought factor for wheat; it is also the nation's #1 all-wheat producer and a top-3 crude oil (Bakken) state.",
+    "keyCommodities": [
+      "Wheat",
+      "Soybeans",
+      "Corn"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "high",
+    "agGdpShare": 4.46,
+    "financialRiskScore": 87,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "USDA NASS, 2024 Small Grains Summary / state ag statistics bulletins",
+      "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Ohio",
+    "abbr": "OH",
+    "region": "Ohio Valley",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "The Ohio Valley shows a weak El Nino signal, leaning slightly drier than average.",
+    "keyCommodities": [
+      "Soybeans",
+      "Corn"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "medium",
+    "agGdpShare": null,
+    "financialRiskScore": 48,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)"
+    ]
+  },
+  {
+    "state": "Oklahoma",
+    "abbr": "OK",
+    "region": "Southern Plains",
+    "ensoTempAnomaly": "below_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Oklahoma sits in the classic cooler, wetter Southern Plains El Nino pattern, and is also a major oil and natural gas producing state (SCOOP/STACK).",
+    "keyCommodities": [
+      "Wheat",
+      "Cattle"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "high",
+    "agGdpShare": 1.26,
+    "financialRiskScore": 85,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Oregon",
+    "abbr": "OR",
+    "region": "Pacific Northwest",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "Oregon follows the classic Pacific Northwest El Nino pattern of milder, drier winters, a drought risk factor for wheat and rangeland.",
+    "keyCommodities": [
+      "Wheat",
+      "Cattle",
+      "Hazelnuts"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 50,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Pennsylvania",
+    "abbr": "PA",
+    "region": "Mid-Atlantic/Appalachia",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "Pennsylvania's El Nino winter signal is weak, but the state is the nation's #2 natural gas producer (Marcellus Shale), a direct energy-market exposure.",
+    "keyCommodities": [
+      "Dairy",
+      "Corn",
+      "Mushrooms"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "high",
+    "agGdpShare": null,
+    "financialRiskScore": 52,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)"
+    ]
+  },
+  {
+    "state": "Rhode Island",
+    "abbr": "RI",
+    "region": "Northeast",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "New England lies outside the core El Nino signal zone.",
+    "keyCommodities": [
+      "Dairy",
+      "Nursery crops"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 18,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "South Carolina",
+    "abbr": "SC",
+    "region": "Southeast",
+    "ensoTempAnomaly": "below_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "South Carolina shares the Southeast's classic cooler, wetter El Nino winter pattern.",
+    "keyCommodities": [
+      "Cotton",
+      "Soybeans",
+      "Poultry"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 52,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "South Dakota",
+    "abbr": "SD",
+    "region": "Northern Plains",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "South Dakota follows the Northern Plains' milder, drier El Nino pattern; it is also the single most agriculture-dependent state economy in the country by GDP share.",
+    "keyCommodities": [
+      "Corn",
+      "Soybeans",
+      "Wheat",
+      "Cattle"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "low",
+    "agGdpShare": 5.78,
+    "financialRiskScore": 76,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Tennessee",
+    "abbr": "TN",
+    "region": "Southeast/Ohio Valley transition",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Tennessee leans toward the wetter side of the El Nino signal as part of the upland South, though less reliably than the Deep South.",
+    "keyCommodities": [
+      "Soybeans",
+      "Cotton",
+      "Cattle"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 40,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Texas",
+    "abbr": "TX",
+    "region": "Southern Plains/Gulf Coast",
+    "ensoTempAnomaly": "below_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Texas exhibits the classic cooler, wetter Southern Plains/Gulf El Nino pattern, and is simultaneously the nation's #1 crude oil AND #1 natural gas producing state.",
+    "keyCommodities": [
+      "Cotton",
+      "Cattle",
+      "Wheat",
+      "Sorghum"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "high",
+    "agGdpShare": null,
+    "financialRiskScore": 84,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)",
+      "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)",
+      "USDA NASS Cotton Ginnings/Cattle Inventory reports 2024; USDA ERS cash receipts"
+    ]
+  },
+  {
+    "state": "Utah",
+    "abbr": "UT",
+    "region": "Southwest/Great Basin",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "mixed",
+    "climateNote": "Southern Utah leans toward the wetter Southwest signal while northern Utah is more mixed, so the statewide pattern is inconsistent.",
+    "keyCommodities": [
+      "Cattle",
+      "Hay",
+      "Dairy"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "medium",
+    "agGdpShare": null,
+    "financialRiskScore": 41,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Vermont",
+    "abbr": "VT",
+    "region": "Northeast",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "Northern New England lies outside the core El Nino signal zone.",
+    "keyCommodities": [
+      "Dairy",
+      "Maple syrup"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "none",
+    "agGdpShare": 1.13,
+    "financialRiskScore": 19,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Virginia",
+    "abbr": "VA",
+    "region": "Mid-Atlantic/Southeast transition",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "above_normal",
+    "climateNote": "Virginia sits on the transition between the weak Mid-Atlantic signal and the wetter Southeast pattern.",
+    "keyCommodities": [
+      "Soybeans",
+      "Poultry",
+      "Tobacco"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "low",
+    "agGdpShare": null,
+    "financialRiskScore": 38,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "Washington",
+    "abbr": "WA",
+    "region": "Pacific Northwest",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "Washington shows the textbook Pacific Northwest El Nino pattern of a milder, drier winter, a drought risk for the state's top apple and wheat exports.",
+    "keyCommodities": [
+      "Wheat",
+      "Apples",
+      "Cattle"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 62,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  },
+  {
+    "state": "West Virginia",
+    "abbr": "WV",
+    "region": "Appalachia/Mid-Atlantic",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "West Virginia's El Nino winter signal is weak, but it is the nation's #4 natural gas producing state (Marcellus/Utica Shale).",
+    "keyCommodities": [
+      "Cattle",
+      "Poultry"
+    ],
+    "commodityExposure": "low",
+    "energyExposure": "high",
+    "agGdpShare": null,
+    "financialRiskScore": 42,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)"
+    ]
+  },
+  {
+    "state": "Wisconsin",
+    "abbr": "WI",
+    "region": "Upper Midwest",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "Wisconsin follows the upper-Midwest El Nino pattern of a milder, drier winter.",
+    "keyCommodities": [
+      "Corn",
+      "Soybeans",
+      "Dairy",
+      "Cranberries"
+    ],
+    "commodityExposure": "high",
+    "energyExposure": "none",
+    "agGdpShare": 1.25,
+    "financialRiskScore": 56,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "Wyoming",
+    "abbr": "WY",
+    "region": "Northern Rockies",
+    "ensoTempAnomaly": "above_normal",
+    "ensoPrecipAnomaly": "below_normal",
+    "climateNote": "Wyoming follows the Northern Rockies' milder, drier El Nino winter pattern, and is a significant oil, natural gas, and coal producing state.",
+    "keyCommodities": [
+      "Cattle",
+      "Wheat",
+      "Hay"
+    ],
+    "commodityExposure": "medium",
+    "energyExposure": "high",
+    "agGdpShare": 1.66,
+    "financialRiskScore": 68,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
+      "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)",
+      "Commodity.com/BEA state ag-GDP ranking"
+    ]
+  },
+  {
+    "state": "District of Columbia",
+    "abbr": "DC",
+    "region": "Mid-Atlantic (urban)",
+    "ensoTempAnomaly": "near_normal",
+    "ensoPrecipAnomaly": "near_normal",
+    "climateNote": "DC has a weak, inconsistent El Nino winter signal typical of the Mid-Atlantic, and essentially no agricultural or energy-commodity production of its own.",
+    "keyCommodities": [],
+    "commodityExposure": "low",
+    "energyExposure": "none",
+    "agGdpShare": null,
+    "financialRiskScore": 22,
+    "sources": [
+      "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
+    ]
+  }
+]
