@@ -201,6 +201,7 @@ body {
 /* Technical HUD card chrome: a thin cyan top accent rule plus a faint
    scanline texture, used on the map's floating console panels. */
 .hud-card {
+  position: relative;
   overflow: hidden;
 }
 .hud-card::before {
