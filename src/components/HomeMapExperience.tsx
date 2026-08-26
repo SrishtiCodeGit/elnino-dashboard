@@ -83,6 +83,7 @@ export function HomeMapExperience({
   const [buildingDetailAbbr, setBuildingDetailAbbr] = useState<string | null>(null);
   const [showWildfireRisk, setShowWildfireRisk] = useState(false);
   const [showWildfireSummary, setShowWildfireSummary] = useState(false);
+  const [showFinancialRisk, setShowFinancialRisk] = useState(false);
   const [showFinancialSummary, setShowFinancialSummary] = useState(false);
   const [wildfireDetailAbbr, setWildfireDetailAbbr] = useState<string | null>(null);
   const stateRef = selected ? STATE_BY_ABBR[selected] : null;
@@ -94,6 +95,8 @@ export function HomeMapExperience({
       setShowSupplyChainReport(false);
       setShowWildfireRisk(false);
       setShowWildfireSummary(false);
+      setShowFinancialRisk(false);
+      setShowFinancialSummary(false);
     }
   }
 
@@ -104,6 +107,8 @@ export function HomeMapExperience({
         setHighlight(null);
         setShowWildfireRisk(false);
         setShowWildfireSummary(false);
+        setShowFinancialRisk(false);
+        setShowFinancialSummary(false);
       } else {
         setShowSupplyChainReport(false);
         setBuildingDetailAbbr(null);
@@ -112,15 +117,21 @@ export function HomeMapExperience({
     });
   }
 
-  function handleSelectFinancialRisk() {
-    setHighlight(null);
-    setShowSupplyChain(false);
-    setShowSupplyChainReport(false);
-    setShowWildfireRisk(false);
-    setShowWildfireSummary(false);
+  function handleToggleFinancialRisk() {
+    setShowFinancialRisk((prev) => {
+      const next = !prev;
+      if (next) {
+        setHighlight(null);
+        setShowSupplyChain(false);
+        setShowSupplyChainReport(false);
+        setShowWildfireRisk(false);
+        setShowWildfireSummary(false);
+      } else {
+        setShowFinancialSummary(false);
+      }
+      return next;
+    });
   }
-
-  const financialRiskActive = !highlight && !showSupplyChain && !showWildfireRisk;
 
   function handleToggleWildfireRisk() {
     setShowWildfireRisk((prev) => {
@@ -129,6 +140,8 @@ export function HomeMapExperience({
         setHighlight(null);
         setShowSupplyChain(false);
         setShowSupplyChainReport(false);
+        setShowFinancialRisk(false);
+        setShowFinancialSummary(false);
       } else {
         setShowWildfireSummary(false);
         setWildfireDetailAbbr(null);
@@ -197,7 +210,7 @@ export function HomeMapExperience({
           wildfireStats={showWildfireRisk ? topWildfireStats : null}
           onWildfireMarkerSelect={setWildfireDetailAbbr}
           activeWildfireAbbr={wildfireDetailAbbr}
-          financialRiskActive={financialRiskActive}
+          financialRiskActive={showFinancialRisk}
         />
 
         <div className="absolute top-4 left-4 z-10 w-64">
@@ -213,8 +226,8 @@ export function HomeMapExperience({
             onToggleWildfireRisk={handleToggleWildfireRisk}
             showSentinel={showSentinel}
             onToggleSentinel={() => setShowSentinel((v) => !v)}
-            financialRiskActive={financialRiskActive}
-            onSelectFinancialRisk={handleSelectFinancialRisk}
+            financialRiskActive={showFinancialRisk}
+            onSelectFinancialRisk={handleToggleFinancialRisk}
           />
         </div>
 
@@ -236,7 +249,7 @@ export function HomeMapExperience({
           </button>
         )}
 
-        {financialRiskActive && (
+        {showFinancialRisk && (
           <button
             onClick={() => setShowFinancialSummary(true)}
             className="hud-card absolute bottom-16 left-1/2 -translate-x-1/2 z-10 rounded-full px-5 py-2 shadow-2xl font-mono font-bold text-[0.72rem] uppercase tracking-wide text-[#1E293B] bg-[#FBBF24] hover:bg-[#FCD34D] transition-colors"
