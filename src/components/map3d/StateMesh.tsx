@@ -14,7 +14,14 @@ interface Props {
   riskScore?: number;
   isHovered: boolean;
   isSelected: boolean;
+  isHighlighted?: boolean;
   dimmed?: boolean;
+  /** Supply Chain Risk view: severity is shown via buildings, not terrain
+   * color, so the terrain shouldn't self-glow either — otherwise dozens of
+   * simultaneously-highlighted states each emit a bright emissive surface,
+   * and Bloom blows the whole terrain out (washing out the dashed outline
+   * along with it). */
+  disableGlow?: boolean;
   onPointerEnter: (e: ThreeEvent<PointerEvent>) => void;
   onPointerLeave: () => void;
   onPointerMove: (e: ThreeEvent<PointerEvent>) => void;
@@ -38,7 +45,9 @@ export function StateMesh({
   riskScore,
   isHovered,
   isSelected,
+  isHighlighted = false,
   dimmed = false,
+  disableGlow = false,
   onPointerEnter,
   onPointerLeave,
   onPointerMove,
@@ -64,23 +73,17 @@ export function StateMesh({
   const outlineRings = useMemo(() => outerRings(geometry), [geometry]);
   const outlineMaterialRefs = useRef<(THREE.LineDashedMaterial | null)[]>([]);
 
-  const targetLift = isSelected ? 6 : isHovered ? 3 : 0;
+  const targetLift = isSelected ? 6 : isHovered ? 3 : isHighlighted ? 4 : 0;
   const targetOpacity = dimmed ? 0.3 : 1;
 
-  useFrame(({ clock }) => {
-    if (groupRef.current) {
-      groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, targetLift, 0.18);
-    }
-    if (materialRef.current) {
-      materialRef.current.opacity = THREE.MathUtils.lerp(materialRef.current.opacity, targetOpacity, 0.15);
-    }
-    if (isHovered || isSelected) {
-      const pulse = 0.55 + Math.sin(clock.elapsedTime * 3) * 0.35;
-      for (const mat of outlineMaterialRefs.current) {
-        if (mat) mat.opacity = pulse;
-      }
-    }
-  });
+  // Severe-risk states (75+, the red band) get a continuous breathing glow
+  // on top of their normal risk-glow baseline — not just brighter when
+  // hovered, but always drawing the eye, since that's the whole point of a
+  // risk dashboard: the worst states shouldn't require a mouseover to spot.
+  // Phased off the risk score itself so ~10 simultaneous severe states
+  // don't all pulse in lockstep.
+  const isSevere = riskScore != null && riskScore >= 75;
+  const severityPhase = riskScore ?? 0;
 
   // Risk states glow in their own heatmap color — higher score, hotter glow —
   // so the map reads like a live-monitoring heat display rather than flat-lit
@@ -88,7 +91,30 @@ export function StateMesh({
   // separate accent color, keeping each state's hue legible while lit up.
   const riskGlow = riskScore != null ? 0.1 + (riskScore / 100) * 0.5 : 0;
   const emissive = color;
-  const emissiveIntensity = riskGlow + (isSelected ? 0.55 : isHovered ? 0.3 : 0);
+  const baseEmissiveIntensity = disableGlow
+    ? 0
+    : riskGlow + (isSelected ? 0.55 : isHovered ? 0.3 : isHighlighted ? 0.4 : 0);
+
+  useFrame(({ clock }) => {
+    if (groupRef.current) {
+      groupRef.current.position.y = THREE.MathUtils.lerp(groupRef.current.position.y, targetLift, 0.18);
+    }
+    if (materialRef.current) {
+      materialRef.current.opacity = THREE.MathUtils.lerp(materialRef.current.opacity, targetOpacity, 0.15);
+      if (isSevere && !disableGlow) {
+        const pulse = 0.18 + Math.sin(clock.elapsedTime * 1.6 + severityPhase) * 0.18;
+        materialRef.current.emissiveIntensity = baseEmissiveIntensity + pulse;
+      }
+    }
+    if (isHovered || isSelected || isHighlighted) {
+      const pulse = 0.75 + Math.sin(clock.elapsedTime * 3) * 0.25;
+      for (const mat of outlineMaterialRefs.current) {
+        if (mat) mat.opacity = pulse;
+      }
+    }
+  });
+
+  const emissiveIntensity = baseEmissiveIntensity;
 
   return (
     <group ref={groupRef}>
@@ -112,7 +138,7 @@ export function StateMesh({
           opacity={1}
         />
       </mesh>
-      {(isHovered || isSelected) &&
+      {(isHovered || isSelected || isHighlighted) &&
         outlineRings.map((ring, i) => {
           const pts = ring.map(([x, z]) => new THREE.Vector3(x, height + 0.6, z));
           return (
@@ -140,15 +166,29 @@ export function StateMesh({
                 ref={(m) => {
                   outlineMaterialRefs.current[i] = m;
                 }}
-                color="#7DD3FC"
-                dashSize={3}
-                gapSize={2}
+                color="#0EA5E9"
+                dashSize={3.5}
+                gapSize={1.5}
                 transparent
                 opacity={0.9}
               />
             </lineLoop>
           );
         })}
+      {/* Permanent black boundary — always visible, not just on hover, so
+          every state's shape reads clearly against its neighbors on the
+          heatmap regardless of interaction state. */}
+      {outlineRings.map((ring, i) => (
+        <lineLoop key={`solid-${i}`} position={[0, height + 0.15, 0]}>
+          <bufferGeometry
+            ref={(g) => {
+              if (!g) return;
+              g.setFromPoints(ring.map(([x, z]) => new THREE.Vector3(x, 0, z)));
+            }}
+          />
+          <lineBasicMaterial color="#000000" transparent opacity={0.55} />
+        </lineLoop>
+      ))}
     </group>
   );
 }

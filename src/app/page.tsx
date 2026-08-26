@@ -9,6 +9,11 @@ import {
   getOni,
   downsample,
   computeNationalPulse,
+  getTopRisks,
+  getSupplyChainFlows,
+  getWildfireStats,
+  getWildfireByYear,
+  getLivestockPrices,
 } from "@/lib/data";
 import { fetchLiveOni } from "@/lib/liveOni";
 import type { Topology } from "topojson-specification";
@@ -36,6 +41,11 @@ export default async function Home() {
   // if NOAA is unreachable, so the card never breaks — just goes stale.
   const liveOni = await fetchLiveOni();
   const pulse = computeNationalPulse(stateImpact, liveOni ?? getOni());
+  const topRisks = getTopRisks(stateImpact, 10);
+  const supplyChainFlows = getSupplyChainFlows();
+  const wildfireStats = getWildfireStats();
+  const wildfireByYear = getWildfireByYear();
+  const livestockPrices = getLivestockPrices();
 
   return (
     <HomeMapExperience
@@ -46,6 +56,11 @@ export default async function Home() {
       elNinoEvents={elNinoEvents}
       pulse={pulse}
       pulseIsLive={liveOni !== null}
+      topRisks={topRisks}
+      supplyChainFlows={supplyChainFlows}
+      wildfireStats={wildfireStats}
+      wildfireByYear={wildfireByYear}
+      livestockPrices={livestockPrices}
     />
   );
 }

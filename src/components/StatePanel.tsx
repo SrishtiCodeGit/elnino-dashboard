@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 import { WeatherWidget } from "@/components/WeatherWidget";
+import { AiSummaryWidget } from "@/components/AiSummaryWidget";
+import { CountUpNumber } from "@/components/CountUpNumber";
 import { TimeSeriesChart } from "@/components/charts/TimeSeriesChart";
 import { riskColor, COMMODITY_COLOR, COLOR } from "@/lib/theme";
 import { FUTURES_KEY_TO_NAME, getTrackedCommodityKeys } from "@/lib/dataUtils";
@@ -66,8 +68,8 @@ export function StatePanel({
 
   return (
     <>
-      <div className="fixed inset-0 bg-black/50 z-40" onClick={onClose} />
-      <div className="fixed inset-y-0 right-0 z-50 w-full sm:w-[440px] lg:w-[520px] bg-bg border-l border-border-strong shadow-2xl overflow-y-auto">
+      <div className="fixed inset-0 bg-black/50 z-40 backdrop-fade" onClick={onClose} />
+      <div className="slide-in-right fixed inset-y-0 right-0 z-50 w-full sm:w-[440px] lg:w-[520px] bg-bg border-l border-border-strong shadow-2xl overflow-y-auto">
         <div className="sticky top-0 z-10 flex items-start justify-between gap-4 px-6 pt-6 pb-4 bg-bg border-b border-border">
           <div className="dark-on-bg">
             <h2 className="text-xl font-bold tracking-tight text-text-primary">{stateRef.name}</h2>
@@ -97,7 +99,7 @@ export function StatePanel({
                 className="text-2xl font-extrabold font-mono tabular-nums"
                 style={{ color: riskColor(impact.financialRiskScore) }}
               >
-                {impact.financialRiskScore}
+                <CountUpNumber value={impact.financialRiskScore} />
                 <span className="text-sm text-text-muted">/100</span>
               </span>
             </div>
@@ -107,6 +109,8 @@ export function StatePanel({
 
           {impact ? (
             <>
+              <AiSummaryWidget abbr={stateRef.abbr} />
+
               <div className="rounded-xl border border-border bg-surface px-5 py-4">
                 <div className="text-[0.7rem] font-semibold tracking-wider uppercase text-text-muted mb-2">
                   El Nino Climate Pattern

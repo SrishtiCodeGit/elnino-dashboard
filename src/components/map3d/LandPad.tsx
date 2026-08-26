@@ -26,9 +26,12 @@ function outsetShape(shape: THREE.Shape, scale: number): THREE.Shape {
 }
 
 /** A thin, real-geography "land" slab beneath a state's risk extrusion —
- * colored like terrain (Google Maps style), so the US reads as land sitting
- * in water rather than blocks floating on an abstract grid. */
-export function LandPad({ geometry }: { geometry: Geometry }) {
+ * colored like terrain (Google Maps style) by default, so the US reads as
+ * land sitting in water rather than blocks floating on an abstract grid.
+ * `color` can override that green for views (like Supply Chain Risk) that
+ * use a different terrain palette, so this strip matches instead of
+ * clashing against it. */
+export function LandPad({ geometry, color = "#3D7A45" }: { geometry: Geometry; color?: string }) {
   const geom = useMemo(() => {
     const shapes = geometryToShapes(geometry).map((s) => outsetShape(s, OUTSET_SCALE));
     const g = new THREE.ExtrudeGeometry(shapes, EXTRUDE_SETTINGS);
@@ -39,7 +42,7 @@ export function LandPad({ geometry }: { geometry: Geometry }) {
 
   return (
     <mesh geometry={geom} position={[0, -LAND_HEIGHT, 0]} receiveShadow>
-      <meshStandardMaterial color="#3D7A45" roughness={0.95} />
+      <meshStandardMaterial color={color} roughness={0.95} />
     </mesh>
   );
 }

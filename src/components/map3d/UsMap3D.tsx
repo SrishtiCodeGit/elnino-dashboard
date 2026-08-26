@@ -3,7 +3,7 @@
 import { useMemo, useState, useCallback, useRef } from "react";
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import type { ThreeEvent } from "@react-three/fiber";
-import { CameraControls, CameraControlsImpl } from "@react-three/drei";
+import { CameraControls, CameraControlsImpl, Html } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
 import { feature } from "topojson-client";
@@ -12,15 +12,33 @@ import type { Topology, GeometryCollection } from "topojson-specification";
 import type { Feature, Geometry } from "geojson";
 import { STATE_BY_FIPS } from "@/lib/states";
 import { riskColor } from "@/lib/theme";
-import type { StateImpact } from "@/lib/dataUtils";
+import type { StateImpact, SupplyChainFlow, WildfireStats } from "@/lib/dataUtils";
 import { StateMesh } from "./StateMesh";
 import { LandPad } from "./LandPad";
+import { SupplyChainFlows } from "./SupplyChainFlows";
+import { SupplyChainBuildings } from "./SupplyChainBuildings";
+import { StateLandscape } from "./StateLandscape";
+import { CommodityDecoration, type DecoratedCommodity } from "./CommodityDecoration";
+import { WildfireMarkers } from "./WildfireMarkers";
+import { CountUpNumber } from "@/components/CountUpNumber";
+
+const DECORATED_COMMODITIES = new Set<DecoratedCommodity>(["Cattle", "Wheat", "Corn", "Soybeans"]);
+function asDecoratedCommodity(value: string | null | undefined): DecoratedCommodity | null {
+  return value != null && DECORATED_COMMODITIES.has(value as DecoratedCommodity) ? (value as DecoratedCommodity) : null;
+}
 
 interface Props {
   topology: Topology;
   impactByAbbr: Record<string, StateImpact>;
   selectedAbbr?: string | null;
   onSelect: (abbr: string) => void;
+  highlightedAbbrs?: string[] | null;
+  highlightCommodity?: string | null;
+  supplyChainFlows?: SupplyChainFlow[] | null;
+  onSupplyChainBuildingSelect?: (abbr: string) => void;
+  wildfireStats?: WildfireStats[] | null;
+  onWildfireMarkerSelect?: (abbr: string) => void;
+  activeWildfireAbbr?: string | null;
 }
 
 interface HoverInfo {
@@ -33,6 +51,18 @@ interface HoverInfo {
 
 const NO_DATA_HEIGHT = 2.5;
 const NO_DATA_COLOR = "#475569";
+// Flat, uncolored terrain used only while the Supply Chain Risk view is
+// active — severity is carried by the building glyphs and flow arcs
+// instead, so there's one color language on screen, not a terrain
+// gradient competing with them. Dark slate grey — paired with LandPad's
+// normal green base and the blue dashed outline, which is the combination
+// that read best.
+const SUPPLY_CHAIN_TERRAIN_COLOR = "#334155";
+// Wildfire & Livestock Risk view: a distinct dark charcoal/ash tone
+// (warm-neutral, not the Supply Chain view's cool slate) so the two flat
+// terrain views don't read as the same mode, and the ember-colored flame
+// markers still pop against it.
+const WILDFIRE_TERRAIN_COLOR = "#2A2420";
 const MIN_HEIGHT = 4;
 const MAX_HEIGHT = 46;
 
@@ -46,7 +76,7 @@ const RISK_BANDS = [
 
 const SCENE_BG = "#05070D";
 
-const DEFAULT_CAM_POS: [number, number, number] = [0, 650, 840];
+const DEFAULT_CAM_POS: [number, number, number] = [0, 820, 1060];
 const DEFAULT_TARGET: [number, number, number] = [0, 0, 0];
 const ZOOM_OFFSET: [number, number, number] = [0, 190, 260];
 
@@ -129,6 +159,13 @@ function Scene({
   onWorldMove,
   onAnchorMove,
   controlsRef,
+  highlightedAbbrs,
+  highlightCommodity,
+  supplyChainFlows,
+  onSupplyChainBuildingSelect,
+  wildfireStats,
+  onWildfireMarkerSelect,
+  activeWildfireAbbr,
 }: {
   features: Feature[];
   center: [number, number];
@@ -143,9 +180,62 @@ function Scene({
   onWorldMove: (x: number, z: number) => void;
   onAnchorMove: (pos: { x: number; y: number } | null) => void;
   controlsRef: React.RefObject<CameraControlsImpl | null>;
+  highlightedAbbrs?: string[] | null;
+  highlightCommodity?: string | null;
+  supplyChainFlows?: SupplyChainFlow[] | null;
+  onSupplyChainBuildingSelect?: (abbr: string) => void;
+  wildfireStats?: WildfireStats[] | null;
+  onWildfireMarkerSelect?: (abbr: string) => void;
+  activeWildfireAbbr?: string | null;
 }) {
+  const highlightSet = useMemo(
+    () => (highlightedAbbrs && highlightedAbbrs.length ? new Set(highlightedAbbrs) : null),
+    [highlightedAbbrs]
+  );
   const { camera, size } = useThree();
   const tmpVec = useMemo(() => new THREE.Vector3(), []);
+
+  // Slow ambient rotation while idle — paused the instant a state is
+  // focused (clicking a state to see its data should hold still) or the
+  // user is actively dragging. Listeners attach lazily on the first frame
+  // rather than in a useEffect, since CameraControls is a Canvas sibling
+  // and its ref may not be populated yet when Scene's own effects run.
+  const isInteractingRef = useRef(false);
+  const rotationListenersAttachedRef = useRef(false);
+  // One-time establishing shot on load: start wide and high, sweep down
+  // close over the landscape so the buildings/forest read clearly, hold
+  // briefly, then pull back out to the normal resting overview. Auto-
+  // rotation is suppressed while this plays so it doesn't fight the
+  // scripted transition.
+  const introStartedRef = useRef(false);
+  const introPlayingRef = useRef(true);
+  useFrame((_, delta) => {
+    const controls = controlsRef.current;
+    if (!controls) return;
+    if (!rotationListenersAttachedRef.current) {
+      controls.addEventListener("controlstart", () => {
+        isInteractingRef.current = true;
+      });
+      controls.addEventListener("controlend", () => {
+        isInteractingRef.current = false;
+      });
+      rotationListenersAttachedRef.current = true;
+    }
+    if (!introStartedRef.current) {
+      introStartedRef.current = true;
+      (async () => {
+        controls.setLookAt(60, 1500, 2000, 0, 0, 0, false);
+        await new Promise((resolve) => setTimeout(resolve, 200));
+        await controls.setLookAt(140, 130, 230, -10, 15, 10, true);
+        await new Promise((resolve) => setTimeout(resolve, 1100));
+        await controls.setLookAt(...DEFAULT_CAM_POS, ...DEFAULT_TARGET, true);
+        introPlayingRef.current = false;
+      })();
+    }
+    if (!focusedAbbr && !isInteractingRef.current && !introPlayingRef.current) {
+      controls.rotate(((Math.PI * 2) / 120) * delta, 0, false);
+    }
+  });
 
   // Per-state projected centroid + risk height, reused for both the
   // click-to-zoom camera target and the hover "target lock" connector line.
@@ -177,19 +267,31 @@ function Scene({
     });
   });
 
+  const supplyChainActive = !!supplyChainFlows && supplyChainFlows.length > 0;
+  const wildfireActive = !!wildfireStats && wildfireStats.length > 0;
+  const flatTerrainActive = supplyChainActive || wildfireActive;
+  const decoratedCommodity = asDecoratedCommodity(highlightCommodity);
+
   return (
     <group position={[-center[0], 0, -center[1]]}>
       {features.map((f) => {
         const fips = String(f.id);
         const ref = STATE_BY_FIPS[fips];
         const impact = ref ? impactByAbbr[ref.abbr] : undefined;
-        const color = impact ? riskColor(impact.financialRiskScore) : NO_DATA_COLOR;
+        const color = wildfireActive
+          ? WILDFIRE_TERRAIN_COLOR
+          : supplyChainActive
+            ? SUPPLY_CHAIN_TERRAIN_COLOR
+            : impact
+              ? riskColor(impact.financialRiskScore)
+              : NO_DATA_COLOR;
         const height = heightForScore(impact?.financialRiskScore);
         if (!ref) return null;
 
         const m = meta.get(ref.abbr);
         const isFocused = focusedAbbr === ref.abbr;
-        const dimmed = focusedAbbr != null && !isFocused;
+        const isHighlighted = highlightSet?.has(ref.abbr) ?? false;
+        const dimmed = focusedAbbr != null ? !isFocused : highlightSet != null && !isHighlighted;
 
         return (
           <group key={fips}>
@@ -201,7 +303,9 @@ function Scene({
               riskScore={impact?.financialRiskScore}
               isHovered={hoveredAbbr === ref.abbr}
               isSelected={selectedAbbr === ref.abbr}
+              isHighlighted={isHighlighted}
               dimmed={dimmed}
+              disableGlow={flatTerrainActive}
               onPointerEnter={(e: ThreeEvent<PointerEvent>) => {
                 e.stopPropagation();
                 onHoverChange({
@@ -245,14 +349,104 @@ function Scene({
                 }
               }}
             />
+            {isHighlighted && m && !flatTerrainActive && (
+              // Html is a child of the group that already translates by
+              // -center, so its position prop needs the RAW (pre-offset)
+              // centroid — reusing the already-center-subtracted m.cx/cz
+              // here double-shifted every label off its actual state.
+              <Html
+                position={[m.cx + center[0], m.height + 4, m.cz + center[1]]}
+                center
+                zIndexRange={[1, 0]}
+              >
+                <div
+                  style={{
+                    padding: "2px 6px",
+                    borderRadius: 4,
+                    background: "#ffffff",
+                    border: "1px solid rgba(15,23,42,0.25)",
+                    fontFamily: "ui-monospace, monospace",
+                    fontSize: "11px",
+                    fontWeight: 700,
+                    color: "#10151c",
+                    boxShadow: "0 2px 6px rgba(0,0,0,0.25)",
+                    whiteSpace: "nowrap",
+                    pointerEvents: "none",
+                  }}
+                >
+                  {ref.abbr}
+                </div>
+              </Html>
+            )}
           </group>
         );
       })}
+
+      {/* Procedural city + forest scattered across every state's real
+       * footprint — the base heatmap view only, and not while a commodity
+       * filter is showing its own crop/livestock decoration instead. */}
+      {!flatTerrainActive && !focusedAbbr && !decoratedCommodity && (
+        <StateLandscape features={features} meta={meta} />
+      )}
+
+      {/* Cattle/Wheat/Corn/Soybeans highlight: real crop/livestock stand-ins
+       * on exactly the states that commodity's real keyCommodities lists —
+       * the same highlight set already coloring the terrain — replacing
+       * the generic city+forest rather than sitting on top of it. */}
+      {decoratedCommodity && !focusedAbbr && highlightedAbbrs && highlightedAbbrs.length > 0 && (
+        <CommodityDecoration
+          commodity={decoratedCommodity}
+          features={features}
+          meta={meta}
+          abbrs={highlightedAbbrs}
+        />
+      )}
+
+      {supplyChainFlows && supplyChainFlows.length > 0 && (
+        <>
+          <SupplyChainBuildings
+            flows={supplyChainFlows}
+            meta={meta}
+            center={center}
+            impactByAbbr={impactByAbbr}
+            onSelect={onSupplyChainBuildingSelect ?? (() => {})}
+          />
+          <SupplyChainFlows
+            flows={supplyChainFlows}
+            meta={meta}
+            center={center}
+            impactByAbbr={impactByAbbr}
+          />
+        </>
+      )}
+
+      {wildfireStats && wildfireStats.length > 0 && (
+        <WildfireMarkers
+          stats={wildfireStats}
+          meta={meta}
+          center={center}
+          impactByAbbr={impactByAbbr}
+          onSelect={onWildfireMarkerSelect ?? (() => {})}
+          activeAbbr={activeWildfireAbbr}
+        />
+      )}
     </group>
   );
 }
 
-export function UsMap3D({ topology, impactByAbbr, selectedAbbr, onSelect }: Props) {
+export function UsMap3D({
+  topology,
+  impactByAbbr,
+  selectedAbbr,
+  onSelect,
+  highlightedAbbrs,
+  highlightCommodity,
+  supplyChainFlows,
+  onSupplyChainBuildingSelect,
+  wildfireStats,
+  onWildfireMarkerSelect,
+  activeWildfireAbbr,
+}: Props) {
   const [hover, setHover] = useState<HoverInfo | null>(null);
   const [focusedAbbr, setFocusedAbbr] = useState<string | null>(null);
   const [containerEl, setContainerEl] = useState<HTMLDivElement | null>(null);
@@ -300,7 +494,7 @@ export function UsMap3D({ topology, impactByAbbr, selectedAbbr, onSelect }: Prop
         }}
       >
         <color attach="background" args={[SCENE_BG]} />
-        <fog attach="fog" args={[SCENE_BG, 1300, 3200]} />
+        <fog attach="fog" args={[SCENE_BG, 1600, 3600]} />
         <ambientLight intensity={0.55} />
         <directionalLight
           position={[400, 600, 300]}
@@ -346,13 +540,20 @@ export function UsMap3D({ topology, impactByAbbr, selectedAbbr, onSelect }: Prop
           onWorldMove={handleWorldMove}
           onAnchorMove={setAnchor}
           controlsRef={controlsRef}
+          highlightedAbbrs={highlightedAbbrs}
+          highlightCommodity={highlightCommodity}
+          supplyChainFlows={supplyChainFlows}
+          onSupplyChainBuildingSelect={onSupplyChainBuildingSelect}
+          wildfireStats={wildfireStats}
+          onWildfireMarkerSelect={onWildfireMarkerSelect}
+          activeWildfireAbbr={activeWildfireAbbr}
         />
 
         <CameraControls
           ref={controlsRef}
           makeDefault
           minDistance={90}
-          maxDistance={2200}
+          maxDistance={2500}
           minPolarAngle={0.15}
           maxPolarAngle={Math.PI / 2 - 0.05}
           mouseButtons={{
@@ -429,7 +630,7 @@ export function UsMap3D({ topology, impactByAbbr, selectedAbbr, onSelect }: Prop
                   background: "rgba(15,23,42,0.06)",
                 }}
               >
-                {hover.impact.financialRiskScore}/100
+                <CountUpNumber value={hover.impact.financialRiskScore} duration={400} />/100
               </span>
             )}
           </div>
@@ -469,6 +670,18 @@ export function UsMap3D({ topology, impactByAbbr, selectedAbbr, onSelect }: Prop
             </div>
           ))}
         </div>
+
+        {wildfireStats && wildfireStats.length > 0 && (
+          <div className="mt-3 pt-2.5 border-t border-border">
+            <div className="text-[0.62rem] font-mono font-semibold uppercase tracking-widest text-text-muted mb-1.5">
+              Wildfire Markers
+            </div>
+            <p className="text-[0.66rem] text-text-secondary leading-relaxed">
+              Bar height &amp; color: real avg. annual acres burned (2005-2024, NIFC). Hover a bar for state, acreage,
+              risk, and livestock exposure &middot; click for the full breakdown.
+            </p>
+          </div>
+        )}
       </div>
 
       <div className="dark-on-bg pointer-events-none absolute bottom-3 right-4 font-mono text-[0.65rem] text-text-muted">

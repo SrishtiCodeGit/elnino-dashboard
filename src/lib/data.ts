@@ -9,6 +9,10 @@ import type {
   RecessionRecord,
   ElNinoEvent,
   StateImpact,
+  SupplyChainFlow,
+  WildfireStats,
+  WildfireYearStats,
+  LivestockPriceRecord,
 } from "./dataUtils";
 
 export * from "./dataUtils";
@@ -37,6 +41,14 @@ export const getRecessions = () =>
 export const getElNinoEvents = () =>
   readJson<ElNinoEvent[]>(PROCESSED_DIR, "el_nino_events.json", []);
 export const getStateImpact = () => readJson<StateImpact[]>(DATA_DIR, "state_impact.json", []);
+export const getSupplyChainFlows = () =>
+  readJson<SupplyChainFlow[]>(PROCESSED_DIR, "supply_chain_flows.json", []);
+export const getWildfireStats = () =>
+  readJson<WildfireStats[]>(PROCESSED_DIR, "wildfire_by_state.json", []);
+export const getWildfireByYear = () =>
+  readJson<WildfireYearStats[]>(PROCESSED_DIR, "wildfire_by_year.json", []);
+export const getLivestockPrices = () =>
+  readJson<LivestockPriceRecord[]>(PROCESSED_DIR, "livestock_prices.json", []);
 
 export function getLatestOni() {
   const oni = getOni();

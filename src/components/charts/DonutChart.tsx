@@ -13,10 +13,23 @@ export function DonutChart({
   data,
   height = 260,
   centerLabel,
+  onSliceClick,
+  light = false,
+  animate = false,
 }: {
   data: Datum[];
   height?: number;
   centerLabel?: { value: string; sub: string };
+  onSliceClick?: (name: string) => void;
+  /** Matches the slice-separator stroke to a light card background instead
+   * of the app's dark default — COLOR.surface is a hardcoded near-black
+   * hex, not a CSS variable, so it doesn't pick up .light-cards scoping on
+   * its own and reads as a black outline on a white modal. */
+  light?: boolean;
+  /** Slices sweep in on open instead of appearing instantly — off by
+   * default so existing callers (e.g. a chart that redraws on live data
+   * changes) don't get a re-animation on every update. */
+  animate?: boolean;
 }) {
   return (
     <div className="relative">
@@ -29,12 +42,19 @@ export function DonutChart({
             innerRadius="58%"
             outerRadius="85%"
             paddingAngle={1.5}
-            stroke={COLOR.surface}
-            strokeWidth={2}
-            isAnimationActive={false}
+            stroke={light ? "#ffffff" : COLOR.surface}
+            strokeWidth={light ? 1 : 2}
+            isAnimationActive={animate}
+            animationDuration={900}
+            animationEasing="ease-out"
           >
             {data.map((d) => (
-              <Cell key={d.name} fill={d.color} />
+              <Cell
+                key={d.name}
+                fill={d.color}
+                onClick={onSliceClick ? () => onSliceClick(d.name) : undefined}
+                style={onSliceClick ? { cursor: "pointer" } : undefined}
+              />
             ))}
           </Pie>
           <Tooltip
@@ -58,12 +78,23 @@ export function DonutChart({
         </div>
       )}
       <div className="flex flex-wrap gap-x-3 gap-y-1 justify-center mt-2">
-        {data.map((d) => (
-          <div key={d.name} className="flex items-center gap-1.5 text-[0.7rem] text-text-secondary">
-            <span className="w-2 h-2 rounded-full" style={{ background: d.color }} />
-            {d.name}
-          </div>
-        ))}
+        {data.map((d) =>
+          onSliceClick ? (
+            <button
+              key={d.name}
+              onClick={() => onSliceClick(d.name)}
+              className="flex items-center gap-1.5 text-[0.7rem] text-text-secondary hover:text-text-primary transition-colors"
+            >
+              <span className="w-2 h-2 rounded-full" style={{ background: d.color }} />
+              {d.name}
+            </button>
+          ) : (
+            <div key={d.name} className="flex items-center gap-1.5 text-[0.7rem] text-text-secondary">
+              <span className="w-2 h-2 rounded-full" style={{ background: d.color }} />
+              {d.name}
+            </div>
+          )
+        )}
       </div>
     </div>
   );

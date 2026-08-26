@@ -49,6 +49,16 @@ export function riskColor(score: number): string {
   return RISK_RAMP[Math.max(0, idx)];
 }
 
+// Ember ramp for wildfire markers — deep red (low) to bright orange (high
+// acreage). Deliberately distinct from RISK_RAMP so it never reads as a
+// second financial-risk scale.
+export const EMBER_RAMP = ["#7C2D12", "#B91C1C", "#EA580C", "#F97316", "#FB923C"];
+
+export function emberColor(fraction: number): string {
+  const idx = Math.min(EMBER_RAMP.length - 1, Math.floor(fraction * EMBER_RAMP.length));
+  return EMBER_RAMP[Math.max(0, idx)];
+}
+
 export const COMMODITY_COLOR: Record<string, string> = {
   Wheat: "#F59E0B",
   Corn: "#EAB308",

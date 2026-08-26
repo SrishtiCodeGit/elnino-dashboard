@@ -207,6 +207,146 @@ export function computeNationalPulse(states: StateImpact[], oni: OniRecord[]): N
   };
 }
 
+export interface TopRiskItem {
+  abbr: string;
+  state: string;
+  region: string;
+  score: number;
+  climateNote: string;
+  keyCommodities: string[];
+}
+
+/** The N highest-scoring states, re-sorted from the same static dataset the
+ * map already loaded — a news-feed reading of existing data, not a new
+ * source. Each item's "why" is the state's own real, sourced climate note —
+ * not a fabricated headline. */
+export function getTopRisks(states: StateImpact[], n = 5): TopRiskItem[] {
+  return [...states]
+    .sort((a, b) => b.financialRiskScore - a.financialRiskScore)
+    .slice(0, n)
+    .map((s) => ({
+      abbr: s.abbr,
+      state: s.state,
+      region: s.region,
+      score: s.financialRiskScore,
+      climateNote: s.climateNote,
+      keyCommodities: s.keyCommodities,
+    }));
+}
+
+export interface SupplyChainFlow {
+  origin: string;
+  destination: string;
+  commodityCode: string;
+  commodityName: string;
+  valueUsdMillions: number;
+}
+
+export interface WildfireStats {
+  abbr: string;
+  avgAnnualAcres: number;
+  fireCount: number;
+  yearsCovered: number;
+}
+
+export interface WildfireYearStats {
+  year: number;
+  totalAcres: number;
+  fireCount: number;
+}
+
+export interface LivestockPriceRecord {
+  date: string;
+  Beef_PriceUsdKg: number | null;
+  Chicken_PriceUsdKg: number | null;
+}
+
+const LIVESTOCK_COMMODITIES = new Set(["Cattle", "Poultry", "Seafood", "Dairy", "Hay"]);
+
+/** Whether a state's real, already-sourced `keyCommodities` include a
+ * livestock/poultry category — no new data, just a read of what's already
+ * there. */
+export function isLivestockExposed(impact: StateImpact): boolean {
+  return impact.keyCommodities.some((c) => LIVESTOCK_COMMODITIES.has(c));
+}
+
+export function livestockCommodities(impact: StateImpact): string[] {
+  return impact.keyCommodities.filter((c) => LIVESTOCK_COMMODITIES.has(c));
+}
+
+export interface CommodityMarketSeries {
+  /** The exact label as it appears in a state's real `keyCommodities`. */
+  commodity: string;
+  /** Display name for the tracked market series (may differ from the
+   * commodity name — e.g. "Cattle" the animal is priced/traded as "Beef"). */
+  label: string;
+  unit: string;
+  source: "livestock" | "commodity";
+  /** Field name on LivestockPriceRecord or CommodityRecord. */
+  field: string;
+}
+
+/** Maps a state's real `keyCommodities` to the real, already-sourced price
+ * series this app actually tracks (commodities.json's futures series, or
+ * livestock_prices.json's Beef/Chicken series). Most `keyCommodities`
+ * values (Almonds, Hogs, Soybeans, etc.) have no tracked series and are
+ * simply not included — no invented series, no proxy substituted in. */
+const COMMODITY_MARKET_MAP: CommodityMarketSeries[] = [
+  { commodity: "Cattle", label: "Beef", unit: "$/kg", source: "livestock", field: "Beef_PriceUsdKg" },
+  { commodity: "Poultry", label: "Chicken", unit: "$/kg", source: "livestock", field: "Chicken_PriceUsdKg" },
+  { commodity: "Corn", label: "Corn", unit: "futures index", source: "commodity", field: "Corn_Futures" },
+  { commodity: "Wheat", label: "Wheat", unit: "futures index", source: "commodity", field: "Wheat_Futures" },
+  { commodity: "Coffee", label: "Coffee", unit: "futures index", source: "commodity", field: "Coffee_Futures" },
+  { commodity: "Crude Oil", label: "Crude Oil", unit: "futures index", source: "commodity", field: "CrudeOil_Futures" },
+];
+
+export function relevantMarketSeries(impact: StateImpact): CommodityMarketSeries[] {
+  return COMMODITY_MARKET_MAP.filter((m) => impact.keyCommodities.includes(m.commodity));
+}
+
+/** A deterministic, template-based note connecting a state's real wildfire
+ * history and its real livestock/poultry commodities to documented general
+ * mechanisms (heat stress, smoke inhalation, feed/water disruption from
+ * drought). No AI call and no invented dollar-loss figure — this project
+ * has no real per-state livestock-loss dataset, so it stays qualitative on
+ * that specific point rather than fabricating one. */
+export function wildfireLivestockNote(impact: StateImpact, wildfire: WildfireStats): string {
+  const livestock = livestockCommodities(impact);
+  const acres = Math.round(wildfire.avgAnnualAcres).toLocaleString();
+
+  if (livestock.length === 0) {
+    return `${impact.state} averages about ${acres} acres burned per year (2005-2024, NIFC), but this dataset doesn't track a livestock or poultry commodity here — wildfire's agricultural transmission channel for this state runs through its other tracked commodities instead, not livestock.`;
+  }
+
+  const list = livestock.join(", ");
+  return `${impact.state} averages about ${acres} acres burned per year (2005-2024, NIFC) and has real tracked exposure in ${list}. Heat stress is well documented to reduce feed conversion, milk yield, and egg-laying while raising mortality in cattle, dairy, and poultry operations; wildfire smoke is a documented respiratory risk to housed and grazing animals; and the drought conditions that often accompany high-fire years reduce available grazing, feed, and water access. This is a reasoned connection from documented mechanisms and this state's real commodity exposure — not a state-specific livestock financial-loss estimate, since no real dataset for that exists here.`;
+}
+
+export interface FlowRiskInfo {
+  score: number | null;
+  severity: ReturnType<typeof severityLabel> | null;
+  climateNote: string | null;
+}
+
+/** Tags a real interstate flow's risk using the ORIGIN state's own
+ * already-computed financialRiskScore — no separate model invented for
+ * supply chains. Callers apply their own color mapping (e.g. `riskColor`
+ * from lib/theme) to `score`, keeping this file dependency-free. */
+export function flowRiskInfo(
+  flow: SupplyChainFlow,
+  statesByAbbr: Record<string, StateImpact>
+): FlowRiskInfo {
+  const origin = statesByAbbr[flow.origin];
+  if (!origin) {
+    return { score: null, severity: null, climateNote: null };
+  }
+  return {
+    score: origin.financialRiskScore,
+    severity: severityLabel(origin.financialRiskScore),
+    climateNote: origin.climateNote,
+  };
+}
+
 /** Downsample a date-indexed series to at most `maxPoints` rows (evenly spaced). */
 export function downsample<T>(rows: T[], maxPoints = 800): T[] {
   if (rows.length <= maxPoints) return rows;

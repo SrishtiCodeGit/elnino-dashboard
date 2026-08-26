@@ -103,6 +103,75 @@ body {
   animation: fade-up 0.5s ease both;
 }
 
+@keyframes backdrop-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.backdrop-fade {
+  animation: backdrop-fade 0.25s ease both;
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.slide-in-right {
+  animation: slide-in-right 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes modal-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.modal-pop {
+  animation: modal-pop 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ticker-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  width: max-content;
+  animation: ticker-scroll 40s linear infinite;
+}
+.ticker-track:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .backdrop-fade,
+  .slide-in-right,
+  .modal-pop {
+    animation: none;
+  }
+  .ticker-track {
+    animation: none;
+    overflow-x: auto;
+  }
+}
+
 /* Scoped light-card theme for the map dashboard: the page/canvas backdrop
    stays dark, but every text-bearing box within this subtree (tooltip,
    legend, HUD readout, the state detail panel) switches to a light card

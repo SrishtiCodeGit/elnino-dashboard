@@ -35,6 +35,11 @@ interface Props {
   yLabelRight?: string;
   referenceLines?: { y: number; label: string; color?: string; yAxisId?: "left" | "right" }[];
   valueFormatter?: (v: number) => string;
+  /** Formats the Y-axis tick labels themselves (not the tooltip). Default
+   * Recharts behavior prints raw numbers — for large values (e.g. millions
+   * of acres) that collides with the rotated axis title at typical chart
+   * widths. Pass a compact formatter (e.g. "12M") to fix that. */
+  yTickFormatter?: (v: number) => string;
   dateFormatter?: (d: string) => string;
   showLegend?: boolean;
   /** Renders on a light card (e.g. the map's state detail panel) instead of
@@ -92,6 +97,7 @@ export function TimeSeriesChart({
   yLabelRight,
   referenceLines = [],
   valueFormatter,
+  yTickFormatter,
   dateFormatter = defaultDateFmt,
   showLegend = false,
   light = false,
@@ -129,6 +135,7 @@ export function TimeSeriesChart({
           tick={{ fill: mutedColor, fontSize: 10 }}
           tickLine={false}
           axisLine={{ stroke: gridColor }}
+          tickFormatter={yTickFormatter}
           label={
             yLabel
               ? { value: yLabel, angle: -90, position: "insideLeft", fill: mutedColor, fontSize: 10 }

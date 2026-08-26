@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { CountUpNumber } from "@/components/CountUpNumber";
 import type { CurrentWeather } from "@/lib/weather";
 
 export function WeatherWidget({ abbr }: { abbr: string }) {
@@ -58,7 +59,7 @@ export function WeatherWidget({ abbr }: { abbr: string }) {
       </div>
       <div className="flex items-baseline gap-2">
         <span className="text-[1.75rem] font-bold font-mono tracking-tight tabular-nums text-text-primary">
-          {data.temperatureF ?? "—"}&deg;F
+          {data.temperatureF != null ? <CountUpNumber value={data.temperatureF} /> : "—"}&deg;F
         </span>
         {data.temperatureC != null && (
           <span className="text-sm font-mono text-text-muted">({data.temperatureC}&deg;C)</span>
