@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getStateImpact } from "@/lib/data";
 import { severityLabel } from "@/lib/dataUtils";
 import { sendSms } from "@/lib/sms";
+import { normalizePhone, isValidPhone } from "@/lib/phone";
 
 // Server-process-lifetime snapshot of which states were Severe (score >= 75)
 // as of the last check — same single-instance-cache pattern already used in
@@ -10,11 +11,6 @@ import { sendSms } from "@/lib/sms";
 // multi-instance production deployment would need a shared store instead.
 let lastSevere: Set<string> | null = null;
 
-function isValidPhone(phone: string): boolean {
-  // E.164-ish: leading +, 8-15 digits. Real validation happens at Vonage.
-  return /^\+[1-9]\d{7,14}$/.test(phone);
-}
-
 export async function POST(request: Request) {
   let body: { phone?: unknown; simulate?: unknown };
   try {
@@ -22,7 +18,10 @@ export async function POST(request: Request) {
   } catch {
     body = {};
   }
-  const phone = typeof body.phone === "string" ? body.phone.trim() : "";
+  // Normalized server-side too (not just trusting the client) — someone
+  // could call this route directly, and "+1 555 010 0123" is a completely
+  // normal way to type a number that a bare E.164 regex would reject.
+  const phone = typeof body.phone === "string" ? normalizePhone(body.phone) : "";
   const simulate = body.simulate === true;
 
   const states = getStateImpact();

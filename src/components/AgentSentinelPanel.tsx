@@ -3,15 +3,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDraggable } from "@/hooks/useDraggable";
 import { makeSentinelEvent } from "@/lib/sentinel";
+import { normalizePhone, isValidPhone } from "@/lib/phone";
 import type { SentinelEvent } from "@/lib/sentinel";
 
 const PHONE_STORAGE_KEY = "elnino-agent-phone";
 const MONITOR_STORAGE_KEY = "elnino-agent-monitoring";
 const POLL_MS = 60_000;
-
-function isValidPhone(phone: string): boolean {
-  return /^\+[1-9]\d{7,14}$/.test(phone);
-}
 
 function relativeTime(ts: number): string {
   const diffSec = Math.max(0, Math.round((Date.now() - ts) / 1000));
@@ -78,7 +75,7 @@ export function AgentSentinelPanel({
 
   const runCheck = useCallback(
     async (simulate = false) => {
-      const currentPhone = phoneRef.current;
+      const currentPhone = normalizePhone(phoneRef.current);
       const tag = simulate ? "[Simulated] " : "";
       try {
         const res = await fetch("/api/risk-check", {
