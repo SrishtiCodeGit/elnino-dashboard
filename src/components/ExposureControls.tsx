@@ -28,6 +28,16 @@ function FlameIcon({ className }: { className?: string }) {
   );
 }
 
+function DollarIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" className={className}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 6.5v11" />
+      <path d="M15.2 9c0-1.4-1.4-2.5-3.2-2.5S8.8 7.6 8.8 9c0 1.4 1.4 2 3.2 2.5s3.2 1.1 3.2 2.5c0 1.4-1.4 2.5-3.2 2.5S8.8 15.4 8.8 14" />
+    </svg>
+  );
+}
+
 export function ExposureControls({
   pulse,
   highlight,
@@ -40,6 +50,8 @@ export function ExposureControls({
   onToggleWildfireRisk,
   showSentinel,
   onToggleSentinel,
+  financialRiskActive,
+  onSelectFinancialRisk,
 }: {
   pulse: NationalPulse;
   highlight: MapHighlight | null;
@@ -52,6 +64,8 @@ export function ExposureControls({
   onToggleWildfireRisk: () => void;
   showSentinel: boolean;
   onToggleSentinel: () => void;
+  financialRiskActive: boolean;
+  onSelectFinancialRisk: () => void;
 }) {
   const topExposureActive = highlight?.type === "topExposure";
   const selectedCommodity = highlight?.type === "commodity" ? highlight.value : "";
@@ -121,7 +135,18 @@ export function ExposureControls({
       </div>
 
       <div className={`${sectionHeading} mt-1`}>Risk Views</div>
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-3 gap-2">
+        <button
+          onClick={onSelectFinancialRisk}
+          aria-pressed={financialRiskActive}
+          className={`${button} aspect-square flex flex-col items-center justify-center gap-1.5 ${
+            financialRiskActive ? activeButton : "hover:border-la-nina-deep"
+          }`}
+        >
+          <DollarIcon className={`w-6 h-6 shrink-0 ${financialRiskActive ? "text-white" : "text-text-muted"}`} />
+          <span className={`${riskTileLabel} ${financialRiskActive ? "text-white" : "text-text-muted"}`}>Financial Risk</span>
+        </button>
+
         <button
           onClick={onToggleSupplyChain}
           aria-pressed={showSupplyChain}

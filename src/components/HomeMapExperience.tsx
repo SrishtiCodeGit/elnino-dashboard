@@ -100,6 +100,16 @@ export function HomeMapExperience({
     });
   }
 
+  function handleSelectFinancialRisk() {
+    setHighlight(null);
+    setShowSupplyChain(false);
+    setShowSupplyChainReport(false);
+    setShowWildfireRisk(false);
+    setShowWildfireSummary(false);
+  }
+
+  const financialRiskActive = !highlight && !showSupplyChain && !showWildfireRisk;
+
   function handleToggleWildfireRisk() {
     setShowWildfireRisk((prev) => {
       const next = !prev;
@@ -190,6 +200,8 @@ export function HomeMapExperience({
             onToggleWildfireRisk={handleToggleWildfireRisk}
             showSentinel={showSentinel}
             onToggleSentinel={() => setShowSentinel((v) => !v)}
+            financialRiskActive={financialRiskActive}
+            onSelectFinancialRisk={handleSelectFinancialRisk}
           />
         </div>
 
