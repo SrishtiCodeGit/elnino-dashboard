@@ -197,6 +197,7 @@ export function HomeMapExperience({
           wildfireStats={showWildfireRisk ? topWildfireStats : null}
           onWildfireMarkerSelect={setWildfireDetailAbbr}
           activeWildfireAbbr={wildfireDetailAbbr}
+          financialRiskActive={financialRiskActive}
         />
 
         <div className="absolute top-4 left-4 z-10 w-64">

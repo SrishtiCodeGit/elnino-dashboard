@@ -20,6 +20,7 @@ import { SupplyChainBuildings } from "./SupplyChainBuildings";
 import { StateLandscape } from "./StateLandscape";
 import { CommodityDecoration, type DecoratedCommodity } from "./CommodityDecoration";
 import { WildfireMarkers } from "./WildfireMarkers";
+import { FinancialRiskMarkers } from "./FinancialRiskMarkers";
 import { CountUpNumber } from "@/components/CountUpNumber";
 
 const DECORATED_COMMODITIES = new Set<DecoratedCommodity>(["Cattle", "Wheat", "Corn", "Soybeans"]);
@@ -39,6 +40,7 @@ interface Props {
   wildfireStats?: WildfireStats[] | null;
   onWildfireMarkerSelect?: (abbr: string) => void;
   activeWildfireAbbr?: string | null;
+  financialRiskActive?: boolean;
 }
 
 interface HoverInfo {
@@ -63,6 +65,12 @@ const SUPPLY_CHAIN_TERRAIN_COLOR = "#334155";
 // terrain views don't read as the same mode, and the ember-colored flame
 // markers still pop against it.
 const WILDFIRE_TERRAIN_COLOR = "#2A2420";
+// Financial Risk view: one flat warm-yellow tone for every state instead of
+// the full green-to-red heatmap gradient — severity is carried entirely by
+// the red rod markers (FinancialRiskMarkers) on Severe-band states instead
+// of terrain color, same "one signal per view" reasoning as the other two
+// flat-terrain modes above.
+const FINANCIAL_RISK_TERRAIN_COLOR = "#EAB308";
 const MIN_HEIGHT = 4;
 const MAX_HEIGHT = 46;
 
@@ -166,6 +174,7 @@ function Scene({
   wildfireStats,
   onWildfireMarkerSelect,
   activeWildfireAbbr,
+  financialRiskActive,
 }: {
   features: Feature[];
   center: [number, number];
@@ -187,6 +196,7 @@ function Scene({
   wildfireStats?: WildfireStats[] | null;
   onWildfireMarkerSelect?: (abbr: string) => void;
   activeWildfireAbbr?: string | null;
+  financialRiskActive?: boolean;
 }) {
   const highlightSet = useMemo(
     () => (highlightedAbbrs && highlightedAbbrs.length ? new Set(highlightedAbbrs) : null),
@@ -282,9 +292,11 @@ function Scene({
           ? WILDFIRE_TERRAIN_COLOR
           : supplyChainActive
             ? SUPPLY_CHAIN_TERRAIN_COLOR
-            : impact
-              ? riskColor(impact.financialRiskScore)
-              : NO_DATA_COLOR;
+            : financialRiskActive
+              ? FINANCIAL_RISK_TERRAIN_COLOR
+              : impact
+                ? riskColor(impact.financialRiskScore)
+                : NO_DATA_COLOR;
         const height = heightForScore(impact?.financialRiskScore);
         if (!ref) return null;
 
@@ -305,7 +317,7 @@ function Scene({
               isSelected={selectedAbbr === ref.abbr}
               isHighlighted={isHighlighted}
               dimmed={dimmed}
-              disableGlow={flatTerrainActive}
+              disableGlow={flatTerrainActive || financialRiskActive}
               onPointerEnter={(e: ThreeEvent<PointerEvent>) => {
                 e.stopPropagation();
                 onHoverChange({
@@ -430,6 +442,10 @@ function Scene({
           activeAbbr={activeWildfireAbbr}
         />
       )}
+
+      {financialRiskActive && (
+        <FinancialRiskMarkers states={Object.values(impactByAbbr)} meta={meta} center={center} onSelect={onSelect} />
+      )}
     </group>
   );
 }
@@ -446,6 +462,7 @@ export function UsMap3D({
   wildfireStats,
   onWildfireMarkerSelect,
   activeWildfireAbbr,
+  financialRiskActive,
 }: Props) {
   const [hover, setHover] = useState<HoverInfo | null>(null);
   const [focusedAbbr, setFocusedAbbr] = useState<string | null>(null);
@@ -547,6 +564,7 @@ export function UsMap3D({
           wildfireStats={wildfireStats}
           onWildfireMarkerSelect={onWildfireMarkerSelect}
           activeWildfireAbbr={activeWildfireAbbr}
+          financialRiskActive={financialRiskActive}
         />
 
         <CameraControls
