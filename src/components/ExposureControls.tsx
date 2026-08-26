@@ -16,6 +16,8 @@ export function ExposureControls({
   onToggleSupplyChain,
   showWildfireRisk,
   onToggleWildfireRisk,
+  showSentinel,
+  onToggleSentinel,
 }: {
   pulse: NationalPulse;
   highlight: MapHighlight | null;
@@ -26,6 +28,8 @@ export function ExposureControls({
   onToggleSupplyChain: () => void;
   showWildfireRisk: boolean;
   onToggleWildfireRisk: () => void;
+  showSentinel: boolean;
+  onToggleSentinel: () => void;
 }) {
   const topExposureActive = highlight?.type === "topExposure";
   const selectedCommodity = highlight?.type === "commodity" ? highlight.value : "";
@@ -91,14 +95,32 @@ export function ExposureControls({
         </button>
       </div>
 
-      <button
-        onClick={onOpenReport}
-        className="hud-card rounded-lg border border-border-strong bg-elevated/90 backdrop-blur px-2 py-1.5 shadow-xl w-full text-center hover:border-la-nina-deep transition-colors"
-      >
-        <span className="block truncate text-[0.58rem] font-mono font-semibold uppercase tracking-tight text-text-muted">
-          Generate Report
-        </span>
-      </button>
+      <div className="flex gap-2">
+        <button
+          onClick={onOpenReport}
+          className="hud-card rounded-lg border border-border-strong bg-elevated/90 backdrop-blur px-2 py-1.5 shadow-xl flex-1 min-w-0 text-center hover:border-la-nina-deep transition-colors"
+        >
+          <span className="block truncate text-[0.58rem] font-mono font-semibold uppercase tracking-tight text-text-muted">
+            Agent Report
+          </span>
+        </button>
+
+        <button
+          onClick={onToggleSentinel}
+          aria-pressed={showSentinel}
+          className={`hud-card rounded-lg border border-border-strong bg-elevated/90 backdrop-blur px-2 py-1.5 shadow-xl flex-1 min-w-0 text-center transition-colors ${
+            showSentinel ? "!bg-el-nino-strong !border-el-nino-strong" : "hover:border-la-nina-deep"
+          }`}
+        >
+          <span
+            className={`block truncate text-[0.58rem] font-mono font-semibold uppercase tracking-tight ${
+              showSentinel ? "text-white" : "text-text-muted"
+            }`}
+          >
+            Agent Sentinel
+          </span>
+        </button>
+      </div>
 
       <button
         onClick={onToggleSupplyChain}

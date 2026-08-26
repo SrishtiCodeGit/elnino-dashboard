@@ -1,13 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import { UsMap3D } from "@/components/map3d/UsMap3D";
 import { StatePanel } from "@/components/StatePanel";
 import { TopHeaderBar } from "@/components/TopHeaderBar";
 import { RiskTicker } from "@/components/RiskTicker";
 import { ExposureControls } from "@/components/ExposureControls";
 import { TopRisksModal } from "@/components/TopRisksModal";
-import { ReportModal } from "@/components/ReportModal";
+import { AgentReportPanel } from "@/components/AgentReportPanel";
+import { AgentSentinelPanel } from "@/components/AgentSentinelPanel";
 import { SupplyChainReportModal } from "@/components/SupplyChainReportModal";
 import { SupplyChainBuildingDetail } from "@/components/SupplyChainBuildingDetail";
 import { WildfireRiskSummaryModal } from "@/components/WildfireRiskSummaryModal";
@@ -25,6 +26,7 @@ import type {
   WildfireYearStats,
   LivestockPriceRecord,
 } from "@/lib/dataUtils";
+import type { SentinelEvent } from "@/lib/sentinel";
 import type { Topology } from "topojson-specification";
 
 export type MapHighlight = { type: "commodity"; value: string } | { type: "topExposure" };
@@ -59,7 +61,12 @@ export function HomeMapExperience({
   const [selected, setSelected] = useState<string | null>(null);
   const [highlight, setHighlight] = useState<MapHighlight | null>(null);
   const [showTopRisks, setShowTopRisks] = useState(false);
-  const [showReport, setShowReport] = useState(false);
+  const [showAgentReport, setShowAgentReport] = useState(false);
+  const [showSentinel, setShowSentinel] = useState(false);
+  const [sentinelEvents, setSentinelEvents] = useState<SentinelEvent[]>([]);
+  const pushSentinelEvent = useCallback((event: SentinelEvent) => {
+    setSentinelEvents((prev) => [...prev.slice(-49), event]);
+  }, []);
   const [showSupplyChain, setShowSupplyChain] = useState(false);
   const [showSupplyChainReport, setShowSupplyChainReport] = useState(false);
   const [buildingDetailAbbr, setBuildingDetailAbbr] = useState<string | null>(null);
@@ -176,11 +183,13 @@ export function HomeMapExperience({
             highlight={highlight}
             onHighlightChange={handleHighlightChange}
             onOpenTopRisks={() => setShowTopRisks(true)}
-            onOpenReport={() => setShowReport(true)}
+            onOpenReport={() => setShowAgentReport(true)}
             showSupplyChain={showSupplyChain}
             onToggleSupplyChain={handleToggleSupplyChain}
             showWildfireRisk={showWildfireRisk}
             onToggleWildfireRisk={handleToggleWildfireRisk}
+            showSentinel={showSentinel}
+            onToggleSentinel={() => setShowSentinel((v) => !v)}
           />
         </div>
 
@@ -207,7 +216,18 @@ export function HomeMapExperience({
         <TopRisksModal items={topRisks} onSelect={setSelected} onClose={() => setShowTopRisks(false)} />
       )}
 
-      {showReport && <ReportModal states={allStates} onClose={() => setShowReport(false)} />}
+      {showAgentReport && (
+        <AgentReportPanel
+          states={allStates}
+          pulse={pulse}
+          onClose={() => setShowAgentReport(false)}
+          pushEvent={pushSentinelEvent}
+        />
+      )}
+
+      {showSentinel && (
+        <AgentSentinelPanel events={sentinelEvents} pushEvent={pushSentinelEvent} onClose={() => setShowSentinel(false)} />
+      )}
 
       {showSupplyChainReport && (
         <SupplyChainReportModal
