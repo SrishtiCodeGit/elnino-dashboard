@@ -13,6 +13,7 @@ import { SupplyChainReportModal } from "@/components/SupplyChainReportModal";
 import { SupplyChainBuildingDetail } from "@/components/SupplyChainBuildingDetail";
 import { WildfireRiskSummaryModal } from "@/components/WildfireRiskSummaryModal";
 import { WildfireLivestockDetail } from "@/components/WildfireLivestockDetail";
+import { FinancialRiskSummaryModal } from "@/components/FinancialRiskSummaryModal";
 import { STATE_BY_ABBR } from "@/lib/states";
 import type {
   StateImpact,
@@ -25,6 +26,8 @@ import type {
   WildfireStats,
   WildfireYearStats,
   LivestockPriceRecord,
+  FinancialRecord,
+  PhaseReturn,
 } from "@/lib/dataUtils";
 import type { SentinelEvent } from "@/lib/sentinel";
 import type { Topology } from "topojson-specification";
@@ -44,6 +47,10 @@ export function HomeMapExperience({
   wildfireStats,
   wildfireByYear,
   livestockPrices,
+  financialMarkets,
+  spReturns,
+  insuranceReturns,
+  agricultureReturns,
 }: {
   topology: Topology;
   impactByAbbr: Record<string, StateImpact>;
@@ -57,6 +64,10 @@ export function HomeMapExperience({
   wildfireStats: WildfireStats[];
   wildfireByYear: WildfireYearStats[];
   livestockPrices: LivestockPriceRecord[];
+  financialMarkets: FinancialRecord[];
+  spReturns: PhaseReturn[];
+  insuranceReturns: PhaseReturn[];
+  agricultureReturns: PhaseReturn[];
 }) {
   const [selected, setSelected] = useState<string | null>(null);
   const [highlight, setHighlight] = useState<MapHighlight | null>(null);
@@ -72,6 +83,7 @@ export function HomeMapExperience({
   const [buildingDetailAbbr, setBuildingDetailAbbr] = useState<string | null>(null);
   const [showWildfireRisk, setShowWildfireRisk] = useState(false);
   const [showWildfireSummary, setShowWildfireSummary] = useState(false);
+  const [showFinancialSummary, setShowFinancialSummary] = useState(false);
   const [wildfireDetailAbbr, setWildfireDetailAbbr] = useState<string | null>(null);
   const stateRef = selected ? STATE_BY_ABBR[selected] : null;
 
@@ -222,6 +234,15 @@ export function HomeMapExperience({
             See Details
           </button>
         )}
+
+        {financialRiskActive && (
+          <button
+            onClick={() => setShowFinancialSummary(true)}
+            className="hud-card absolute bottom-16 left-1/2 -translate-x-1/2 z-10 rounded-full px-5 py-2 shadow-2xl font-mono font-bold text-[0.72rem] uppercase tracking-wide text-[#1E293B] bg-[#FBBF24] hover:bg-[#FCD34D] transition-colors"
+          >
+            See Market Impact
+          </button>
+        )}
       </div>
 
       {showTopRisks && (
@@ -267,6 +288,17 @@ export function HomeMapExperience({
           impactByAbbr={impactByAbbr}
           onSelect={setSelected}
           onClose={() => setShowWildfireSummary(false)}
+        />
+      )}
+
+      {showFinancialSummary && (
+        <FinancialRiskSummaryModal
+          financialMarkets={financialMarkets}
+          elNinoEvents={elNinoEvents}
+          spReturns={spReturns}
+          insuranceReturns={insuranceReturns}
+          agricultureReturns={agricultureReturns}
+          onClose={() => setShowFinancialSummary(false)}
         />
       )}
 

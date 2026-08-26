@@ -14,6 +14,8 @@ import {
   getWildfireStats,
   getWildfireByYear,
   getLivestockPrices,
+  getFinancialMarkets,
+  quarterlyPhaseReturns,
 } from "@/lib/data";
 import { fetchLiveOni } from "@/lib/liveOni";
 import type { Topology } from "topojson-specification";
@@ -47,6 +49,27 @@ export default async function Home() {
   const wildfireByYear = getWildfireByYear();
   const livestockPrices = getLivestockPrices();
 
+  // Real quarterly market returns grouped by ENSO phase — same computation
+  // already powering the /markets page, reused here (not reinvented) to
+  // connect state-level climate risk to actual market behavior. Insurance
+  // and Agriculture are the two sectors most directly exposed to the same
+  // climate signal the state risk scores are built from.
+  const financialMarkets = getFinancialMarkets();
+  const staticOni = getOni();
+  const spReturns = quarterlyPhaseReturns(
+    financialMarkets.map((r) => ({ date: r.date, value: r.SP500 })),
+    staticOni
+  );
+  const insuranceReturns = quarterlyPhaseReturns(
+    financialMarkets.map((r) => ({ date: r.date, value: r.Insurance_ETF })),
+    staticOni
+  );
+  const agricultureReturns = quarterlyPhaseReturns(
+    financialMarkets.map((r) => ({ date: r.date, value: r.Agriculture_ETF })),
+    staticOni
+  );
+  const financialMarketsF = downsample(financialMarkets, 700);
+
   return (
     <HomeMapExperience
       topology={topology}
@@ -61,6 +84,10 @@ export default async function Home() {
       wildfireStats={wildfireStats}
       wildfireByYear={wildfireByYear}
       livestockPrices={livestockPrices}
+      financialMarkets={financialMarketsF}
+      spReturns={spReturns}
+      insuranceReturns={insuranceReturns}
+      agricultureReturns={agricultureReturns}
     />
   );
 }
