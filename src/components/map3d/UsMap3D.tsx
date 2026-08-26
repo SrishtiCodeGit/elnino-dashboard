@@ -71,6 +71,12 @@ const WILDFIRE_TERRAIN_COLOR = "#2A2420";
 // of terrain color, same "one signal per view" reasoning as the other two
 // flat-terrain modes above.
 const FINANCIAL_RISK_TERRAIN_COLOR = "#EAB308";
+// Severe-band (score >= 75) states break from the flat yellow in this view —
+// deep red terrain with the pulsing glow re-enabled just for them, on top
+// of the already-present red rod marker, so the worst states read as
+// unmistakably different at a glance, not just "a taller rod somewhere".
+const FINANCIAL_RISK_SEVERE_COLOR = "#B91C1C";
+const FINANCIAL_RISK_SEVERE_THRESHOLD = 75;
 const MIN_HEIGHT = 4;
 const MAX_HEIGHT = 46;
 
@@ -288,12 +294,16 @@ function Scene({
         const fips = String(f.id);
         const ref = STATE_BY_FIPS[fips];
         const impact = ref ? impactByAbbr[ref.abbr] : undefined;
+        const isSevereFinancial =
+          financialRiskActive && (impact?.financialRiskScore ?? 0) >= FINANCIAL_RISK_SEVERE_THRESHOLD;
         const color = wildfireActive
           ? WILDFIRE_TERRAIN_COLOR
           : supplyChainActive
             ? SUPPLY_CHAIN_TERRAIN_COLOR
             : financialRiskActive
-              ? FINANCIAL_RISK_TERRAIN_COLOR
+              ? isSevereFinancial
+                ? FINANCIAL_RISK_SEVERE_COLOR
+                : FINANCIAL_RISK_TERRAIN_COLOR
               : impact
                 ? riskColor(impact.financialRiskScore)
                 : NO_DATA_COLOR;
@@ -317,7 +327,7 @@ function Scene({
               isSelected={selectedAbbr === ref.abbr}
               isHighlighted={isHighlighted}
               dimmed={dimmed}
-              disableGlow={flatTerrainActive || financialRiskActive}
+              disableGlow={flatTerrainActive || (financialRiskActive && !isSevereFinancial)}
               onPointerEnter={(e: ThreeEvent<PointerEvent>) => {
                 e.stopPropagation();
                 onHoverChange({
@@ -395,9 +405,12 @@ function Scene({
       })}
 
       {/* Procedural city + forest scattered across every state's real
-       * footprint — the base heatmap view only, and not while a commodity
-       * filter is showing its own crop/livestock decoration instead. */}
-      {!flatTerrainActive && !focusedAbbr && !decoratedCommodity && (
+       * footprint — only for highlight modes with no view of their own
+       * (e.g. Highest Exposure). Not on the flat Supply Chain/Wildfire/
+       * Financial Risk terrains, which each carry severity via their own
+       * marker layer instead, and not while a commodity filter is showing
+       * its own crop/livestock decoration. */}
+      {!flatTerrainActive && !financialRiskActive && !focusedAbbr && !decoratedCommodity && (
         <StateLandscape features={features} meta={meta} />
       )}
 
