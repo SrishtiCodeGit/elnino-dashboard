@@ -74,46 +74,67 @@ export function AgentSentinelPanel({
     return () => clearInterval(id);
   }, []);
 
-  const runCheck = useCallback(async () => {
+  const [simulating, setSimulating] = useState(false);
+
+  const runCheck = useCallback(
+    async (simulate = false) => {
+      const currentPhone = phoneRef.current;
+      const tag = simulate ? "[Simulated] " : "";
+      try {
+        const res = await fetch("/api/risk-check", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ phone: isValidPhone(currentPhone) ? currentPhone : undefined, simulate }),
+        });
+        const data = await res.json();
+        if (data.initialized) {
+          pushEvent(makeSentinelEvent("check", "info", "Monitoring started", "Baseline severity snapshot recorded"));
+          return;
+        }
+        const newlySevere = Array.isArray(data.newlySevere) ? data.newlySevere : [];
+        if (newlySevere.length === 0) {
+          pushEvent(makeSentinelEvent("check", "info", `${tag}Risk check: no change`, "No state newly crossed into Severe"));
+          return;
+        }
+        const names = newlySevere.map((s: { state: string; score: number }) => `${s.state} (${s.score})`).join(", ");
+        pushEvent(
+          makeSentinelEvent(
+            "check",
+            "info",
+            `${tag}${newlySevere.length} state${newlySevere.length === 1 ? "" : "s"} crossed into Severe`,
+            names
+          )
+        );
+        if (data.smsSent) {
+          pushEvent(makeSentinelEvent("sms", "success", `${tag}SMS alert sent to ${currentPhone}`, names));
+        } else if (data.smsError) {
+          pushEvent(makeSentinelEvent("sms", "error", `${tag}SMS alert not sent`, data.smsError));
+        }
+      } catch {
+        pushEvent(makeSentinelEvent("check", "error", `${tag}Risk check failed`, "Couldn't reach the monitor endpoint"));
+      }
+    },
+    [pushEvent]
+  );
+
+  const handleCheckNow = useCallback(async () => {
     setChecking(true);
-    const currentPhone = phoneRef.current;
-    try {
-      const res = await fetch("/api/risk-check", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ phone: isValidPhone(currentPhone) ? currentPhone : undefined }),
-      });
-      const data = await res.json();
-      if (data.initialized) {
-        pushEvent(makeSentinelEvent("check", "info", "Monitoring started", "Baseline severity snapshot recorded"));
-        return;
-      }
-      const newlySevere = Array.isArray(data.newlySevere) ? data.newlySevere : [];
-      if (newlySevere.length === 0) {
-        pushEvent(makeSentinelEvent("check", "info", "Risk check: no change", "No state newly crossed into Severe"));
-        return;
-      }
-      const names = newlySevere.map((s: { state: string; score: number }) => `${s.state} (${s.score})`).join(", ");
-      pushEvent(makeSentinelEvent("check", "info", `${newlySevere.length} state${newlySevere.length === 1 ? "" : "s"} crossed into Severe`, names));
-      if (data.smsSent) {
-        pushEvent(makeSentinelEvent("sms", "success", `SMS alert sent to ${currentPhone}`, names));
-      } else if (data.smsError) {
-        pushEvent(makeSentinelEvent("sms", "error", "SMS alert not sent", data.smsError));
-      }
-    } catch {
-      pushEvent(makeSentinelEvent("check", "error", "Risk check failed", "Couldn't reach the monitor endpoint"));
-    } finally {
-      setChecking(false);
-    }
-  }, [pushEvent]);
+    await runCheck(false);
+    setChecking(false);
+  }, [runCheck]);
+
+  const handleSimulate = useCallback(async () => {
+    setSimulating(true);
+    await runCheck(true);
+    setSimulating(false);
+  }, [runCheck]);
 
   useEffect(() => {
     if (!monitoring) return;
-    // Intentional: starting the poll should run one check immediately
-    // rather than waiting POLL_MS for the first result.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    runCheck();
-    const id = setInterval(runCheck, POLL_MS);
+    // Starting the poll should run one check immediately rather than
+    // waiting POLL_MS for the first result.
+    runCheck(false);
+    const id = setInterval(() => runCheck(false), POLL_MS);
     return () => clearInterval(id);
   }, [monitoring, runCheck]);
 
@@ -127,7 +148,7 @@ export function AgentSentinelPanel({
   return (
     <div
       className="light-cards modal-pop fixed z-30 w-[340px] max-w-[92vw] rounded-xl border border-border-strong bg-elevated shadow-2xl flex flex-col overflow-hidden"
-      style={{ left: pos.x, top: pos.y, height: 440 }}
+      style={{ left: pos.x, top: pos.y, height: 490 }}
     >
       <div
         className="flex items-center justify-between gap-2 px-4 py-3 border-b border-border cursor-grab active:cursor-grabbing shrink-0 touch-none"
@@ -162,25 +183,35 @@ export function AgentSentinelPanel({
             phoneValid ? "border-border-strong" : "border-el-nino-strong"
           }`}
         />
+        <button
+          onClick={() => setMonitoring((m) => !m)}
+          className={`w-full rounded-md text-[0.7rem] font-semibold py-1.5 transition-colors ${
+            monitoring ? "bg-el-nino-strong text-white" : "border border-border-strong text-text-secondary hover:border-la-nina-deep"
+          }`}
+        >
+          {monitoring ? "Stop Monitoring" : "Start Monitoring"}
+        </button>
         <div className="flex items-center gap-2">
           <button
-            onClick={() => setMonitoring((m) => !m)}
-            className={`flex-1 rounded-md text-[0.7rem] font-semibold py-1.5 transition-colors ${
-              monitoring ? "bg-el-nino-strong text-white" : "border border-border-strong text-text-secondary hover:border-la-nina-deep"
-            }`}
-          >
-            {monitoring ? "Stop Monitoring" : "Start Monitoring"}
-          </button>
-          <button
-            onClick={runCheck}
+            onClick={handleCheckNow}
             disabled={checking}
-            className="rounded-md border border-border-strong text-text-secondary text-[0.7rem] font-semibold px-2.5 py-1.5 hover:border-la-nina-deep disabled:opacity-40 transition-colors"
+            className="flex-1 rounded-md border border-border-strong text-text-secondary text-[0.7rem] font-semibold px-2.5 py-1.5 hover:border-la-nina-deep disabled:opacity-40 transition-colors"
           >
             {checking ? "…" : "Check now"}
           </button>
+          <button
+            onClick={handleSimulate}
+            disabled={simulating}
+            title="Fires a real test SMS using the state genuinely closest to Severe — doesn't affect real monitoring"
+            className="flex-1 rounded-md border border-dashed border-border-strong text-text-secondary text-[0.7rem] font-semibold px-2.5 py-1.5 hover:border-la-nina-deep disabled:opacity-40 transition-colors"
+          >
+            {simulating ? "…" : "Simulate Test"}
+          </button>
         </div>
         <p className="text-[0.62rem] text-text-muted leading-snug">
-          Polls every 60s for states newly crossing into Severe (score ≥ 75) and texts the number above.
+          Polls every 60s for states newly crossing into Severe (score ≥ 75) and texts the number above. The
+          underlying dataset is static (see the header disclosure), so real checks will almost always say
+          &ldquo;no change&rdquo; — use Simulate Test to verify the SMS pipeline itself works.
         </p>
       </div>
 

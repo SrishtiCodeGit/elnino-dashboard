@@ -16,15 +16,58 @@ function isValidPhone(phone: string): boolean {
 }
 
 export async function POST(request: Request) {
-  let body: { phone?: unknown };
+  let body: { phone?: unknown; simulate?: unknown };
   try {
     body = await request.json();
   } catch {
     body = {};
   }
   const phone = typeof body.phone === "string" ? body.phone.trim() : "";
+  const simulate = body.simulate === true;
 
   const states = getStateImpact();
+
+  // Test-only path: the underlying dataset is static (see TopHeaderBar's
+  // "not real-time" disclosure), so real polling will almost never find a
+  // change to report. This exercises the exact same SMS-send + response
+  // shape as a real detection, using a real state (the one genuinely
+  // closest to Severe) rather than inventing one — it just doesn't touch
+  // `lastSevere`, so it can't corrupt real monitoring's baseline.
+  if (simulate) {
+    const closest = [...states]
+      .filter((s) => s.financialRiskScore < 75)
+      .sort((a, b) => b.financialRiskScore - a.financialRiskScore)[0];
+    if (!closest) {
+      return NextResponse.json({ checkedAt: new Date().toISOString(), initialized: false, newlySevere: [], smsSent: false });
+    }
+    const simulatedEntry = {
+      abbr: closest.abbr,
+      state: closest.state,
+      score: closest.financialRiskScore,
+      severity: severityLabel(closest.financialRiskScore),
+    };
+    if (!phone || !isValidPhone(phone)) {
+      return NextResponse.json({
+        checkedAt: new Date().toISOString(),
+        initialized: false,
+        newlySevere: [simulatedEntry],
+        simulated: true,
+        smsSent: false,
+        smsError: !phone ? "No phone number registered" : "Phone number must be in +1XXXXXXXXXX (E.164) format",
+      });
+    }
+    const testBody = `El Nino Risk Alert (TEST): simulated Severe crossing for ${closest.state} (${closest.financialRiskScore}/100). This is a test of the alert pipeline, not a real risk change.`;
+    const result = await sendSms(phone, testBody);
+    return NextResponse.json({
+      checkedAt: new Date().toISOString(),
+      initialized: false,
+      newlySevere: [simulatedEntry],
+      simulated: true,
+      smsSent: result.success,
+      smsError: result.error,
+    });
+  }
+
   const currentSevere = new Set(states.filter((s) => s.financialRiskScore >= 75).map((s) => s.abbr));
 
   // First check of this server process: establish the baseline silently —
