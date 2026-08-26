@@ -569,13 +569,6 @@ export function UsMap3D({
         </EffectComposer>
       </Canvas>
 
-      <div className="pointer-events-none absolute inset-4 z-10">
-        <span className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-la-nina/50" />
-        <span className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-la-nina/50" />
-        <span className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-la-nina/50" />
-        <span className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-la-nina/50" />
-      </div>
-
       <div className="pointer-events-none absolute bottom-3 left-4 rounded-md border border-border-strong bg-elevated/80 backdrop-blur px-3 py-1.5 font-mono text-[0.65rem] text-la-nina-deep tabular-nums">
         {hudLonLat
           ? `GEO ${Math.abs(hudLonLat[1]).toFixed(4)}°${hudLonLat[1] >= 0 ? "N" : "S"}  ${Math.abs(hudLonLat[0]).toFixed(4)}°${hudLonLat[0] >= 0 ? "E" : "W"}`

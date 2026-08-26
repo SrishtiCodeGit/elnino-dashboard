@@ -3,8 +3,8 @@ import type { MapHighlight } from "./HomeMapExperience";
 
 const EXPOSURE_COLOR = "#B45309";
 
-const box = "hud-card rounded-lg border border-border-strong bg-white px-3 py-2 shadow-xl";
-const button = "hud-card rounded-lg border border-border-strong bg-white px-2 py-1.5 shadow-xl text-center transition-colors";
+const box = "rounded-lg border border-border-strong bg-white px-3 py-2 shadow-xl";
+const button = "rounded-lg border border-border-strong bg-white px-2 py-1.5 shadow-xl text-center transition-colors";
 const buttonLabel = "block truncate text-[0.58rem] font-mono font-semibold uppercase tracking-tight text-text-muted";
 const activeButton = "!bg-el-nino-strong !border-el-nino-strong";
 const sectionHeading = "text-[0.6rem] font-mono font-semibold uppercase tracking-widest text-white px-0.5";
