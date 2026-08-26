@@ -1,31 +1,45 @@
-import twilio from "twilio";
-
 export interface SmsResult {
   success: boolean;
-  sid?: string;
+  messageId?: string;
   error?: string;
 }
 
-/** Sends a real SMS via Twilio. Returns a result rather than throwing —
- * callers (the risk monitor, Agent Sentinel) log the outcome either way.
- * Never fabricates a "sent" result: if Twilio isn't configured or the send
+/** Sends a real SMS via Vonage's SMS REST API (plain fetch — no SDK needed
+ * for a single call). Returns a result rather than throwing — callers (the
+ * risk monitor, Agent Sentinel) log the outcome either way. Never
+ * fabricates a "sent" result: if Vonage isn't configured or the send
  * fails, success is false and error explains why. */
-export async function sendSms(to: string, body: string): Promise<SmsResult> {
-  const accountSid = process.env.TWILIO_ACCOUNT_SID;
-  const authToken = process.env.TWILIO_AUTH_TOKEN;
-  const from = process.env.TWILIO_FROM_NUMBER;
+export async function sendSms(to: string, text: string): Promise<SmsResult> {
+  const apiKey = process.env.VONAGE_API_KEY;
+  const apiSecret = process.env.VONAGE_API_SECRET;
+  const from = process.env.VONAGE_FROM_NUMBER;
 
-  if (!accountSid || !authToken || !from) {
+  if (!apiKey || !apiSecret || !from) {
     return {
       success: false,
-      error: "SMS isn't configured yet (missing TWILIO_ACCOUNT_SID / TWILIO_AUTH_TOKEN / TWILIO_FROM_NUMBER)",
+      error: "SMS isn't configured yet (missing VONAGE_API_KEY / VONAGE_API_SECRET / VONAGE_FROM_NUMBER)",
     };
   }
 
   try {
-    const client = twilio(accountSid, authToken);
-    const message = await client.messages.create({ to, from, body });
-    return { success: true, sid: message.sid };
+    const res = await fetch("https://rest.nexmo.com/sms/json", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        api_key: apiKey,
+        api_secret: apiSecret,
+        to: to.replace(/^\+/, ""),
+        from,
+        text,
+      }),
+    });
+    const data = await res.json();
+    const first = data?.messages?.[0];
+    if (!first) return { success: false, error: "Unexpected response from Vonage" };
+    if (first.status !== "0") {
+      return { success: false, error: first["error-text"] || `Vonage error status ${first.status}` };
+    }
+    return { success: true, messageId: first["message-id"] };
   } catch (err) {
     return { success: false, error: err instanceof Error ? err.message : "Failed to send SMS" };
   }

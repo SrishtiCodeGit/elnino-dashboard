@@ -39,7 +39,7 @@ const STATUS_COLOR: Record<SentinelEvent["status"], string> = {
 /** The floating, draggable, scrollable "Agent Sentinel" panel — logs every
  * agent action (report generated, email sent, risk checks) and owns the
  * live risk monitor: polls /api/risk-check on an interval, and any state
- * that newly crosses into Severe triggers a real SMS via Twilio to the
+ * that newly crosses into Severe triggers a real SMS via Vonage to the
  * registered number, logged here either way (sent or failed/unconfigured). */
 export function AgentSentinelPanel({
   events,

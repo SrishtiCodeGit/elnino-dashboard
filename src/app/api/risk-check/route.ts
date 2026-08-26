@@ -11,7 +11,7 @@ import { sendSms } from "@/lib/sms";
 let lastSevere: Set<string> | null = null;
 
 function isValidPhone(phone: string): boolean {
-  // E.164-ish: leading +, 8-15 digits. Real validation happens at Twilio.
+  // E.164-ish: leading +, 8-15 digits. Real validation happens at Vonage.
   return /^\+[1-9]\d{7,14}$/.test(phone);
 }
 
