@@ -8,6 +8,25 @@ const button = "rounded-lg border border-border-strong bg-white px-2 py-1.5 shad
 const buttonLabel = "block truncate text-[0.58rem] font-mono font-semibold uppercase tracking-tight text-text-muted";
 const activeButton = "!bg-el-nino-strong !border-el-nino-strong";
 const sectionHeading = "text-[0.6rem] font-mono font-semibold uppercase tracking-widest text-white px-0.5";
+const riskTileLabel = "text-[0.56rem] font-mono font-semibold uppercase tracking-tight text-center leading-tight";
+
+function GlobeIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className={className}>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M3 12h18" />
+      <path d="M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9z" />
+    </svg>
+  );
+}
+
+function FlameIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" className={className}>
+      <path d="M12 22c4.4 0 7-3 7-6.8 0-2.5-1.2-4.2-2.3-5.6C15.8 8.3 15 7 15 4.5c-1.9 1.3-3.2 3.6-3.2 5.8 0 .9.2 1.7.2 1.7S10 10.2 10 7C8 8.9 7 11.8 7 14.7 7 18.5 9.2 22 12 22z" />
+    </svg>
+  );
+}
 
 export function ExposureControls({
   pulse,
@@ -102,25 +121,33 @@ export function ExposureControls({
       </div>
 
       <div className={`${sectionHeading} mt-1`}>Risk Views</div>
-      <button
-        onClick={onToggleSupplyChain}
-        aria-pressed={showSupplyChain}
-        className={`${button} w-full ${showSupplyChain ? activeButton : "hover:border-la-nina-deep"}`}
-      >
-        <span className={showSupplyChain ? "block truncate text-[0.58rem] font-mono font-semibold uppercase tracking-tight text-white" : buttonLabel}>
-          {showSupplyChain ? "Clear Supply Chain View" : "Supply Chain Risk"}
-        </span>
-      </button>
+      <div className="grid grid-cols-2 gap-2">
+        <button
+          onClick={onToggleSupplyChain}
+          aria-pressed={showSupplyChain}
+          className={`${button} aspect-square flex flex-col items-center justify-center gap-1.5 ${
+            showSupplyChain ? activeButton : "hover:border-la-nina-deep"
+          }`}
+        >
+          <GlobeIcon className={`w-6 h-6 shrink-0 ${showSupplyChain ? "text-white" : "text-text-muted"}`} />
+          <span className={`${riskTileLabel} ${showSupplyChain ? "text-white" : "text-text-muted"}`}>
+            {showSupplyChain ? "Clear View" : "Supply Chain Risk"}
+          </span>
+        </button>
 
-      <button
-        onClick={onToggleWildfireRisk}
-        aria-pressed={showWildfireRisk}
-        className={`${button} w-full ${showWildfireRisk ? activeButton : "hover:border-la-nina-deep"}`}
-      >
-        <span className={showWildfireRisk ? "block truncate text-[0.58rem] font-mono font-semibold uppercase tracking-tight text-white" : buttonLabel}>
-          {showWildfireRisk ? "Clear Wildfire View" : "Wildfire & Livestock Risk"}
-        </span>
-      </button>
+        <button
+          onClick={onToggleWildfireRisk}
+          aria-pressed={showWildfireRisk}
+          className={`${button} aspect-square flex flex-col items-center justify-center gap-1.5 ${
+            showWildfireRisk ? activeButton : "hover:border-la-nina-deep"
+          }`}
+        >
+          <FlameIcon className={`w-6 h-6 shrink-0 ${showWildfireRisk ? "text-white" : "text-text-muted"}`} />
+          <span className={`${riskTileLabel} ${showWildfireRisk ? "text-white" : "text-text-muted"}`}>
+            {showWildfireRisk ? "Clear View" : "Wildfire & Livestock"}
+          </span>
+        </button>
+      </div>
     </div>
   );
 }
