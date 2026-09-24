@@ -1,18 +1,23 @@
 import Anthropic from "@anthropic-ai/sdk";
 import type { StateImpact } from "./dataUtils";
+import { describeLive } from "./liveImpact";
 
-// The underlying state data is static (the research composite dataset), so
-// a summary only ever needs to be generated once per server process, not
-// on every request — this cache turns what could be many LLM calls into at
-// most one per state per kind, for the lifetime of the process. Resets on
-// restart; fine for a single-instance project. A multi-instance production
-// deployment would need a shared cache (Redis, etc.) instead.
+const cacheKey = (impact: StateImpact) => `${impact.abbr}:${impact.financialRiskScore}`;
+
+// The research baseline is static, but the live overlay can move a state's
+// score, so entries are keyed by abbr + current score: repeat requests at the
+// same score reuse the summary (at most one LLM call per state per score
+// per kind), and a score change regenerates it so the text never quotes a
+// stale number. Resets on restart; a multi-instance production deployment
+// would need a shared cache (Redis, etc.) instead.
 const shortCache = new Map<string, string>();
 const reportCache = new Map<string, StateReportContent>();
 
 function buildContext(impact: StateImpact): string {
   return `State: ${impact.state} (${impact.region})
-Financial Risk Score: ${impact.financialRiskScore}/100
+Financial Risk Score: ${impact.financialRiskScore}/100${
+    describeLive(impact) ? ` (${describeLive(impact)})` : ""
+  }
 Temperature Anomaly: ${impact.ensoTempAnomaly.replace(/_/g, " ")}
 Precipitation Anomaly: ${impact.ensoPrecipAnomaly.replace(/_/g, " ")}
 Climate Note: ${impact.climateNote}
@@ -96,7 +101,7 @@ function parseReportContent(raw: string): StateReportContent | null {
  * per-state widget. Returns null if no API key is configured or generation
  * fails — callers decide the fallback, this never throws. */
 export async function generateStateSummary(impact: StateImpact): Promise<string | null> {
-  const cached = shortCache.get(impact.abbr);
+  const cached = shortCache.get(cacheKey(impact));
   if (cached) return cached;
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -114,7 +119,7 @@ export async function generateStateSummary(impact: StateImpact): Promise<string 
     if (!raw) return null;
     const text = stripMarkdownArtifacts(raw);
     if (!text) return null;
-    shortCache.set(impact.abbr, text);
+    shortCache.set(cacheKey(impact), text);
     return text;
   } catch {
     return null;
@@ -129,7 +134,7 @@ export async function generateStateSummary(impact: StateImpact): Promise<string 
 export async function generateStateReportContent(
   impact: StateImpact
 ): Promise<StateReportContent | null> {
-  const cached = reportCache.get(impact.abbr);
+  const cached = reportCache.get(cacheKey(impact));
   if (cached) return cached;
 
   const apiKey = process.env.ANTHROPIC_API_KEY;
@@ -147,7 +152,7 @@ export async function generateStateReportContent(
     if (!raw) return null;
     const content = parseReportContent(raw);
     if (!content) return null;
-    reportCache.set(impact.abbr, content);
+    reportCache.set(cacheKey(impact), content);
     return content;
   } catch {
     return null;

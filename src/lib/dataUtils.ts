@@ -76,6 +76,25 @@ export interface StateImpact {
   agGdpShare: number | null;
   financialRiskScore: number;
   sources: string[];
+  /** Present only when live signals were applied; `financialRiskScore` then
+   * already equals `live.baselineScore + live.adjustment` (capped at 100). */
+  live?: LiveOverlay;
+}
+
+export interface LiveStatus {
+  alerts: boolean;
+  drought: boolean;
+  droughtWeekOf: string | null;
+}
+
+export interface LiveOverlay {
+  baselineScore: number;
+  adjustment: number;
+  alertPoints: number;
+  droughtPoints: number;
+  alerts: { event: string; severity: "Severe" | "Extreme" }[];
+  droughtD2Plus: number | null;
+  droughtWeekOf: string | null;
 }
 
 export interface PhaseReturn {

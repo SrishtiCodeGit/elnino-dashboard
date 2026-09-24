@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { renderToBuffer } from "@react-pdf/renderer";
-import { getStateImpact, getCommodities, getBonds, getElNinoEvents } from "@/lib/data";
+import { getCommodities, getBonds, getElNinoEvents } from "@/lib/data";
+import { getLiveStateImpact } from "@/lib/liveImpact";
 import { riskColor } from "@/lib/theme";
 import { severityLabel } from "@/lib/dataUtils";
 import { generateStateReportContent } from "@/lib/aiSummary";
@@ -70,7 +71,7 @@ function renderReportHtml(states: StateImpact[], hasPdf: boolean): string {
         <tbody>${rows}</tbody>
       </table>
       <div style="padding:20px 16px;font-size:11px;color:#94a3b8;line-height:1.6;">
-        Risk scores are a research-project composite from a static dataset &mdash; not an official index and not real-time. Sent from the El Nino Financial Risk dashboard.
+        Risk scores are a research-project composite: a static research baseline plus a live overlay of NWS severe-weather warnings and the weekly US Drought Monitor &mdash; not an official index. Sent from the El Nino Financial Risk dashboard.
       </div>
     </div>`;
 }
@@ -93,7 +94,8 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Enter a valid email address" }, { status: 400 });
   }
 
-  const selected = getStateImpact().filter((s) => abbrs.includes(s.abbr));
+  const { states: liveStates } = await getLiveStateImpact();
+  const selected = liveStates.filter((s) => abbrs.includes(s.abbr));
   if (!selected.length) {
     return NextResponse.json({ error: "No matching states found" }, { status: 404 });
   }

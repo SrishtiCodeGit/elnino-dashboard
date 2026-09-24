@@ -28,6 +28,7 @@ import type {
   LivestockPriceRecord,
   FinancialRecord,
   PhaseReturn,
+  LiveStatus,
 } from "@/lib/dataUtils";
 import type { SentinelEvent } from "@/lib/sentinel";
 import type { Topology } from "topojson-specification";
@@ -42,6 +43,7 @@ export function HomeMapExperience({
   elNinoEvents,
   pulse,
   pulseIsLive,
+  liveStatus,
   topRisks,
   supplyChainFlows,
   wildfireStats,
@@ -59,6 +61,7 @@ export function HomeMapExperience({
   elNinoEvents: ElNinoEvent[];
   pulse: NationalPulse;
   pulseIsLive: boolean;
+  liveStatus: LiveStatus;
   topRisks: TopRiskItem[];
   supplyChainFlows: SupplyChainFlow[];
   wildfireStats: WildfireStats[];
@@ -194,7 +197,7 @@ export function HomeMapExperience({
 
   return (
     <div className="light-cards relative flex flex-col w-full h-screen overflow-hidden bg-bg">
-      <TopHeaderBar pulse={pulse} isLive={pulseIsLive} />
+      <TopHeaderBar pulse={pulse} isLive={pulseIsLive} liveStatus={liveStatus} />
       <RiskTicker items={topRisks} onSelect={setSelected} />
 
       <div className="relative flex-1 min-h-0">

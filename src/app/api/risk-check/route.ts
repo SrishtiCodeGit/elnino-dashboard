@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
-import { getStateImpact } from "@/lib/data";
+import { getLiveStateImpact, describeLive } from "@/lib/liveImpact";
 import { severityLabel } from "@/lib/dataUtils";
 import { sendSms } from "@/lib/sms";
 import { normalizePhone, isValidPhone } from "@/lib/phone";
 
+// Scores here are the live-adjusted ones (static baseline + NWS alerts +
+// Drought Monitor), so a real check can now find a genuine change.
 // Server-process-lifetime snapshot of which states were Severe (score >= 75)
 // as of the last check — same single-instance-cache pattern already used in
 // aiSummary.ts. Lets the monitor detect a state *newly* crossing into
@@ -24,11 +26,10 @@ export async function POST(request: Request) {
   const phone = typeof body.phone === "string" ? normalizePhone(body.phone) : "";
   const simulate = body.simulate === true;
 
-  const states = getStateImpact();
+  const { states } = await getLiveStateImpact();
 
-  // Test-only path: the underlying dataset is static (see TopHeaderBar's
-  // "not real-time" disclosure), so real polling will almost never find a
-  // change to report. This exercises the exact same SMS-send + response
+  // Test-only path: real crossings depend on live weather/drought, which
+  // may not produce one for days. This exercises the exact same SMS-send + response
   // shape as a real detection, using a real state (the one genuinely
   // closest to Severe) rather than inventing one — it just doesn't touch
   // `lastSevere`, so it can't corrupt real monitoring's baseline.
@@ -83,7 +84,13 @@ export async function POST(request: Request) {
   const newlySevere = newlySevereAbbrs
     .map((abbr) => states.find((s) => s.abbr === abbr))
     .filter((s): s is NonNullable<typeof s> => s != null)
-    .map((s) => ({ abbr: s.abbr, state: s.state, score: s.financialRiskScore, severity: severityLabel(s.financialRiskScore) }));
+    .map((s) => ({
+      abbr: s.abbr,
+      state: s.state,
+      score: s.financialRiskScore,
+      severity: severityLabel(s.financialRiskScore),
+      driver: describeLive(s),
+    }));
 
   if (newlySevere.length === 0) {
     return NextResponse.json({ checkedAt: new Date().toISOString(), initialized: false, newlySevere: [], smsSent: false });
@@ -109,7 +116,9 @@ export async function POST(request: Request) {
     });
   }
 
-  const list = newlySevere.map((s) => `${s.state} (${s.score}/100)`).join(", ");
+  const list = newlySevere
+    .map((s) => `${s.state} (${s.score}/100${s.driver ? `; ${s.driver}` : ""})`)
+    .join(", ");
   const body_ = `El Nino Risk Alert: ${newlySevere.length === 1 ? "a state has" : "states have"} just crossed into Severe risk: ${list}.`;
   const result = await sendSms(phone, body_);
 

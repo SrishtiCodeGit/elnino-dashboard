@@ -105,6 +105,48 @@ export function StatePanel({
             </div>
           )}
 
+          {impact?.live && (
+            <div className="rounded-xl border border-border bg-surface px-5 py-3.5 flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                <span className="text-[0.68rem] font-semibold uppercase tracking-widest text-text-muted">
+                  Live Conditions
+                </span>
+                <span className="text-xs font-mono tabular-nums text-text-secondary">
+                  {impact.live.baselineScore} baseline{" "}
+                  <span className="font-bold" style={{ color: impact.live.adjustment > 0 ? "#DC2626" : undefined }}>
+                    +{impact.live.adjustment} live
+                  </span>
+                </span>
+              </div>
+              {impact.live.alerts.length > 0 && (
+                <div className="flex flex-wrap gap-1.5">
+                  {impact.live.alerts.map((a) => (
+                    <span
+                      key={a.event}
+                      className="text-[0.68rem] px-2 py-1 rounded border"
+                      style={{
+                        color: a.severity === "Extreme" ? "#B91C1C" : "#B45309",
+                        borderColor: a.severity === "Extreme" ? "#FCA5A5" : "#FCD34D",
+                      }}
+                    >
+                      {a.event}
+                    </span>
+                  ))}
+                </div>
+              )}
+              {impact.live.droughtD2Plus != null && (
+                <p className="text-[0.72rem] text-text-secondary">
+                  {impact.live.droughtD2Plus.toFixed(0)}% of the state in severe drought or worse
+                  {impact.live.droughtWeekOf ? ` (week of ${impact.live.droughtWeekOf})` : ""}
+                  {impact.live.droughtPoints > 0 ? `, +${impact.live.droughtPoints}` : ""}
+                </p>
+              )}
+              {impact.live.alerts.length === 0 && impact.live.adjustment === 0 && (
+                <p className="text-[0.72rem] text-text-secondary">No severe weather warnings or drought stress right now.</p>
+              )}
+            </div>
+          )}
+
           <WeatherWidget abbr={stateRef.abbr} />
 
           {impact ? (

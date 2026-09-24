@@ -206,9 +206,9 @@ export function AgentSentinelPanel({
           </button>
         </div>
         <p className="text-[0.62rem] text-text-muted leading-snug">
-          Polls every 60s for states newly crossing into Severe (score ≥ 75) and texts the number above. The
-          underlying dataset is static (see the header disclosure), so real checks will almost always say
-          &ldquo;no change&rdquo; — use Simulate Test to verify the SMS pipeline itself works.
+          Polls every 60s while this tab is open for states newly crossing into Severe (score ≥ 75) and texts
+          the number above. Scores include live NWS warnings and Drought Monitor data, so a real crossing
+          can happen but is often rare — use Simulate Test to verify the SMS pipeline itself works.
         </p>
       </div>
 

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
-import { getStateImpact } from "@/lib/data";
+import { getLiveStateImpact, describeLive } from "@/lib/liveImpact";
 import { severityLabel } from "@/lib/dataUtils";
 import type { StateImpact } from "@/lib/dataUtils";
 
@@ -14,12 +14,12 @@ function buildDatasetContext(states: StateImpact[]): string {
     .sort((a, b) => b.financialRiskScore - a.financialRiskScore)
     .map(
       (s) =>
-        `${s.abbr} ${s.state}: score ${s.financialRiskScore}/100 (${severityLabel(s.financialRiskScore)}), region ${s.region}, commodities [${s.keyCommodities.join(", ") || "none"}], commodity exposure ${s.commodityExposure}, energy exposure ${s.energyExposure}. ${s.climateNote}`
+        `${s.abbr} ${s.state}: score ${s.financialRiskScore}/100 (${severityLabel(s.financialRiskScore)}), region ${s.region}, commodities [${s.keyCommodities.join(", ") || "none"}], commodity exposure ${s.commodityExposure}, energy exposure ${s.energyExposure}. ${s.climateNote}${describeLive(s) ? ` LIVE: ${describeLive(s)}.` : ""}`
     )
     .join("\n");
 }
 
-const SYSTEM_PROMPT = (ctx: string) => `You are the research agent embedded in the El Nino Financial Risk dashboard. You answer questions about US state-level financial risk exposure to El Nino climate conditions, using ONLY the dataset below — never invent a state, score, or fact not present in it. This is a static research composite, not a real-time feed; say so if asked whether it's live.
+const SYSTEM_PROMPT = (ctx: string) => `You are the research agent embedded in the El Nino Financial Risk dashboard. You answer questions about US state-level financial risk exposure to El Nino climate conditions, using ONLY the dataset below — never invent a state, score, or fact not present in it. Scores are a static research baseline plus a live overlay (active NWS severe-weather warnings and the weekly US Drought Monitor); lines marked LIVE show the current adjustment. If asked whether it's real-time, explain that only that overlay is live and the baseline is a static research composite.
 
 Dataset (all 51 tracked states, one per line):
 ${ctx}
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
       )
     : [];
 
-  const states = getStateImpact();
+  const { states } = await getLiveStateImpact();
   const apiKey = process.env.ANTHROPIC_API_KEY;
 
   if (!apiKey) {

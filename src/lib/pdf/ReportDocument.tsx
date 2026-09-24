@@ -369,8 +369,8 @@ export function ReportDocument({
         })}
 
         <Text style={styles.footer} fixed>
-          Risk scores are a research-project composite from a static dataset, not an official index and not
-          real-time. Commodity and treasury charts reflect historical market data, not live pricing. This report
+          Risk scores are a research-project composite (a static research baseline plus live NWS severe-weather
+          warnings and the weekly US Drought Monitor), not an official index. Commodity and treasury charts reflect historical market data, not live pricing. This report
           is a research tool, not personalized financial or investment advice. Generated from the El Nino
           Financial Risk dashboard.
         </Text>

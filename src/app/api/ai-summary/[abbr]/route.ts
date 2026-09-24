@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getStateImpact } from "@/lib/data";
+import { getLiveStateImpact } from "@/lib/liveImpact";
 import { generateStateSummary } from "@/lib/aiSummary";
 
 export async function GET(
@@ -9,7 +9,8 @@ export async function GET(
   const { abbr } = await params;
   const key = abbr.toUpperCase();
 
-  const impact = getStateImpact().find((s) => s.abbr === key);
+  const { states } = await getLiveStateImpact();
+  const impact = states.find((s) => s.abbr === key);
   if (!impact) {
     return NextResponse.json({ error: "Unknown state abbreviation" }, { status: 404 });
   }

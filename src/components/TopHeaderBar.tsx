@@ -1,6 +1,6 @@
 import { riskColor } from "@/lib/theme";
 import { CountUpNumber } from "@/components/CountUpNumber";
-import type { NationalPulse } from "@/lib/dataUtils";
+import type { NationalPulse, LiveStatus } from "@/lib/dataUtils";
 
 const TREND_STYLE: Record<NationalPulse["trend"], { glyph: string; color: string }> = {
   Strengthening: { glyph: "▲", color: "#DC2626" },
@@ -8,9 +8,27 @@ const TREND_STYLE: Record<NationalPulse["trend"], { glyph: string; color: string
   Steady: { glyph: "—", color: "#64748B" },
 };
 
-export function TopHeaderBar({ pulse, isLive }: { pulse: NationalPulse; isLive: boolean }) {
+function formatWeek(iso: string): string {
+  return new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" });
+}
+
+export function TopHeaderBar({
+  pulse,
+  isLive,
+  liveStatus,
+}: {
+  pulse: NationalPulse;
+  isLive: boolean;
+  liveStatus: LiveStatus;
+}) {
   const color = riskColor(pulse.index);
   const trend = TREND_STYLE[pulse.trend];
+  const liveParts = [
+    liveStatus.alerts ? "NWS alerts" : null,
+    liveStatus.drought
+      ? `Drought Monitor${liveStatus.droughtWeekOf ? ` (week of ${formatWeek(liveStatus.droughtWeekOf)})` : ""}`
+      : null,
+  ].filter((p): p is string => p !== null);
 
   return (
     <div className="light-cards w-full border-b border-border-strong bg-elevated/95 backdrop-blur pl-20 pr-5 sm:pr-8 py-2.5 flex items-center gap-8 flex-wrap">
@@ -58,7 +76,9 @@ export function TopHeaderBar({ pulse, isLive }: { pulse: NationalPulse; isLive: 
           {pulse.statesScored} states scored
         </span>
         <span className="text-[0.68rem] text-text-muted hidden lg:inline">
-          Static research dataset, not real-time
+          {liveParts.length
+            ? `Research baseline + live ${liveParts.join(" & ")}`
+            : "Static research dataset, not real-time"}
         </span>
       </div>
     </div>

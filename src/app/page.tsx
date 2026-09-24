@@ -2,7 +2,6 @@ import fs from "node:fs";
 import path from "node:path";
 import { HomeMapExperience } from "@/components/HomeMapExperience";
 import {
-  getStateImpact,
   getCommodities,
   getBonds,
   getElNinoEvents,
@@ -18,6 +17,7 @@ import {
   quarterlyPhaseReturns,
 } from "@/lib/data";
 import { fetchLiveOni } from "@/lib/liveOni";
+import { getLiveStateImpact } from "@/lib/liveImpact";
 import type { Topology } from "topojson-specification";
 
 function getTopology(): Topology {
@@ -30,17 +30,17 @@ function getTopology(): Topology {
 
 export default async function Home() {
   const topology = getTopology();
-  const stateImpact = getStateImpact();
+  // Static research baseline + live NWS alerts and Drought Monitor overlay
+  // (see lib/liveImpact.ts). Either feed failing just drops its adjustment.
+  const { states: stateImpact, signals } = await getLiveStateImpact();
   const impactByAbbr = Object.fromEntries(stateImpact.map((s) => [s.abbr, s]));
   const commodities = downsample(getCommodities(), 700);
   const bonds = downsample(getBonds(), 700);
   const elNinoEvents = getElNinoEvents();
 
   // The ENSO signal is fetched live from NOAA on every request (see
-  // lib/liveOni.ts); the state-level risk index and exposure aggregates
-  // stay sourced from the static research dataset, since there's no live
-  // feed for a hand-composed risk score. Falls back to the static ONI file
-  // if NOAA is unreachable, so the card never breaks — just goes stale.
+  // lib/liveOni.ts). Falls back to the static ONI file if NOAA is
+  // unreachable, so the card never breaks — just goes stale.
   const liveOni = await fetchLiveOni();
   const pulse = computeNationalPulse(stateImpact, liveOni ?? getOni());
   const topRisks = getTopRisks(stateImpact, 10);
@@ -79,6 +79,11 @@ export default async function Home() {
       elNinoEvents={elNinoEvents}
       pulse={pulse}
       pulseIsLive={liveOni !== null}
+      liveStatus={{
+        alerts: signals.alerts !== null,
+        drought: signals.drought !== null,
+        droughtWeekOf: signals.droughtWeekOf,
+      }}
       topRisks={topRisks}
       supplyChainFlows={supplyChainFlows}
       wildfireStats={wildfireStats}
