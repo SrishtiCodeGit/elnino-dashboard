@@ -142,7 +142,11 @@ export function StatePanel({
                 </p>
               )}
               {impact.live.alerts.length === 0 && impact.live.adjustment === 0 && (
-                <p className="text-[0.72rem] text-text-secondary">No severe weather warnings or drought stress right now.</p>
+                <p className="text-[0.72rem] text-text-secondary">
+                  {impact.live.droughtD2Plus == null
+                    ? "No severe weather warnings right now. Drought data is temporarily unavailable."
+                    : "No severe weather warnings or drought stress right now."}
+                </p>
               )}
             </div>
           )}
