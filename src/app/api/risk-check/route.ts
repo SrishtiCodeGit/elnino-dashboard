@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { getLiveStateImpact, describeLive } from "@/lib/liveImpact";
 import { severityLabel } from "@/lib/dataUtils";
-import { sendSms } from "@/lib/sms";
+import { sendSms, isAllowedRecipient } from "@/lib/sms";
+import { rateLimit } from "@/lib/rateLimit";
 import { normalizePhone, isValidPhone } from "@/lib/phone";
 
 // Scores here are the live-adjusted ones (static baseline + NWS alerts +
@@ -13,7 +14,23 @@ import { normalizePhone, isValidPhone } from "@/lib/phone";
 // multi-instance production deployment would need a shared store instead.
 let lastSevere: Set<string> | null = null;
 
+const NOT_ALLOWED = "SMS alerts are limited to approved numbers on this public demo";
+
+// Every SMS goes through here: recipient allowlist first, then a per-client
+// cap on actual sends, so the route can't be used to text strangers or drain
+// the account balance.
+async function guardedSms(request: Request, phone: string, text: string) {
+  if (!isAllowedRecipient(phone)) return { success: false as const, error: NOT_ALLOWED };
+  if (rateLimit(request, "sms-send", 5, 60 * 60 * 1000)) {
+    return { success: false as const, error: "SMS send limit reached, try again later" };
+  }
+  return sendSms(phone, text);
+}
+
 export async function POST(request: Request) {
+  const limited = rateLimit(request, "risk-check", 30, 60 * 1000);
+  if (limited) return limited;
+
   let body: { phone?: unknown; simulate?: unknown };
   try {
     body = await request.json();
@@ -57,7 +74,7 @@ export async function POST(request: Request) {
       });
     }
     const testBody = `El Nino Risk Alert (TEST): simulated Severe crossing for ${closest.state} (${closest.financialRiskScore}/100). This is a test of the alert pipeline, not a real risk change.`;
-    const result = await sendSms(phone, testBody);
+    const result = await guardedSms(request, phone, testBody);
     return NextResponse.json({
       checkedAt: new Date().toISOString(),
       initialized: false,
@@ -120,7 +137,7 @@ export async function POST(request: Request) {
     .map((s) => `${s.state} (${s.score}/100${s.driver ? `; ${s.driver}` : ""})`)
     .join(", ");
   const body_ = `El Nino Risk Alert: ${newlySevere.length === 1 ? "a state has" : "states have"} just crossed into Severe risk: ${list}.`;
-  const result = await sendSms(phone, body_);
+  const result = await guardedSms(request, phone, body_);
 
   return NextResponse.json({
     checkedAt: new Date().toISOString(),

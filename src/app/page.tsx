@@ -14,6 +14,7 @@ import {
   getWildfireByYear,
   getLivestockPrices,
   getFinancialMarkets,
+  getBacktestResults,
   quarterlyPhaseReturns,
 } from "@/lib/data";
 import { fetchLiveOni } from "@/lib/liveOni";
@@ -93,6 +94,7 @@ export default async function Home() {
       spReturns={spReturns}
       insuranceReturns={insuranceReturns}
       agricultureReturns={agricultureReturns}
+      backtest={getBacktestResults()}
     />
   );
 }

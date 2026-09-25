@@ -81,6 +81,17 @@ export interface StateImpact {
   live?: LiveOverlay;
 }
 
+export interface BacktestResults {
+  meta: { winters: number; elNinoWinters: number; fdrQ: number };
+  directionTest: Record<
+    "temp" | "pcp",
+    { directionalLabels: number; signMatches: number; significantAtFdr: number; significantAndCorrectDirection: number }
+  >;
+  strengthTest: { n: number; spearmanRho: number };
+  precipMismatches: { abbr: string; label: string; measuredDiffPct: number; qFdr: number }[];
+  marketTest: { series: string; channel: string; elNinoEpisodes: number; diffPct: number; qFdr: number }[];
+}
+
 export interface LiveStatus {
   alerts: boolean;
   drought: boolean;

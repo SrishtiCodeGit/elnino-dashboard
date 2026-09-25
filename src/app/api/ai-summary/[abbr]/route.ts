@@ -1,11 +1,15 @@
 import { NextResponse } from "next/server";
 import { getLiveStateImpact } from "@/lib/liveImpact";
 import { generateStateSummary } from "@/lib/aiSummary";
+import { rateLimit } from "@/lib/rateLimit";
 
 export async function GET(
-  _request: Request,
+  request: Request,
   { params }: RouteContext<"/api/ai-summary/[abbr]">
 ) {
+  const limited = rateLimit(request, "ai-summary", 30, 10 * 60 * 1000);
+  if (limited) return limited;
+
   const { abbr } = await params;
   const key = abbr.toUpperCase();
 

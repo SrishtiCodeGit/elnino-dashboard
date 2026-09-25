@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { getLiveStateImpact, describeLive } from "@/lib/liveImpact";
+import { rateLimit } from "@/lib/rateLimit";
 import { severityLabel } from "@/lib/dataUtils";
 import type { StateImpact } from "@/lib/dataUtils";
 
@@ -30,7 +31,12 @@ Respond to the user's message with ONLY a single JSON object (no markdown fences
   "focusAbbrs": ["XX", "YY"] - the 2-letter abbreviations of the states this reply is actually about, most-relevant first, empty array if the message wasn't about specific states. Used to decide which states an emailed report would cover, so be precise: include only states you actually discussed.
 }`;
 
+const MAX_MESSAGE_CHARS = 1000;
+
 export async function POST(request: Request) {
+  const limited = rateLimit(request, "agent-chat", 20, 10 * 60 * 1000);
+  if (limited) return limited;
+
   let body: { message?: unknown; history?: unknown };
   try {
     body = await request.json();
@@ -42,12 +48,15 @@ export async function POST(request: Request) {
   if (!message) {
     return NextResponse.json({ error: "Message is required" }, { status: 400 });
   }
+  if (message.length > MAX_MESSAGE_CHARS) {
+    return NextResponse.json({ error: `Message must be ${MAX_MESSAGE_CHARS} characters or fewer` }, { status: 400 });
+  }
 
   const history: ChatMessage[] = Array.isArray(body.history)
     ? body.history.filter(
         (m): m is ChatMessage =>
           m && typeof m === "object" && (m.role === "user" || m.role === "assistant") && typeof m.content === "string"
-      )
+      ).map((m) => ({ role: m.role, content: m.content.slice(0, 2000) }))
     : [];
 
   const { states } = await getLiveStateImpact();

@@ -1,0 +1,1227 @@
+{
+  "meta": {
+    "elNinoThresholdOni": 0.5,
+    "fdrQ": 0.1,
+    "permutations": 10000,
+    "winterWindow": "DJF 1950-present",
+    "winters": 77,
+    "elNinoWinters": 27,
+    "climateSource": "NOAA NCEI nClimDiv statewide monthly (data/raw/backtest)"
+  },
+  "directionTest": {
+    "temp": {
+      "directionalLabels": 23,
+      "signMatches": 23,
+      "signMatchRate": 1.0,
+      "binomialP": 0.0,
+      "significantAtFdr": 5,
+      "significantAndCorrectDirection": 5,
+      "significantButLabelledNeutral": [],
+      "neutralLabelled": 27
+    },
+    "pcp": {
+      "directionalLabels": 32,
+      "signMatches": 25,
+      "signMatchRate": 0.781,
+      "binomialP": 0.002102,
+      "significantAtFdr": 10,
+      "significantAndCorrectDirection": 9,
+      "significantButLabelledNeutral": [],
+      "neutralLabelled": 18
+    }
+  },
+  "strengthTest": {
+    "n": 50,
+    "spearmanRho": 0.726,
+    "spearmanP": 0.0
+  },
+  "precipMismatches": [
+    {
+      "abbr": "IA",
+      "label": "below_normal",
+      "measuredDiffPct": 3.651,
+      "qFdr": 0.8757
+    },
+    {
+      "abbr": "KY",
+      "label": "above_normal",
+      "measuredDiffPct": -12.244,
+      "qFdr": 0.2452
+    },
+    {
+      "abbr": "MO",
+      "label": "above_normal",
+      "measuredDiffPct": -0.304,
+      "qFdr": 0.9643
+    },
+    {
+      "abbr": "ND",
+      "label": "below_normal",
+      "measuredDiffPct": 2.199,
+      "qFdr": 0.9237
+    },
+    {
+      "abbr": "NE",
+      "label": "below_normal",
+      "measuredDiffPct": 22.223,
+      "qFdr": 0.092
+    },
+    {
+      "abbr": "SD",
+      "label": "below_normal",
+      "measuredDiffPct": 6.145,
+      "qFdr": 0.7268
+    },
+    {
+      "abbr": "TN",
+      "label": "above_normal",
+      "measuredDiffPct": -5.031,
+      "qFdr": 0.6755
+    }
+  ],
+  "marketTest": [
+    {
+      "series": "Agriculture ETF",
+      "channel": "commodity channel",
+      "months": 227,
+      "elNinoMonths": 54,
+      "elNinoEpisodes": 5,
+      "firstMonth": "2007-02",
+      "meanMonthlyReturnElNinoPct": -0.295,
+      "meanMonthlyReturnOtherPct": 0.191,
+      "diffPct": -0.487,
+      "pCircularShift": 0.5771,
+      "qFdr": 0.9213
+    },
+    {
+      "series": "Wheat futures",
+      "channel": "commodity channel",
+      "months": 305,
+      "elNinoMonths": 75,
+      "elNinoEpisodes": 8,
+      "firstMonth": "2000-08",
+      "meanMonthlyReturnElNinoPct": 0.317,
+      "meanMonthlyReturnOtherPct": 0.214,
+      "diffPct": 0.103,
+      "pCircularShift": 0.9213,
+      "qFdr": 0.9213
+    },
+    {
+      "series": "Corn futures",
+      "channel": "commodity channel",
+      "months": 305,
+      "elNinoMonths": 75,
+      "elNinoEpisodes": 8,
+      "firstMonth": "2000-08",
+      "meanMonthlyReturnElNinoPct": 0.679,
+      "meanMonthlyReturnOtherPct": 0.167,
+      "diffPct": 0.512,
+      "pCircularShift": 0.6951,
+      "qFdr": 0.9213
+    },
+    {
+      "series": "Crude oil futures",
+      "channel": "energy channel",
+      "months": 304,
+      "elNinoMonths": 75,
+      "elNinoEpisodes": 8,
+      "firstMonth": "2000-09",
+      "meanMonthlyReturnElNinoPct": -1.652,
+      "meanMonthlyReturnOtherPct": 0.785,
+      "diffPct": -2.437,
+      "pCircularShift": 0.0921,
+      "qFdr": 0.6447
+    },
+    {
+      "series": "Natural gas futures",
+      "channel": "energy channel",
+      "months": 304,
+      "elNinoMonths": 75,
+      "elNinoEpisodes": 8,
+      "firstMonth": "2000-09",
+      "meanMonthlyReturnElNinoPct": -0.295,
+      "meanMonthlyReturnOtherPct": 0.016,
+      "diffPct": -0.311,
+      "pCircularShift": 0.8651,
+      "qFdr": 0.9213
+    },
+    {
+      "series": "Insurance ETF",
+      "channel": "insurance channel",
+      "months": 241,
+      "elNinoMonths": 59,
+      "elNinoEpisodes": 6,
+      "firstMonth": "2005-12",
+      "meanMonthlyReturnElNinoPct": 0.862,
+      "meanMonthlyReturnOtherPct": 0.589,
+      "diffPct": 0.273,
+      "pCircularShift": 0.8008,
+      "qFdr": 0.9213
+    },
+    {
+      "series": "S&P 500",
+      "channel": "broad market",
+      "months": 431,
+      "elNinoMonths": 111,
+      "elNinoEpisodes": 12,
+      "firstMonth": "1990-02",
+      "meanMonthlyReturnElNinoPct": 0.582,
+      "meanMonthlyReturnOtherPct": 0.749,
+      "diffPct": -0.167,
+      "pCircularShift": 0.7169,
+      "qFdr": 0.9213
+    }
+  ],
+  "states": [
+    {
+      "abbr": "FL",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -1.434,
+        "cohensD": -0.594,
+        "t": -2.442,
+        "pPerm": 0.0132,
+        "qFdr": 0.092
+      },
+      "pcp": {
+        "diff": 38.955,
+        "cohensD": 1.319,
+        "t": 5.337,
+        "pPerm": 0.0001,
+        "qFdr": 0.01
+      },
+      "modelClimateStrength": 90,
+      "historicalSignal": 5.869
+    },
+    {
+      "abbr": "SC",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -1.328,
+        "cohensD": -0.499,
+        "t": -2.057,
+        "pPerm": 0.0378,
+        "qFdr": 0.1717
+      },
+      "pcp": {
+        "diff": 19.801,
+        "cohensD": 0.713,
+        "t": 2.955,
+        "pPerm": 0.0042,
+        "qFdr": 0.0733
+      },
+      "modelClimateStrength": 90,
+      "historicalSignal": 3.6
+    },
+    {
+      "abbr": "GA",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -1.431,
+        "cohensD": -0.526,
+        "t": -2.164,
+        "pPerm": 0.027,
+        "qFdr": 0.1665
+      },
+      "pcp": {
+        "diff": 16.65,
+        "cohensD": 0.675,
+        "t": 2.815,
+        "pPerm": 0.0063,
+        "qFdr": 0.0788
+      },
+      "modelClimateStrength": 90,
+      "historicalSignal": 3.551
+    },
+    {
+      "abbr": "ID",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.817,
+        "cohensD": 0.718,
+        "t": 3.054,
+        "pPerm": 0.0044,
+        "qFdr": 0.0733
+      },
+      "pcp": {
+        "diff": -10.486,
+        "cohensD": -0.393,
+        "t": -1.649,
+        "pPerm": 0.1006,
+        "qFdr": 0.2757
+      },
+      "modelClimateStrength": 85,
+      "historicalSignal": 3.471
+    },
+    {
+      "abbr": "WY",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.204,
+        "cohensD": 0.442,
+        "t": 1.886,
+        "pPerm": 0.076,
+        "qFdr": 0.2452
+      },
+      "pcp": {
+        "diff": -14.843,
+        "cohensD": -0.656,
+        "t": -2.823,
+        "pPerm": 0.0093,
+        "qFdr": 0.092
+      },
+      "modelClimateStrength": 75,
+      "historicalSignal": 3.395
+    },
+    {
+      "abbr": "NM",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.387,
+        "cohensD": -0.212,
+        "t": -0.881,
+        "pPerm": 0.3685,
+        "qFdr": 0.6246
+      },
+      "pcp": {
+        "diff": 36.116,
+        "cohensD": 0.794,
+        "t": 3.258,
+        "pPerm": 0.0009,
+        "qFdr": 0.045
+      },
+      "modelClimateStrength": 75,
+      "historicalSignal": 3.375
+    },
+    {
+      "abbr": "HI",
+      "winters": 35,
+      "elNinoWinters": 12,
+      "temp": {
+        "diff": 0.127,
+        "cohensD": 0.222,
+        "t": 0.651,
+        "pPerm": 0.5538,
+        "qFdr": 0.7666
+      },
+      "pcp": {
+        "diff": -37.49,
+        "cohensD": -1.181,
+        "t": -3.308,
+        "pPerm": 0.002,
+        "qFdr": 0.0667
+      },
+      "modelClimateStrength": 80,
+      "historicalSignal": 3.371
+    },
+    {
+      "abbr": "TX",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.873,
+        "cohensD": -0.393,
+        "t": -1.619,
+        "pPerm": 0.0962,
+        "qFdr": 0.2757
+      },
+      "pcp": {
+        "diff": 26.41,
+        "cohensD": 0.704,
+        "t": 2.882,
+        "pPerm": 0.0032,
+        "qFdr": 0.0733
+      },
+      "modelClimateStrength": 90,
+      "historicalSignal": 3.306
+    },
+    {
+      "abbr": "NC",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -1.061,
+        "cohensD": -0.398,
+        "t": -1.638,
+        "pPerm": 0.098,
+        "qFdr": 0.2757
+      },
+      "pcp": {
+        "diff": 15.023,
+        "cohensD": 0.621,
+        "t": 2.601,
+        "pPerm": 0.0118,
+        "qFdr": 0.092
+      },
+      "modelClimateStrength": 90,
+      "historicalSignal": 3.074
+    },
+    {
+      "abbr": "OR",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.489,
+        "cohensD": 0.698,
+        "t": 2.94,
+        "pPerm": 0.0052,
+        "qFdr": 0.0743
+      },
+      "pcp": {
+        "diff": -1.381,
+        "cohensD": -0.049,
+        "t": -0.21,
+        "pPerm": 0.8391,
+        "qFdr": 0.9297
+      },
+      "modelClimateStrength": 85,
+      "historicalSignal": 2.947
+    },
+    {
+      "abbr": "WA",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.61,
+        "cohensD": 0.673,
+        "t": 2.861,
+        "pPerm": 0.0079,
+        "qFdr": 0.0878
+      },
+      "pcp": {
+        "diff": -2.519,
+        "cohensD": -0.109,
+        "t": -0.468,
+        "pPerm": 0.652,
+        "qFdr": 0.8693
+      },
+      "modelClimateStrength": 85,
+      "historicalSignal": 2.899
+    },
+    {
+      "abbr": "MT",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.93,
+        "cohensD": 0.498,
+        "t": 2.061,
+        "pPerm": 0.0395,
+        "qFdr": 0.1717
+      },
+      "pcp": {
+        "diff": -12.445,
+        "cohensD": -0.49,
+        "t": -2.006,
+        "pPerm": 0.0383,
+        "qFdr": 0.1717
+      },
+      "modelClimateStrength": 75,
+      "historicalSignal": 2.876
+    },
+    {
+      "abbr": "NE",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.073,
+        "cohensD": 0.322,
+        "t": 1.321,
+        "pPerm": 0.1743,
+        "qFdr": 0.3927
+      },
+      "pcp": {
+        "diff": 22.223,
+        "cohensD": 0.607,
+        "t": 2.502,
+        "pPerm": 0.0123,
+        "qFdr": 0.092
+      },
+      "modelClimateStrength": 65,
+      "historicalSignal": 2.829
+    },
+    {
+      "abbr": "AZ",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.17,
+        "cohensD": -0.093,
+        "t": -0.393,
+        "pPerm": 0.6918,
+        "qFdr": 0.8854
+      },
+      "pcp": {
+        "diff": 36.5,
+        "cohensD": 0.616,
+        "t": 2.588,
+        "pPerm": 0.0109,
+        "qFdr": 0.092
+      },
+      "modelClimateStrength": 75,
+      "historicalSignal": 2.618
+    },
+    {
+      "abbr": "LA",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -1.33,
+        "cohensD": -0.485,
+        "t": -2.009,
+        "pPerm": 0.0416,
+        "qFdr": 0.1733
+      },
+      "pcp": {
+        "diff": 10.549,
+        "cohensD": 0.395,
+        "t": 1.651,
+        "pPerm": 0.102,
+        "qFdr": 0.2757
+      },
+      "modelClimateStrength": 90,
+      "historicalSignal": 2.6
+    },
+    {
+      "abbr": "MN",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 2.461,
+        "cohensD": 0.596,
+        "t": 2.466,
+        "pPerm": 0.0138,
+        "qFdr": 0.092
+      },
+      "pcp": {
+        "diff": -1.545,
+        "cohensD": -0.045,
+        "t": -0.182,
+        "pPerm": 0.846,
+        "qFdr": 0.9297
+      },
+      "modelClimateStrength": 65,
+      "historicalSignal": 2.473
+    },
+    {
+      "abbr": "MI",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.052,
+        "cohensD": 0.319,
+        "t": 1.301,
+        "pPerm": 0.1767,
+        "qFdr": 0.3927
+      },
+      "pcp": {
+        "diff": -11.667,
+        "cohensD": -0.487,
+        "t": -2.039,
+        "pPerm": 0.045,
+        "qFdr": 0.18
+      },
+      "modelClimateStrength": 40,
+      "historicalSignal": 2.419
+    },
+    {
+      "abbr": "CA",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.385,
+        "cohensD": 0.223,
+        "t": 0.929,
+        "pPerm": 0.3401,
+        "qFdr": 0.6073
+      },
+      "pcp": {
+        "diff": 21.256,
+        "cohensD": 0.529,
+        "t": 2.172,
+        "pPerm": 0.0283,
+        "qFdr": 0.1665
+      },
+      "modelClimateStrength": 70,
+      "historicalSignal": 2.362
+    },
+    {
+      "abbr": "AK",
+      "winters": 73,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.695,
+        "cohensD": 0.452,
+        "t": 1.869,
+        "pPerm": 0.0659,
+        "qFdr": 0.2354
+      },
+      "pcp": {
+        "diff": -6.218,
+        "cohensD": -0.357,
+        "t": -1.44,
+        "pPerm": 0.1416,
+        "qFdr": 0.3631
+      },
+      "modelClimateStrength": 60,
+      "historicalSignal": 2.359
+    },
+    {
+      "abbr": "AL",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -1.454,
+        "cohensD": -0.505,
+        "t": -2.084,
+        "pPerm": 0.0357,
+        "qFdr": 0.1717
+      },
+      "pcp": {
+        "diff": 5.529,
+        "cohensD": 0.235,
+        "t": 0.972,
+        "pPerm": 0.3131,
+        "qFdr": 0.5736
+      },
+      "modelClimateStrength": 90,
+      "historicalSignal": 2.3
+    },
+    {
+      "abbr": "WI",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.912,
+        "cohensD": 0.511,
+        "t": 2.097,
+        "pPerm": 0.0323,
+        "qFdr": 0.17
+      },
+      "pcp": {
+        "diff": -7.351,
+        "cohensD": -0.212,
+        "t": -0.853,
+        "pPerm": 0.3612,
+        "qFdr": 0.6228
+      },
+      "modelClimateStrength": 65,
+      "historicalSignal": 2.264
+    },
+    {
+      "abbr": "ND",
+      "winters": 76,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 2.486,
+        "cohensD": 0.527,
+        "t": 2.16,
+        "pPerm": 0.0307,
+        "qFdr": 0.17
+      },
+      "pcp": {
+        "diff": 2.199,
+        "cohensD": 0.064,
+        "t": 0.267,
+        "pPerm": 0.7944,
+        "qFdr": 0.9237
+      },
+      "modelClimateStrength": 75,
+      "historicalSignal": 2.176
+    },
+    {
+      "abbr": "KY",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.754,
+        "cohensD": -0.231,
+        "t": -0.933,
+        "pPerm": 0.3155,
+        "qFdr": 0.5736
+      },
+      "pcp": {
+        "diff": -12.244,
+        "cohensD": -0.447,
+        "t": -1.918,
+        "pPerm": 0.0741,
+        "qFdr": 0.2452
+      },
+      "modelClimateStrength": 45,
+      "historicalSignal": 2.133
+    },
+    {
+      "abbr": "KS",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.531,
+        "cohensD": 0.187,
+        "t": 0.774,
+        "pPerm": 0.4315,
+        "qFdr": 0.6709
+      },
+      "pcp": {
+        "diff": 19.505,
+        "cohensD": 0.451,
+        "t": 1.898,
+        "pPerm": 0.062,
+        "qFdr": 0.2296
+      },
+      "modelClimateStrength": 55,
+      "historicalSignal": 2.05
+    },
+    {
+      "abbr": "VA",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.824,
+        "cohensD": -0.299,
+        "t": -1.227,
+        "pPerm": 0.2014,
+        "qFdr": 0.4378
+      },
+      "pcp": {
+        "diff": 9.587,
+        "cohensD": 0.378,
+        "t": 1.547,
+        "pPerm": 0.1072,
+        "qFdr": 0.2821
+      },
+      "modelClimateStrength": 35,
+      "historicalSignal": 1.975
+    },
+    {
+      "abbr": "SD",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.876,
+        "cohensD": 0.44,
+        "t": 1.79,
+        "pPerm": 0.0591,
+        "qFdr": 0.2273
+      },
+      "pcp": {
+        "diff": 6.145,
+        "cohensD": 0.162,
+        "t": 0.67,
+        "pPerm": 0.5015,
+        "qFdr": 0.7268
+      },
+      "modelClimateStrength": 75,
+      "historicalSignal": 1.911
+    },
+    {
+      "abbr": "DE",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.506,
+        "cohensD": -0.177,
+        "t": -0.73,
+        "pPerm": 0.4421,
+        "qFdr": 0.6709
+      },
+      "pcp": {
+        "diff": 11.618,
+        "cohensD": 0.413,
+        "t": 1.693,
+        "pPerm": 0.0811,
+        "qFdr": 0.2534
+      },
+      "modelClimateStrength": 35,
+      "historicalSignal": 1.844
+    },
+    {
+      "abbr": "MS",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -1.246,
+        "cohensD": -0.43,
+        "t": -1.77,
+        "pPerm": 0.0734,
+        "qFdr": 0.2452
+      },
+      "pcp": {
+        "diff": 1.916,
+        "cohensD": 0.075,
+        "t": 0.313,
+        "pPerm": 0.7534,
+        "qFdr": 0.8886
+      },
+      "modelClimateStrength": 90,
+      "historicalSignal": 1.797
+    },
+    {
+      "abbr": "IA",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 1.461,
+        "cohensD": 0.389,
+        "t": 1.595,
+        "pPerm": 0.0962,
+        "qFdr": 0.2757
+      },
+      "pcp": {
+        "diff": 3.651,
+        "cohensD": 0.096,
+        "t": 0.387,
+        "pPerm": 0.6655,
+        "qFdr": 0.8757
+      },
+      "modelClimateStrength": 65,
+      "historicalSignal": 1.641
+    },
+    {
+      "abbr": "TN",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.987,
+        "cohensD": -0.327,
+        "t": -1.327,
+        "pPerm": 0.1598,
+        "qFdr": 0.3898
+      },
+      "pcp": {
+        "diff": -5.031,
+        "cohensD": -0.183,
+        "t": -0.774,
+        "pPerm": 0.4526,
+        "qFdr": 0.6755
+      },
+      "modelClimateStrength": 55,
+      "historicalSignal": 1.536
+    },
+    {
+      "abbr": "NV",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.679,
+        "cohensD": 0.282,
+        "t": 1.188,
+        "pPerm": 0.2367,
+        "qFdr": 0.4831
+      },
+      "pcp": {
+        "diff": 9.072,
+        "cohensD": 0.236,
+        "t": 0.969,
+        "pPerm": 0.3133,
+        "qFdr": 0.5736
+      },
+      "modelClimateStrength": 55,
+      "historicalSignal": 1.533
+    },
+    {
+      "abbr": "WV",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.746,
+        "cohensD": -0.234,
+        "t": -0.951,
+        "pPerm": 0.3069,
+        "qFdr": 0.5736
+      },
+      "pcp": {
+        "diff": -6.298,
+        "cohensD": -0.28,
+        "t": -1.167,
+        "pPerm": 0.2522,
+        "qFdr": 0.5044
+      },
+      "modelClimateStrength": 35,
+      "historicalSignal": 1.505
+    },
+    {
+      "abbr": "MD",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.47,
+        "cohensD": -0.164,
+        "t": -0.676,
+        "pPerm": 0.4752,
+        "qFdr": 0.6988
+      },
+      "pcp": {
+        "diff": 8.924,
+        "cohensD": 0.329,
+        "t": 1.332,
+        "pPerm": 0.1585,
+        "qFdr": 0.3898
+      },
+      "modelClimateStrength": 35,
+      "historicalSignal": 1.494
+    },
+    {
+      "abbr": "IN",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.173,
+        "cohensD": 0.048,
+        "t": 0.194,
+        "pPerm": 0.8246,
+        "qFdr": 0.9297
+      },
+      "pcp": {
+        "diff": -9.96,
+        "cohensD": -0.332,
+        "t": -1.397,
+        "pPerm": 0.1725,
+        "qFdr": 0.3927
+      },
+      "modelClimateStrength": 45,
+      "historicalSignal": 1.41
+    },
+    {
+      "abbr": "OK",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.06,
+        "cohensD": -0.023,
+        "t": -0.095,
+        "pPerm": 0.9177,
+        "qFdr": 0.9559
+      },
+      "pcp": {
+        "diff": 12.342,
+        "cohensD": 0.331,
+        "t": 1.395,
+        "pPerm": 0.1709,
+        "qFdr": 0.3927
+      },
+      "modelClimateStrength": 90,
+      "historicalSignal": 1.398
+    },
+    {
+      "abbr": "UT",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.81,
+        "cohensD": 0.293,
+        "t": 1.219,
+        "pPerm": 0.2173,
+        "qFdr": 0.4527
+      },
+      "pcp": {
+        "diff": 3.615,
+        "cohensD": 0.097,
+        "t": 0.401,
+        "pPerm": 0.6791,
+        "qFdr": 0.8819
+      },
+      "modelClimateStrength": 55,
+      "historicalSignal": 1.283
+    },
+    {
+      "abbr": "OH",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.112,
+        "cohensD": -0.032,
+        "t": -0.127,
+        "pPerm": 0.884,
+        "qFdr": 0.9421
+      },
+      "pcp": {
+        "diff": -7.823,
+        "cohensD": -0.3,
+        "t": -1.244,
+        "pPerm": 0.2128,
+        "qFdr": 0.4527
+      },
+      "modelClimateStrength": 45,
+      "historicalSignal": 1.25
+    },
+    {
+      "abbr": "IL",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.517,
+        "cohensD": 0.145,
+        "t": 0.591,
+        "pPerm": 0.5341,
+        "qFdr": 0.7523
+      },
+      "pcp": {
+        "diff": -6.367,
+        "cohensD": -0.207,
+        "t": -0.87,
+        "pPerm": 0.3872,
+        "qFdr": 0.6258
+      },
+      "modelClimateStrength": 45,
+      "historicalSignal": 1.052
+    },
+    {
+      "abbr": "NJ",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.159,
+        "cohensD": -0.056,
+        "t": -0.229,
+        "pPerm": 0.8049,
+        "qFdr": 0.9252
+      },
+      "pcp": {
+        "diff": 6.63,
+        "cohensD": 0.24,
+        "t": 0.976,
+        "pPerm": 0.3102,
+        "qFdr": 0.5736
+      },
+      "modelClimateStrength": 35,
+      "historicalSignal": 1.003
+    },
+    {
+      "abbr": "CO",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.462,
+        "cohensD": 0.197,
+        "t": 0.83,
+        "pPerm": 0.4135,
+        "qFdr": 0.6563
+      },
+      "pcp": {
+        "diff": -3.413,
+        "cohensD": -0.128,
+        "t": -0.54,
+        "pPerm": 0.602,
+        "qFdr": 0.8135
+      },
+      "modelClimateStrength": 55,
+      "historicalSignal": 0.99
+    },
+    {
+      "abbr": "RI",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.037,
+        "cohensD": -0.013,
+        "t": -0.055,
+        "pPerm": 0.9539,
+        "qFdr": 0.9643
+      },
+      "pcp": {
+        "diff": 5.576,
+        "cohensD": 0.223,
+        "t": 0.916,
+        "pPerm": 0.3487,
+        "qFdr": 0.6118
+      },
+      "modelClimateStrength": 25,
+      "historicalSignal": 0.918
+    },
+    {
+      "abbr": "AR",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.542,
+        "cohensD": -0.201,
+        "t": -0.821,
+        "pPerm": 0.3843,
+        "qFdr": 0.6258
+      },
+      "pcp": {
+        "diff": 2.334,
+        "cohensD": 0.086,
+        "t": 0.364,
+        "pPerm": 0.726,
+        "qFdr": 0.8854
+      },
+      "modelClimateStrength": 90,
+      "historicalSignal": 0.898
+    },
+    {
+      "abbr": "MA",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.079,
+        "cohensD": 0.027,
+        "t": 0.113,
+        "pPerm": 0.9064,
+        "qFdr": 0.9541
+      },
+      "pcp": {
+        "diff": 4.716,
+        "cohensD": 0.205,
+        "t": 0.841,
+        "pPerm": 0.388,
+        "qFdr": 0.6258
+      },
+      "modelClimateStrength": 25,
+      "historicalSignal": 0.849
+    },
+    {
+      "abbr": "ME",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.51,
+        "cohensD": 0.18,
+        "t": 0.74,
+        "pPerm": 0.4428,
+        "qFdr": 0.6709
+      },
+      "pcp": {
+        "diff": 1.944,
+        "cohensD": 0.084,
+        "t": 0.342,
+        "pPerm": 0.7243,
+        "qFdr": 0.8854
+      },
+      "modelClimateStrength": 25,
+      "historicalSignal": 0.815
+    },
+    {
+      "abbr": "NH",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.261,
+        "cohensD": 0.088,
+        "t": 0.363,
+        "pPerm": 0.7071,
+        "qFdr": 0.8854
+      },
+      "pcp": {
+        "diff": 2.959,
+        "cohensD": 0.136,
+        "t": 0.552,
+        "pPerm": 0.5596,
+        "qFdr": 0.7666
+      },
+      "modelClimateStrength": 25,
+      "historicalSignal": 0.661
+    },
+    {
+      "abbr": "CT",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.037,
+        "cohensD": 0.013,
+        "t": 0.053,
+        "pPerm": 0.9577,
+        "qFdr": 0.9643
+      },
+      "pcp": {
+        "diff": 3.934,
+        "cohensD": 0.152,
+        "t": 0.624,
+        "pPerm": 0.5251,
+        "qFdr": 0.7501
+      },
+      "modelClimateStrength": 25,
+      "historicalSignal": 0.626
+    },
+    {
+      "abbr": "PA",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": -0.108,
+        "cohensD": -0.034,
+        "t": -0.139,
+        "pPerm": 0.8784,
+        "qFdr": 0.9421
+      },
+      "pcp": {
+        "diff": -1.914,
+        "cohensD": -0.084,
+        "t": -0.34,
+        "pPerm": 0.7181,
+        "qFdr": 0.8854
+      },
+      "modelClimateStrength": 35,
+      "historicalSignal": 0.367
+    },
+    {
+      "abbr": "VT",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.107,
+        "cohensD": 0.034,
+        "t": 0.138,
+        "pPerm": 0.8856,
+        "qFdr": 0.9421
+      },
+      "pcp": {
+        "diff": 1.474,
+        "cohensD": 0.071,
+        "t": 0.292,
+        "pPerm": 0.7553,
+        "qFdr": 0.8886
+      },
+      "modelClimateStrength": 25,
+      "historicalSignal": 0.323
+    },
+    {
+      "abbr": "MO",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.226,
+        "cohensD": 0.073,
+        "t": 0.296,
+        "pPerm": 0.7516,
+        "qFdr": 0.8886
+      },
+      "pcp": {
+        "diff": -0.304,
+        "cohensD": -0.01,
+        "t": -0.041,
+        "pPerm": 0.9643,
+        "qFdr": 0.9643
+      },
+      "modelClimateStrength": 55,
+      "historicalSignal": 0.299
+    },
+    {
+      "abbr": "NY",
+      "winters": 77,
+      "elNinoWinters": 27,
+      "temp": {
+        "diff": 0.059,
+        "cohensD": 0.019,
+        "t": 0.077,
+        "pPerm": 0.9363,
+        "qFdr": 0.9643
+      },
+      "pcp": {
+        "diff": -1.004,
+        "cohensD": -0.053,
+        "t": -0.215,
+        "pPerm": 0.8333,
+        "qFdr": 0.9297
+      },
+      "modelClimateStrength": 25,
+      "historicalSignal": 0.228
+    }
+  ]
+}

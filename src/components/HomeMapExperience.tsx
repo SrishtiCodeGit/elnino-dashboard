@@ -29,6 +29,7 @@ import type {
   FinancialRecord,
   PhaseReturn,
   LiveStatus,
+  BacktestResults,
 } from "@/lib/dataUtils";
 import type { SentinelEvent } from "@/lib/sentinel";
 import type { Topology } from "topojson-specification";
@@ -53,6 +54,7 @@ export function HomeMapExperience({
   spReturns,
   insuranceReturns,
   agricultureReturns,
+  backtest,
 }: {
   topology: Topology;
   impactByAbbr: Record<string, StateImpact>;
@@ -71,6 +73,7 @@ export function HomeMapExperience({
   spReturns: PhaseReturn[];
   insuranceReturns: PhaseReturn[];
   agricultureReturns: PhaseReturn[];
+  backtest: BacktestResults | null;
 }) {
   const [selected, setSelected] = useState<string | null>(null);
   const [highlight, setHighlight] = useState<MapHighlight | null>(null);
@@ -315,6 +318,7 @@ export function HomeMapExperience({
           spReturns={spReturns}
           insuranceReturns={insuranceReturns}
           agricultureReturns={agricultureReturns}
+          backtest={backtest}
           onClose={() => setShowFinancialSummary(false)}
         />
       )}

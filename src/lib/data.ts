@@ -13,6 +13,7 @@ import type {
   WildfireStats,
   WildfireYearStats,
   LivestockPriceRecord,
+  BacktestResults,
 } from "./dataUtils";
 
 export * from "./dataUtils";
@@ -49,6 +50,9 @@ export const getWildfireByYear = () =>
   readJson<WildfireYearStats[]>(PROCESSED_DIR, "wildfire_by_year.json", []);
 export const getLivestockPrices = () =>
   readJson<LivestockPriceRecord[]>(PROCESSED_DIR, "livestock_prices.json", []);
+
+export const getBacktestResults = () =>
+  readJson<BacktestResults | null>(PROCESSED_DIR, "backtest_results.json", null);
 
 export function getLatestOni() {
   const oni = getOni();

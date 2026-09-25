@@ -44,3 +44,14 @@ export async function sendSms(to: string, text: string): Promise<SmsResult> {
     return { success: false, error: err instanceof Error ? err.message : "Failed to send SMS" };
   }
 }
+
+/** SMS costs real money and can reach real people, so on a public site it is
+ * deny-by-default: only numbers listed in SMS_ALLOWLIST (comma-separated,
+ * +E.164) can receive alerts. Unset means nobody can. */
+export function isAllowedRecipient(phone: string): boolean {
+  const allowed = (process.env.SMS_ALLOWLIST ?? "")
+    .split(",")
+    .map((n) => n.replace(/[^\d+]/g, ""))
+    .filter(Boolean);
+  return allowed.includes(phone.replace(/[^\d+]/g, ""));
+}

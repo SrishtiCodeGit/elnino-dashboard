@@ -3,7 +3,7 @@
 import { useMemo } from "react";
 import { TimeSeriesChart } from "@/components/charts/TimeSeriesChart";
 import { PHASE_COLOR, COLOR } from "@/lib/theme";
-import type { FinancialRecord, ElNinoEvent, PhaseReturn } from "@/lib/dataUtils";
+import type { FinancialRecord, ElNinoEvent, PhaseReturn, BacktestResults } from "@/lib/dataUtils";
 
 function formatIndex(v: number) {
   return v.toLocaleString(undefined, { maximumFractionDigits: 0 });
@@ -15,6 +15,66 @@ function Kpi({ label, value, sub }: { label: string; value: string; sub: string 
       <div className="text-[0.6rem] font-mono font-semibold uppercase tracking-widest text-text-muted">{label}</div>
       <div className="text-[1.15rem] font-bold text-text-primary tabular-nums mt-0.5">{value}</div>
       <div className="text-[0.66rem] text-text-secondary mt-0.5">{sub}</div>
+    </div>
+  );
+}
+
+function BacktestSection({ b }: { b: BacktestResults }) {
+  const { temp, pcp } = b.directionTest;
+  const sigMarket = b.marketTest.filter((m) => m.qFdr < b.meta.fdrQ).length;
+  const minQ = Math.min(...b.marketTest.map((m) => m.qFdr));
+  const episodes = b.marketTest.map((m) => m.elNinoEpisodes);
+  const misses = b.precipMismatches.map((m) => m.abbr).join(", ");
+
+  return (
+    <div className="rounded-xl border border-border bg-surface px-5 py-4 flex flex-col gap-3">
+      <div>
+        <div className="text-[0.7rem] font-semibold tracking-wider uppercase text-text-muted">
+          Does history back the model?
+        </div>
+        <p className="text-[0.72rem] text-text-secondary mt-1">
+          Backtest against {b.meta.winters} winters of NOAA state climate data ({b.meta.elNinoWinters} El Nino winters)
+          and 7 market series chosen in advance. Multiple-testing corrected (FDR).
+        </p>
+      </div>
+
+      <div className="grid gap-2 sm:grid-cols-3">
+        <div className="rounded-lg border border-border bg-elevated px-3 py-2.5">
+          <div className="text-[0.6rem] font-mono font-semibold uppercase tracking-widest text-text-muted">Temperature labels</div>
+          <div className="text-[1.05rem] font-bold text-text-primary tabular-nums mt-0.5">
+            {temp.signMatches}/{temp.directionalLabels}
+          </div>
+          <div className="text-[0.66rem] text-text-secondary">right direction</div>
+        </div>
+        <div className="rounded-lg border border-border bg-elevated px-3 py-2.5">
+          <div className="text-[0.6rem] font-mono font-semibold uppercase tracking-widest text-text-muted">Precipitation labels</div>
+          <div className="text-[1.05rem] font-bold text-text-primary tabular-nums mt-0.5">
+            {pcp.signMatches}/{pcp.directionalLabels}
+          </div>
+          <div className="text-[0.66rem] text-text-secondary">right direction</div>
+        </div>
+        <div className="rounded-lg border border-border bg-elevated px-3 py-2.5">
+          <div className="text-[0.6rem] font-mono font-semibold uppercase tracking-widest text-text-muted">Signal strength rank</div>
+          <div className="text-[1.05rem] font-bold text-text-primary tabular-nums mt-0.5">
+            &rho; = {b.strengthTest.spearmanRho.toFixed(2)}
+          </div>
+          <div className="text-[0.66rem] text-text-secondary">vs measured, {b.strengthTest.n} states</div>
+        </div>
+      </div>
+
+      <p className="text-[0.74rem] text-text-secondary leading-relaxed">
+        <strong className="text-text-primary">Climate side holds up.</strong> Where the model says El Nino makes a state
+        warmer/cooler or wetter/drier, history agrees far more often than chance. Weak spot: history doesn&rsquo;t support the
+        precipitation labels for {misses}.
+      </p>
+      <p className="text-[0.74rem] text-text-secondary leading-relaxed">
+        <strong className="text-text-primary">Market side is not proven.</strong>{" "}
+        {sigMarket === 0
+          ? `None of the 7 market series shows a statistically significant El Nino effect (smallest FDR q = ${minQ.toFixed(2)}).`
+          : `${sigMarket} of 7 market series clears the significance bar.`}{" "}
+        With only {Math.min(...episodes)}&ndash;{Math.max(...episodes)} independent El Nino episodes the test has little
+        power, so this means &ldquo;not detected&rdquo;, not &ldquo;no effect&rdquo;.
+      </p>
     </div>
   );
 }
@@ -67,6 +127,7 @@ export function FinancialRiskSummaryModal({
   spReturns,
   insuranceReturns,
   agricultureReturns,
+  backtest,
   onClose,
 }: {
   financialMarkets: FinancialRecord[];
@@ -74,6 +135,7 @@ export function FinancialRiskSummaryModal({
   spReturns: PhaseReturn[];
   insuranceReturns: PhaseReturn[];
   agricultureReturns: PhaseReturn[];
+  backtest: BacktestResults | null;
   onClose: () => void;
 }) {
   const latest = financialMarkets[financialMarkets.length - 1];
@@ -147,6 +209,8 @@ export function FinancialRiskSummaryModal({
               sourceNote="Agriculture ETF vs NOAA ONI"
             />
           </div>
+
+          {backtest && <BacktestSection b={backtest} />}
 
           <p className="text-[0.68rem] text-text-muted leading-relaxed border-t border-border pt-3">
             Average quarterly % change grouped by that quarter&rsquo;s ENSO phase, 1990&ndash;present. Real historical

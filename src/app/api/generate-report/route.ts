@@ -3,6 +3,7 @@ import { Resend } from "resend";
 import { renderToBuffer } from "@react-pdf/renderer";
 import { getCommodities, getBonds, getElNinoEvents } from "@/lib/data";
 import { getLiveStateImpact } from "@/lib/liveImpact";
+import { rateLimit } from "@/lib/rateLimit";
 import { riskColor } from "@/lib/theme";
 import { severityLabel } from "@/lib/dataUtils";
 import { generateStateReportContent } from "@/lib/aiSummary";
@@ -76,7 +77,14 @@ function renderReportHtml(states: StateImpact[], hasPdf: boolean): string {
     </div>`;
 }
 
+const MAX_REPORT_STATES = 5;
+
 export async function POST(request: Request) {
+  // Each report makes one Claude call per state plus PDF rendering, so it is
+  // the most expensive route to serve: tight per-client cap.
+  const limited = rateLimit(request, "generate-report", 3, 10 * 60 * 1000);
+  if (limited) return limited;
+
   let body: { abbrs?: unknown; email?: unknown };
   try {
     body = await request.json();
@@ -84,7 +92,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
   }
 
-  const abbrs = Array.isArray(body.abbrs) ? body.abbrs.map((a) => String(a).toUpperCase()) : [];
+  const abbrs = Array.isArray(body.abbrs)
+    ? body.abbrs.map((a) => String(a).toUpperCase()).slice(0, MAX_REPORT_STATES)
+    : [];
   const email = typeof body.email === "string" ? body.email.trim() : "";
 
   if (!abbrs.length) {
