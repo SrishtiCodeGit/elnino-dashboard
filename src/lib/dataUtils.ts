@@ -75,6 +75,10 @@ export interface StateImpact {
   energyExposure: "high" | "medium" | "low" | "none";
   agGdpShare: number | null;
   financialRiskScore: number;
+  /** Climate signal strength (0-100) that feeds the score; see data/backtest_README.md. */
+  climateStrength?: number;
+  climateStrengthAssigned?: number;
+  climateStrengthMeasured?: number | null;
   sources: string[];
   /** Present only when live signals were applied; `financialRiskScore` then
    * already equals `live.baselineScore + live.adjustment` (capped at 100). */
@@ -90,6 +94,36 @@ export interface BacktestResults {
   strengthTest: { n: number; spearmanRho: number };
   precipMismatches: { abbr: string; label: string; measuredDiffPct: number; qFdr: number }[];
   marketTest: { series: string; channel: string; elNinoEpisodes: number; diffPct: number; qFdr: number }[];
+}
+
+export interface ScoreBreakdownRow {
+  label: string;
+  weight: number;
+  input: string;
+  points: number;
+}
+
+const TIER_POINTS: Record<string, number> = { high: 100, medium: 60, low: 25, none: 0 };
+
+/** The four documented components of the baseline score
+ * (0.35 climate + 0.30 commodity + 0.20 energy + 0.15 ag share), so the panel
+ * can show where the number comes from. Null if the climate strength isn't
+ * available. Points sum to the stored baseline score (to rounding). */
+export function scoreBreakdown(s: StateImpact): ScoreBreakdownRow[] | null {
+  if (s.climateStrength == null) return null;
+  const agSourced = s.agGdpShare != null;
+  const agScore = agSourced ? Math.min(100, ((s.agGdpShare as number) / 6) * 100) : 15;
+  return [
+    { label: "Climate signal strength", weight: 0.35, input: `${Math.round(s.climateStrength)} / 100`, points: 0.35 * s.climateStrength },
+    { label: "Commodity exposure", weight: 0.3, input: s.commodityExposure, points: 0.3 * TIER_POINTS[s.commodityExposure] },
+    { label: "Energy exposure", weight: 0.2, input: s.energyExposure, points: 0.2 * TIER_POINTS[s.energyExposure] },
+    {
+      label: "Agriculture share of GDP",
+      weight: 0.15,
+      input: agSourced ? `${(s.agGdpShare as number).toFixed(1)}%` : "no sourced figure",
+      points: 0.15 * agScore,
+    },
+  ];
 }
 
 export interface LiveStatus {

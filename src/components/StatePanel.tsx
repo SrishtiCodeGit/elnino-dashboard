@@ -6,7 +6,7 @@ import { AiSummaryWidget } from "@/components/AiSummaryWidget";
 import { CountUpNumber } from "@/components/CountUpNumber";
 import { TimeSeriesChart } from "@/components/charts/TimeSeriesChart";
 import { riskColor, COMMODITY_COLOR, COLOR } from "@/lib/theme";
-import { FUTURES_KEY_TO_NAME, getTrackedCommodityKeys } from "@/lib/dataUtils";
+import { FUTURES_KEY_TO_NAME, getTrackedCommodityKeys, scoreBreakdown } from "@/lib/dataUtils";
 import type { StateImpact, CommodityRecord, ElNinoEvent, BondRecord } from "@/lib/dataUtils";
 import type { StateRef } from "@/lib/states";
 
@@ -146,6 +146,34 @@ export function StatePanel({
               )}
             </div>
           )}
+
+          {impact && (() => {
+            const rows = scoreBreakdown(impact);
+            if (!rows) return null;
+            const baseline = impact.live?.baselineScore ?? impact.financialRiskScore;
+            return (
+              <div className="rounded-xl border border-border bg-surface px-5 py-3.5 flex flex-col gap-1.5">
+                <div className="text-[0.68rem] font-semibold uppercase tracking-widest text-text-muted mb-1">
+                  How this score is built
+                </div>
+                {rows.map((r) => (
+                  <div key={r.label} className="flex items-baseline justify-between gap-3 text-xs">
+                    <span className="text-text-secondary">
+                      {r.label} <span className="text-text-muted">({Math.round(r.weight * 100)}%)</span>
+                    </span>
+                    <span className="font-mono tabular-nums text-text-secondary whitespace-nowrap">
+                      <span className="uppercase text-text-muted mr-2">{r.input}</span>
+                      <span className="font-bold text-text-primary">{r.points.toFixed(1)}</span>
+                    </span>
+                  </div>
+                ))}
+                <div className="flex items-center justify-between border-t border-border pt-1.5 mt-0.5 text-xs">
+                  <span className="font-semibold text-text-primary">Baseline score</span>
+                  <span className="font-mono font-bold tabular-nums text-text-primary">{baseline}</span>
+                </div>
+              </div>
+            );
+          })()}
 
           <WeatherWidget abbr={stateRef.abbr} />
 
