@@ -15,11 +15,15 @@
     "commodityExposure": "medium",
     "energyExposure": "low",
     "agGdpShare": null,
-    "financialRiskScore": 57,
+    "financialRiskScore": 52,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "USDA NASS Cotton Ginnings/Cattle Inventory reports 2024; USDA ERS cash receipts"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 57,
+    "climateStrengthAssigned": 90,
+    "climateStrengthMeasured": 64.7,
+    "climateStrength": 77.3
   },
   {
     "state": "Alaska",
@@ -35,11 +39,15 @@
     "commodityExposure": "low",
     "energyExposure": "high",
     "agGdpShare": null,
-    "financialRiskScore": 51,
+    "financialRiskScore": 52,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 51,
+    "climateStrengthAssigned": 60,
+    "climateStrengthMeasured": 66.0,
+    "climateStrength": 63.0
   },
   {
     "state": "Arizona",
@@ -58,7 +66,11 @@
     "financialRiskScore": 36,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 36,
+    "climateStrengthAssigned": 75,
+    "climateStrengthMeasured": 72.5,
+    "climateStrength": 73.7
   },
   {
     "state": "Arkansas",
@@ -76,11 +88,15 @@
     "commodityExposure": "high",
     "energyExposure": "medium",
     "agGdpShare": null,
-    "financialRiskScore": 76,
+    "financialRiskScore": 66,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "USDA NASS Crop Production reports 2024; soystats.com U.S. Yield & Production tables"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 76,
+    "climateStrengthAssigned": 90,
+    "climateStrengthMeasured": 36.0,
+    "climateStrength": 63.0
   },
   {
     "state": "California",
@@ -98,11 +114,15 @@
     "commodityExposure": "high",
     "energyExposure": "medium",
     "agGdpShare": null,
-    "financialRiskScore": 69,
+    "financialRiskScore": 68,
     "sources": [
       "NOAA Climate.gov, 'El Nino and U.S. winter weather' (climate.gov/news-features/featured-images/el-nino-and-us-winter-weather)",
       "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 69,
+    "climateStrengthAssigned": 70,
+    "climateStrengthMeasured": 67.2,
+    "climateStrength": 68.6
   },
   {
     "state": "Colorado",
@@ -119,11 +139,15 @@
     "commodityExposure": "medium",
     "energyExposure": "medium",
     "agGdpShare": null,
-    "financialRiskScore": 52,
+    "financialRiskScore": 49,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 52,
+    "climateStrengthAssigned": 55,
+    "climateStrengthMeasured": 38.6,
+    "climateStrength": 46.8
   },
   {
     "state": "Connecticut",
@@ -139,10 +163,14 @@
     "commodityExposure": "low",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 18,
+    "financialRiskScore": 20,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 18,
+    "climateStrengthAssigned": 25,
+    "climateStrengthMeasured": 30.9,
+    "climateStrength": 27.9
   },
   {
     "state": "Delaware",
@@ -158,10 +186,14 @@
     "commodityExposure": "medium",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 32,
+    "financialRiskScore": 36,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 32,
+    "climateStrengthAssigned": 35,
+    "climateStrengthMeasured": 55.5,
+    "climateStrength": 45.3
   },
   {
     "state": "Florida",
@@ -182,7 +214,11 @@
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "USDA NASS Cotton Ginnings/Cattle Inventory reports 2024; USDA ERS cash receipts"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 64,
+    "climateStrengthAssigned": 90,
+    "climateStrengthMeasured": 89.3,
+    "climateStrength": 89.7
   },
   {
     "state": "Georgia",
@@ -199,11 +235,15 @@
     "commodityExposure": "high",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 64,
+    "financialRiskScore": 63,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "USDA NASS Cotton Ginnings/Cattle Inventory reports 2024; USDA ERS cash receipts"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 64,
+    "climateStrengthAssigned": 90,
+    "climateStrengthMeasured": 86.8,
+    "climateStrength": 88.4
   },
   {
     "state": "Hawaii",
@@ -218,10 +258,14 @@
     "commodityExposure": "high",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 60,
+    "financialRiskScore": 61,
     "sources": [
       "Hawaii Dept. of Agriculture / Big Island Now & Hawaii Tribune-Herald reporting on El Nino drought impact on Kona coffee"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 60,
+    "climateStrengthAssigned": 80,
+    "climateStrengthMeasured": 81.5,
+    "climateStrength": 80.8
   },
   {
     "state": "Idaho",
@@ -238,11 +282,15 @@
     "commodityExposure": "high",
     "energyExposure": "none",
     "agGdpShare": 4.28,
-    "financialRiskScore": 70,
+    "financialRiskScore": 71,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 70,
+    "climateStrengthAssigned": 85,
+    "climateStrengthMeasured": 85.5,
+    "climateStrength": 85.2
   },
   {
     "state": "Illinois",
@@ -258,11 +306,15 @@
     "commodityExposure": "high",
     "energyExposure": "low",
     "agGdpShare": null,
-    "financialRiskScore": 53,
+    "financialRiskScore": 52,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "USDA NASS Crop Production reports 2024; soystats.com U.S. Yield & Production tables"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 53,
+    "climateStrengthAssigned": 45,
+    "climateStrengthMeasured": 41.2,
+    "climateStrength": 43.1
   },
   {
     "state": "Indiana",
@@ -282,7 +334,11 @@
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "USDA NASS Crop Production reports 2024; soystats.com U.S. Yield & Production tables"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 53,
+    "climateStrengthAssigned": 45,
+    "climateStrengthMeasured": 46.5,
+    "climateStrength": 45.7
   },
   {
     "state": "Iowa",
@@ -298,11 +354,15 @@
     "commodityExposure": "high",
     "energyExposure": "none",
     "agGdpShare": 4.3,
-    "financialRiskScore": 64,
+    "financialRiskScore": 61,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 64,
+    "climateStrengthAssigned": 65,
+    "climateStrengthMeasured": 53.0,
+    "climateStrength": 59.0
   },
   {
     "state": "Kansas",
@@ -324,7 +384,11 @@
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "USDA NASS, 2024 Small Grains Summary / state ag statistics bulletins",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 68,
+    "climateStrengthAssigned": 55,
+    "climateStrengthMeasured": 59.5,
+    "climateStrength": 57.2
   },
   {
     "state": "Kentucky",
@@ -342,11 +406,15 @@
     "commodityExposure": "medium",
     "energyExposure": "low",
     "agGdpShare": 1.06,
-    "financialRiskScore": 41,
+    "financialRiskScore": 44,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 41,
+    "climateStrengthAssigned": 45,
+    "climateStrengthMeasured": 60.8,
+    "climateStrength": 52.9
   },
   {
     "state": "Louisiana",
@@ -364,11 +432,15 @@
     "commodityExposure": "high",
     "energyExposure": "high",
     "agGdpShare": null,
-    "financialRiskScore": 84,
+    "financialRiskScore": 80,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 84,
+    "climateStrengthAssigned": 90,
+    "climateStrengthMeasured": 71.2,
+    "climateStrength": 80.6
   },
   {
     "state": "Maine",
@@ -385,10 +457,14 @@
     "commodityExposure": "low",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 18,
+    "financialRiskScore": 20,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 18,
+    "climateStrengthAssigned": 25,
+    "climateStrengthMeasured": 33.5,
+    "climateStrength": 29.2
   },
   {
     "state": "Maryland",
@@ -405,10 +481,14 @@
     "commodityExposure": "medium",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 32,
+    "financialRiskScore": 35,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 32,
+    "climateStrengthAssigned": 35,
+    "climateStrengthMeasured": 47.8,
+    "climateStrength": 41.4
   },
   {
     "state": "Massachusetts",
@@ -424,10 +504,14 @@
     "commodityExposure": "low",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 18,
+    "financialRiskScore": 20,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 18,
+    "climateStrengthAssigned": 25,
+    "climateStrengthMeasured": 34.8,
+    "climateStrength": 29.9
   },
   {
     "state": "Michigan",
@@ -445,10 +529,14 @@
     "commodityExposure": "medium",
     "energyExposure": "low",
     "agGdpShare": null,
-    "financialRiskScore": 39,
+    "financialRiskScore": 44,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 39,
+    "climateStrengthAssigned": 40,
+    "climateStrengthMeasured": 68.5,
+    "climateStrength": 54.3
   },
   {
     "state": "Minnesota",
@@ -465,11 +553,15 @@
     "commodityExposure": "high",
     "energyExposure": "none",
     "agGdpShare": 1.27,
-    "financialRiskScore": 56,
+    "financialRiskScore": 57,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 56,
+    "climateStrengthAssigned": 65,
+    "climateStrengthMeasured": 69.8,
+    "climateStrength": 67.4
   },
   {
     "state": "Mississippi",
@@ -487,11 +579,15 @@
     "commodityExposure": "high",
     "energyExposure": "medium",
     "agGdpShare": 1.27,
-    "financialRiskScore": 77,
+    "financialRiskScore": 70,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 77,
+    "climateStrengthAssigned": 90,
+    "climateStrengthMeasured": 54.2,
+    "climateStrength": 72.1
   },
   {
     "state": "Missouri",
@@ -509,10 +605,14 @@
     "commodityExposure": "high",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 52,
+    "financialRiskScore": 47,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 52,
+    "climateStrengthAssigned": 55,
+    "climateStrengthMeasured": 26.9,
+    "climateStrength": 41.0
   },
   {
     "state": "Montana",
@@ -532,7 +632,11 @@
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 76,
+    "climateStrengthAssigned": 75,
+    "climateStrengthMeasured": 75.0,
+    "climateStrength": 75.0
   },
   {
     "state": "Nebraska",
@@ -549,11 +653,15 @@
     "commodityExposure": "high",
     "energyExposure": "low",
     "agGdpShare": 4.62,
-    "financialRiskScore": 69,
+    "financialRiskScore": 71,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 69,
+    "climateStrengthAssigned": 65,
+    "climateStrengthMeasured": 73.8,
+    "climateStrength": 69.4
   },
   {
     "state": "Nevada",
@@ -569,10 +677,14 @@
     "commodityExposure": "low",
     "energyExposure": "low",
     "agGdpShare": null,
-    "financialRiskScore": 34,
+    "financialRiskScore": 33,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 34,
+    "climateStrengthAssigned": 55,
+    "climateStrengthMeasured": 50.4,
+    "climateStrength": 52.7
   },
   {
     "state": "New Hampshire",
@@ -588,10 +700,14 @@
     "commodityExposure": "low",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 18,
+    "financialRiskScore": 20,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 18,
+    "climateStrengthAssigned": 25,
+    "climateStrengthMeasured": 32.1,
+    "climateStrength": 28.6
   },
   {
     "state": "New Jersey",
@@ -607,10 +723,14 @@
     "commodityExposure": "low",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 22,
+    "financialRiskScore": 23,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 22,
+    "climateStrengthAssigned": 35,
+    "climateStrengthMeasured": 40.0,
+    "climateStrength": 37.5
   },
   {
     "state": "New Mexico",
@@ -627,13 +747,17 @@
     "commodityExposure": "medium",
     "energyExposure": "high",
     "agGdpShare": 1.28,
-    "financialRiskScore": 67,
+    "financialRiskScore": 69,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)",
       "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 67,
+    "climateStrengthAssigned": 75,
+    "climateStrengthMeasured": 82.8,
+    "climateStrength": 78.9
   },
   {
     "state": "New York",
@@ -649,10 +773,14 @@
     "commodityExposure": "low",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 18,
+    "financialRiskScore": 19,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 18,
+    "climateStrengthAssigned": 25,
+    "climateStrengthMeasured": 25.6,
+    "climateStrength": 25.3
   },
   {
     "state": "North Carolina",
@@ -670,10 +798,14 @@
     "commodityExposure": "high",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 64,
+    "financialRiskScore": 62,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 64,
+    "climateStrengthAssigned": 90,
+    "climateStrengthMeasured": 79.0,
+    "climateStrength": 84.5
   },
   {
     "state": "North Dakota",
@@ -690,13 +822,17 @@
     "commodityExposure": "high",
     "energyExposure": "high",
     "agGdpShare": 4.46,
-    "financialRiskScore": 87,
+    "financialRiskScore": 85,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "USDA NASS, 2024 Small Grains Summary / state ag statistics bulletins",
       "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 87,
+    "climateStrengthAssigned": 75,
+    "climateStrengthMeasured": 62.0,
+    "climateStrength": 68.5
   },
   {
     "state": "Ohio",
@@ -716,7 +852,11 @@
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 48,
+    "climateStrengthAssigned": 45,
+    "climateStrengthMeasured": 42.5,
+    "climateStrength": 43.8
   },
   {
     "state": "Oklahoma",
@@ -732,12 +872,16 @@
     "commodityExposure": "high",
     "energyExposure": "high",
     "agGdpShare": 1.26,
-    "financialRiskScore": 85,
+    "financialRiskScore": 77,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 85,
+    "climateStrengthAssigned": 90,
+    "climateStrengthMeasured": 45.1,
+    "climateStrength": 67.6
   },
   {
     "state": "Oregon",
@@ -754,10 +898,14 @@
     "commodityExposure": "medium",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 50,
+    "financialRiskScore": 49,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 50,
+    "climateStrengthAssigned": 85,
+    "climateStrengthMeasured": 77.7,
+    "climateStrength": 81.3
   },
   {
     "state": "Pennsylvania",
@@ -778,7 +926,11 @@
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 52,
+    "climateStrengthAssigned": 35,
+    "climateStrengthMeasured": 29.6,
+    "climateStrength": 32.3
   },
   {
     "state": "Rhode Island",
@@ -794,10 +946,14 @@
     "commodityExposure": "low",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 18,
+    "financialRiskScore": 21,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 18,
+    "climateStrengthAssigned": 25,
+    "climateStrengthMeasured": 37.4,
+    "climateStrength": 31.2
   },
   {
     "state": "South Carolina",
@@ -814,10 +970,14 @@
     "commodityExposure": "medium",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 52,
+    "financialRiskScore": 51,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 52,
+    "climateStrengthAssigned": 90,
+    "climateStrengthMeasured": 88.0,
+    "climateStrength": 89.0
   },
   {
     "state": "South Dakota",
@@ -835,11 +995,15 @@
     "commodityExposure": "high",
     "energyExposure": "low",
     "agGdpShare": 5.78,
-    "financialRiskScore": 76,
+    "financialRiskScore": 73,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 76,
+    "climateStrengthAssigned": 75,
+    "climateStrengthMeasured": 56.9,
+    "climateStrength": 65.9
   },
   {
     "state": "Tennessee",
@@ -856,10 +1020,14 @@
     "commodityExposure": "medium",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 40,
+    "financialRiskScore": 39,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 40,
+    "climateStrengthAssigned": 55,
+    "climateStrengthMeasured": 51.6,
+    "climateStrength": 53.3
   },
   {
     "state": "Texas",
@@ -877,13 +1045,17 @@
     "commodityExposure": "high",
     "energyExposure": "high",
     "agGdpShare": null,
-    "financialRiskScore": 84,
+    "financialRiskScore": 82,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)",
       "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)",
       "USDA NASS Cotton Ginnings/Cattle Inventory reports 2024; USDA ERS cash receipts"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 84,
+    "climateStrengthAssigned": 90,
+    "climateStrengthMeasured": 80.2,
+    "climateStrength": 85.1
   },
   {
     "state": "Utah",
@@ -900,10 +1072,14 @@
     "commodityExposure": "low",
     "energyExposure": "medium",
     "agGdpShare": null,
-    "financialRiskScore": 41,
+    "financialRiskScore": 39,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 41,
+    "climateStrengthAssigned": 55,
+    "climateStrengthMeasured": 43.9,
+    "climateStrength": 49.4
   },
   {
     "state": "Vermont",
@@ -919,11 +1095,15 @@
     "commodityExposure": "low",
     "energyExposure": "none",
     "agGdpShare": 1.13,
-    "financialRiskScore": 19,
+    "financialRiskScore": 20,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 19,
+    "climateStrengthAssigned": 25,
+    "climateStrengthMeasured": 28.2,
+    "climateStrength": 26.6
   },
   {
     "state": "Virginia",
@@ -940,10 +1120,14 @@
     "commodityExposure": "medium",
     "energyExposure": "low",
     "agGdpShare": null,
-    "financialRiskScore": 38,
+    "financialRiskScore": 42,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 38,
+    "climateStrengthAssigned": 35,
+    "climateStrengthMeasured": 58.1,
+    "climateStrength": 46.6
   },
   {
     "state": "Washington",
@@ -960,10 +1144,14 @@
     "commodityExposure": "high",
     "energyExposure": "none",
     "agGdpShare": null,
-    "financialRiskScore": 62,
+    "financialRiskScore": 60,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 62,
+    "climateStrengthAssigned": 85,
+    "climateStrengthMeasured": 76.3,
+    "climateStrength": 80.7
   },
   {
     "state": "West Virginia",
@@ -979,11 +1167,15 @@
     "commodityExposure": "low",
     "energyExposure": "high",
     "agGdpShare": null,
-    "financialRiskScore": 42,
+    "financialRiskScore": 44,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "EIA, 'Five states drove record U.S. natural gas production in 2023/2024' (eia.gov/todayinenergy/detail.php?id=63964)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 42,
+    "climateStrengthAssigned": 35,
+    "climateStrengthMeasured": 49.0,
+    "climateStrength": 42.0
   },
   {
     "state": "Wisconsin",
@@ -1005,7 +1197,11 @@
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 56,
+    "climateStrengthAssigned": 65,
+    "climateStrengthMeasured": 63.4,
+    "climateStrength": 64.2
   },
   {
     "state": "Wyoming",
@@ -1022,12 +1218,16 @@
     "commodityExposure": "medium",
     "energyExposure": "high",
     "agGdpShare": 1.66,
-    "financialRiskScore": 68,
+    "financialRiskScore": 70,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)",
       "EIA, 'Where our oil comes from' & state crude oil production rankings (eia.gov/energyexplained/oil-and-petroleum-products)",
       "Commodity.com/BEA state ag-GDP ranking"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 68,
+    "climateStrengthAssigned": 75,
+    "climateStrengthMeasured": 84.2,
+    "climateStrength": 79.6
   },
   {
     "state": "District of Columbia",
@@ -1043,6 +1243,10 @@
     "financialRiskScore": 22,
     "sources": [
       "NOAA Climate.gov, 'How El Nino and La Nina affect the winter jet stream and U.S. climate' (climate.gov/enso)"
-    ]
+    ],
+    "financialRiskScoreHandAssigned": 22,
+    "climateStrengthAssigned": 35,
+    "climateStrengthMeasured": null,
+    "climateStrength": 35.0
   }
 ]

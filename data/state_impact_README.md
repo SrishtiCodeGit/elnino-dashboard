@@ -29,6 +29,8 @@ NOAA's own composites describe El Nino winters as: **cooler and wetter than aver
 
 ## (b) How `financialRiskScore` (0–100) was computed
 
+> **Update (recalibration):** `climateSignalStrength` below is no longer purely hand-assigned. It is now a 50/50 blend of the hand-assigned value (kept as `climateStrengthAssigned`) and a value **measured from 77 winters of NOAA state climate data** (`climateStrengthMeasured`), produced by `python3 data/backtest.py --apply`. The blend is stored as `climateStrength`, the previous hand-assigned score as `financialRiskScoreHandAssigned`. See `backtest_README.md`. The 0.35/0.30/0.20/0.15 weights and the exposure tiers are unchanged and still a modelling choice.
+
 The score is a **transparent weighted composite** of four sub-scores, each placed on a common 0–100 scale, then combined with fixed weights. The exact build script (`build_state_impact.py`, used to generate this JSON) encodes this formula directly — it is fully reproducible from the categorical/source fields already in each record.
 
 ```

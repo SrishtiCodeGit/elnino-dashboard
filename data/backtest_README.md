@@ -18,6 +18,11 @@ Run: `python3 data/backtest.py` (needs numpy, scipy, pandas). Writes `processed/
 - **Strength ranking:** rho = 0.73 (n = 50). Florida, the Southeast and the Southwest show the strongest measured signal; the Northeast the weakest, as assigned. Largest disagreements: MI, KY, KS are stronger than assigned; OK, AR are weaker.
 - **Markets:** none of the 7 series shows a statistically significant El Nino effect (smallest q = 0.64; crude oil was lowest at raw p = 0.09, El Nino months averaging -2.4 points/month worse). Only 5-12 independent El Nino episodes exist, so power is low: "not detected", not "no effect".
 
+## Recalibration (`--apply`)
+`python3 data/backtest.py --apply` replaces the purely hand-assigned climate strength with a 50/50 blend of that value and the measured one (percentile rank of the historical signal, mapped onto the same 25-90 scale), then recomputes `financialRiskScore` with the documented formula. The 50/50 split is shrinkage: 77 winters is noisy for a single state, so the hand-assigned value acts as a prior. DC (not in NOAA's data) keeps its assigned value. It is idempotent: the original values are stored as `climateStrengthAssigned` and `financialRiskScoreHandAssigned`.
+
+Effect of the first application: mean absolute change 2.2 points; Arkansas 76 to 66, Oklahoma 85 to 77, Mississippi 77 to 70, Michigan 39 to 44; states at Severe (>= 75) went from 8 to 5 (Arkansas, Mississippi, South Dakota moved below 75). The test results above always compare the *hand-assigned* strength with the measured one.
+
 ## Limits
 - Tests the climate and market premises, not state-level financial *outcomes*: no per-state loss data exists in this repo.
 - The 30/20/15 exposure weights and the qualitative commodity/energy tiers cannot be tested with this data.

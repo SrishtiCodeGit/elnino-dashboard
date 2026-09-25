@@ -58,14 +58,15 @@ function BacktestSection({ b }: { b: BacktestResults }) {
           <div className="text-[1.05rem] font-bold text-text-primary tabular-nums mt-0.5">
             &rho; = {b.strengthTest.spearmanRho.toFixed(2)}
           </div>
-          <div className="text-[0.66rem] text-text-secondary">vs measured, {b.strengthTest.n} states</div>
+          <div className="text-[0.66rem] text-text-secondary">hand-assigned vs measured, {b.strengthTest.n} states</div>
         </div>
       </div>
 
       <p className="text-[0.74rem] text-text-secondary leading-relaxed">
         <strong className="text-text-primary">Climate side holds up.</strong> Where the model says El Nino makes a state
         warmer/cooler or wetter/drier, history agrees far more often than chance. Weak spot: history doesn&rsquo;t support the
-        precipitation labels for {misses}.
+        precipitation labels for {misses}. Because the hand-assigned strengths agreed with history only partly, every
+        state&rsquo;s climate score now blends them 50/50 with the strength measured from that history.
       </p>
       <p className="text-[0.74rem] text-text-secondary leading-relaxed">
         <strong className="text-text-primary">Market side is not proven.</strong>{" "}

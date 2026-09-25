@@ -1,6 +1,7 @@
 """Historical backtest of the El Nino financial-risk model.
 
-Run:  python3 data/backtest.py
+Run:  python3 data/backtest.py            (test only; writes backtest_results.json)
+      python3 data/backtest.py --apply    (also recalibrates state_impact.json)
 Writes: data/processed/backtest_results.json
 
 Three tests, each against real historical data already in this repo or in
@@ -23,6 +24,7 @@ each family of tests; Spearman rank correlation for the strength test.
 """
 
 import json
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -113,6 +115,38 @@ def infer_climate_strength(s):
     return min(CLIMATE_BUCKETS, key=lambda b: abs(b - raw))
 
 
+def assigned_strength(s):
+    """The hand-assigned climate-signal strength. Stored on first recalibration
+    so reruns stay idempotent (the stored score no longer reveals it)."""
+    return s.get("climateStrengthAssigned") or infer_climate_strength(s)
+
+
+def recalibrate(state_list, rows):
+    """Blend the hand-assigned climate strength 50/50 with the strength
+    measured from history, then recompute the documented score formula
+    (0.35 climate + 0.30 commodity + 0.20 energy + 0.15 ag share).
+
+    Measured strength = percentile rank of the historical signal (sqrt of
+    t_temp^2 + t_precip^2) mapped onto the same 25-90 scale the hand-assigned
+    buckets use. The 50/50 blend is shrinkage: 77 winters is noisy for any one
+    state, so the hand-assigned value acts as a prior. States NOAA doesn't
+    cover (DC) keep their assigned value."""
+    signals = np.array([r["historicalSignal"] for r in rows])
+    by_abbr = {r["abbr"]: r for r in rows}
+    for s in state_list:
+        assigned = assigned_strength(s)
+        row = by_abbr.get(s["abbr"])
+        measured = 25 + 65 * stats.percentileofscore(signals, row["historicalSignal"], kind="mean") / 100 if row else None
+        blended = assigned if measured is None else 0.5 * assigned + 0.5 * measured
+        ag = min(100, s["agGdpShare"] / 6 * 100) if s["agGdpShare"] is not None else 15
+        score = 0.35 * blended + 0.30 * COMMODITY_SCORE[s["commodityExposure"]] + 0.20 * ENERGY_SCORE[s["energyExposure"]] + 0.15 * ag
+        s.setdefault("financialRiskScoreHandAssigned", s["financialRiskScore"])
+        s["climateStrengthAssigned"] = assigned
+        s["climateStrengthMeasured"] = None if measured is None else round(float(measured), 1)
+        s["climateStrength"] = round(float(blended), 1)
+        s["financialRiskScore"] = int(round(score))
+
+
 def main():
     oni = pd.DataFrame(json.loads((PROCESSED / "oni.json").read_text()))
     oni["ym"] = oni["date"].str[:7]
@@ -197,7 +231,7 @@ def main():
 
     # Test 2: strength ranking.
     for r in rows:
-        r["modelClimateStrength"] = infer_climate_strength(states[r["abbr"]])
+        r["modelClimateStrength"] = assigned_strength(states[r["abbr"]])
         r["historicalSignal"] = round(float(np.hypot(r["temp"]["t"], r["pcp"]["t"])), 3)
     rho, rho_p = stats.spearmanr([r["modelClimateStrength"] for r in rows], [r["historicalSignal"] for r in rows])
     strength = {
@@ -285,6 +319,13 @@ def main():
         "states": sorted(rows, key=lambda r: -r["historicalSignal"]),
     }
     (PROCESSED / "backtest_results.json").write_text(json.dumps(out, indent=2))
+
+    if "--apply" in sys.argv:
+        path = ROOT / "state_impact.json"
+        state_list = json.loads(path.read_text())
+        recalibrate(state_list, rows)
+        path.write_text(json.dumps(state_list, indent=2, ensure_ascii=False) + "\n")
+        print("Recalibrated state_impact.json")
 
     print(json.dumps({k: out[k] for k in ("directionTest", "strengthTest")}, indent=2))
     print("\nMARKET TEST")
